@@ -1,3 +1,4 @@
 rootProject.name = 'gerencia'
 include 'web'
+include 'service'
 
