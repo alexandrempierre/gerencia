@@ -1,5 +1,6 @@
 spring:
-  profiles: development
+  profiles:
+    active: development
 
 ---
 spring:
