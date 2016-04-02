@@ -1,0 +1,9 @@
+spring:
+  profiles: development
+
+---
+spring:
+  profiles: development
+
+server:
+  port: 8000
