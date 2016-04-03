@@ -1,5 +1,6 @@
 package br.ufrj.dcc.gerencia.service.entities;
 
+import br.ufrj.dcc.gerencia.contract.base.CrudRestAPIContract;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/example")
-public class ExampleAPI {
+@RequestMapping("/teste")
+public class ExampleAPI implements CrudRestAPIContract{
 
-  @RequestMapping("/get")
-  public String get(){
-    return "get";
+  public String teste() {
+    return "Oi mundo";
   }
 }
