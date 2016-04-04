@@ -22,11 +22,11 @@ public class CrudFacade
     this.repository = repository;
   }
 
-  int save(M register){
+  public int save(M register){
     return getRepository().save(register);
   }
 
-  M get(int id){
+  public M get(int id){
     return getRepository().get(id);
   }
 

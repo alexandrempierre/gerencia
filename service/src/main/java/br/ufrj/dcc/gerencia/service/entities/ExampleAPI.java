@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/teste")
-public class ExampleAPI implements CrudRestAPIContract{
+public class ExampleAPI {
 
   public String teste() {
     return "Oi mundo";
