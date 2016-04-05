@@ -1,14 +1,14 @@
 package br.ufrj.dcc.gerencia.business.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
-import br.ufrj.dcc.irepository.base.IRepository;
+import br.ufrj.dcc.gerencia.irepository.base.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by fausto on 4/3/16.
  */
 public class CrudFacade
-  <M extends LCIModel, R extends IRepository<M>>
+  <M extends LCIModel, R extends Repository<M>>
 {
 
   private R repository;
@@ -18,7 +18,7 @@ public class CrudFacade
   }
 
   @Autowired
-  public CrudFacade(R repository){
+  protected void setRepository(R repository) {
     this.repository = repository;
   }
 

@@ -1,15 +1,17 @@
 package br.ufrj.dcc.gerencia.repository.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
-import br.ufrj.dcc.irepository.base.IRepository;
+import br.ufrj.dcc.gerencia.irepository.base.Repository;
 
 /**
  * Created by fausto on 4/3/16.
  */
-public class Repository<M extends LCIModel> implements IRepository<M>{
+
+
+public class RepositoryImpl<M extends LCIModel> implements Repository<M> {
 
   public int save(M register) {
-    return 0;
+    return 42;
   }
 
   public M get(int id) {

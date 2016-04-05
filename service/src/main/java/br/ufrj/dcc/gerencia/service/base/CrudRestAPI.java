@@ -3,34 +3,37 @@ package br.ufrj.dcc.gerencia.service.base;
 import br.ufrj.dcc.gerencia.business.base.CrudFacade;
 import br.ufrj.dcc.gerencia.contract.base.CrudRestAPIContract;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
-import br.ufrj.dcc.irepository.base.IRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.ufrj.dcc.gerencia.irepository.base.Repository;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by fausto on 4/3/16.
  */
-public class CrudRestAPI
+
+@Component
+public abstract class CrudRestAPI
   <M extends LCIModel,
-   B extends CrudFacade<M,R>,
-   R extends IRepository<M>>
+   B, //extends CrudFacade<M,R>,
+   R extends Repository<M>>
   implements CrudRestAPIContract<M>{
 
-  private B busy;
+  private B facade;
 
-  @Autowired
-  public CrudRestAPI(B busy) {
-    this.busy = busy;
+  protected CrudRestAPI(B facade) {
+    this.facade = facade;
   }
 
-  protected B getBusy() {
-    return busy;
+  protected B getFacade() {
+    return facade;
   }
 
   public int save(M register) {
-    return getBusy().save(register);
+    //return getFacade().save(register);
+    return 40;
   }
 
   public M get(int id) {
-    return getBusy().get(id);
+    //return getFacade().get(id);
+    return null;
   }
 }
