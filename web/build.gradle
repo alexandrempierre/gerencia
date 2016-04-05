@@ -1,4 +1,5 @@
 dependencies {
+  compile(':service')
   compile('org.springframework:spring-web')
   compile('org.springframework:spring-webmvc')
   compile("org.springframework.boot:spring-boot-starter-thymeleaf")
