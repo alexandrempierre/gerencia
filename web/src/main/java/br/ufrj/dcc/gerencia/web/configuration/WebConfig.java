@@ -1,5 +1,6 @@
 package br.ufrj.dcc.gerencia.web.configuration;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
+@ComponentScan("br.ufrj.dcc.gerencia.web")
 public class WebConfig extends WebMvcConfigurerAdapter{
 
   @Override
