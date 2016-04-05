@@ -1,12 +1,15 @@
 package br.ufrj.dcc.gerencia.business.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
-import br.ufrj.dcc.gerencia.irepository.base.Repository;
+import br.ufrj.dcc.gerencia.repository.base.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by fausto on 4/3/16.
  */
+
+@Component
 public class CrudFacade
   <M extends LCIModel, R extends Repository<M>>
 {

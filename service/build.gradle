@@ -1,6 +1,7 @@
 dependencies {
   compile project(":contract")
   compile project(":domain")
+  compile project(":repository")
   compile project(":business")
   compile('org.springframework:spring-web')
 }

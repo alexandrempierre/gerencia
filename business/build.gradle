@@ -1,5 +1,5 @@
 dependencies {
-  compile project(':irepository')
+  compile project(':repository')
   compile project(':domain')
   compile('org.springframework:spring-web')
 }

@@ -1,4 +1,4 @@
-package br.ufrj.dcc.gerencia.irepository.base;
+package br.ufrj.dcc.gerencia.repository.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 

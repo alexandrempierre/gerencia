@@ -3,7 +3,6 @@ include 'web'
 include 'service'
 include 'contract'
 include 'business'
-include 'irepository'
 include 'repository'
 include 'domain'
 

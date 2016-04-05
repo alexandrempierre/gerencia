@@ -1,4 +1,0 @@
-dependencies {
-  compile project(':domain')
-  compile('org.springframework:spring-web')
-}
