@@ -1,6 +1,6 @@
 package br.ufrj.dcc.gerencia.dataaccess.entities;
 
-import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
+import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccessBase;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ExampleLDAPDataAccess extends CrudLdapDataAccess{
+public class ExampleLDAPDataAccessBase extends CrudLdapDataAccessBase {
 
 }

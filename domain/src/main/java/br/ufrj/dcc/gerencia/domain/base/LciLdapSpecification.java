@@ -1,5 +1,6 @@
 package br.ufrj.dcc.gerencia.domain.base;
 
+import org.springframework.ldap.query.LdapQuery;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -11,5 +12,7 @@ public abstract class LciLdapSpecification extends LciSpecification{
   public Object toSpecification() {
     throw new NotImplementedException();
   }
-  
+
+  public abstract LdapQuery toQuery();
+
 }
