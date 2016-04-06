@@ -7,6 +7,16 @@ public class LCIModel {
 
   private int id;
 
+  private boolean saved;
+
+  public boolean isSaved() {
+    return saved;
+  }
+
+  public void setSaved(boolean saved) {
+    this.saved = saved;
+  }
+
   public int getId() {
     return id;
   }

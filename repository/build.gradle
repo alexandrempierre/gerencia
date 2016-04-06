@@ -1,4 +1,5 @@
 dependencies {
   compile project(':domain')
+  compile project(':dataaccess')
   compile('org.springframework:spring-web')
 }
