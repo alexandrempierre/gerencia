@@ -9,6 +9,8 @@ import br.ufrj.dcc.gerencia.service.base.CrudRestAPI;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by fausto on 4/2/16.
  */
@@ -22,5 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/example")
 public class ExampleAPI
   extends CrudRestAPI<Example,ExampleSpecification,ExampleFacade,ExampleRepository> implements ExampleContract{
+
+  @RequestMapping("/junda")
+  public Example junda(){
+    ExampleSpecification specification = new ExampleSpecification("jvitor");
+    List<Example> examples = getFacade().query(specification);
+
+    return examples.get(0);
+  }
 
 }

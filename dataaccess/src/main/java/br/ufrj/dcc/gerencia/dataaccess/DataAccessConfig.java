@@ -31,6 +31,7 @@ public class DataAccessConfig {
     ldapContextSource.setUserDn(userDn);
     ldapContextSource.setPassword(password);
     ldapContextSource.setBase(base);
+
     return ldapContextSource;
   }
 
