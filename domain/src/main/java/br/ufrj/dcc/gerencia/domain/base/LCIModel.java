@@ -1,5 +1,6 @@
 package br.ufrj.dcc.gerencia.domain.base;
 
+import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.DnAttribute;
 import org.springframework.ldap.odm.annotations.Id;
 import org.springframework.ldap.odm.annotations.Transient;
@@ -19,6 +20,7 @@ public class LCIModel {
   @Id
   private Name dn;
 
+  @Attribute(name="uid")
   @DnAttribute(value = "uid", index = 1)
   private String uid;
 
