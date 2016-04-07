@@ -1,6 +1,7 @@
 package br.ufrj.dcc.gerencia.web.configuration;
 
 import br.ufrj.dcc.gerencia.business.BusinessConfiguration;
+import br.ufrj.dcc.gerencia.dataaccess.DataAccessConfig;
 import br.ufrj.dcc.gerencia.service.ServiceConfig;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -18,7 +19,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
   protected Class<?>[] getRootConfigClasses() {
     return new Class[]{
       ServiceConfig.class,
-      BusinessConfiguration.class
+      BusinessConfiguration.class,
+      DataAccessConfig.class
 //      SecurityConfig.class,
 //      ServiceConfig.class,
 //      DatabaseConfig.class

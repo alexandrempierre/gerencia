@@ -2,4 +2,5 @@ dependencies {
   compile project(':domain')
   compile 'org.springframework:spring-web'
   compile 'org.springframework.ldap:spring-ldap-core:2.1.0.RC1'
+  compile 'org.apache.commons:commons-lang3:3.0'
 }
