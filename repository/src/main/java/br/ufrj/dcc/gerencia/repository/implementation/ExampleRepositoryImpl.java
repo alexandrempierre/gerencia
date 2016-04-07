@@ -1,6 +1,8 @@
 package br.ufrj.dcc.gerencia.repository.implementation;
 
+import br.ufrj.dcc.gerencia.dataaccess.entities.ExampleLDAPDataAccessBase;
 import br.ufrj.dcc.gerencia.domain.entities.Example;
+import br.ufrj.dcc.gerencia.domain.specification.ExampleSpecification;
 import br.ufrj.dcc.gerencia.repository.base.RepositoryImpl;
 import br.ufrj.dcc.gerencia.repository.contract.ExampleRepository;
 import org.springframework.stereotype.Component;
@@ -10,12 +12,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ExampleRepositoryImpl extends RepositoryImpl<Example> implements ExampleRepository {
+public class ExampleRepositoryImpl extends RepositoryImpl<Example,ExampleLDAPDataAccessBase,ExampleSpecification> implements ExampleRepository {
 
-  @Override
-  public Example get(int id) {
-    Example example = new Example("Eu sou um exemplo");
-    example.setId(id);
-    return example;
-  }
 }
