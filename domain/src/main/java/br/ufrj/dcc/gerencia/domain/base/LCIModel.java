@@ -5,7 +5,7 @@ package br.ufrj.dcc.gerencia.domain.base;
  */
 public class LCIModel {
 
-  private int id;
+  private String uid;
 
   private boolean saved;
 
@@ -17,11 +17,11 @@ public class LCIModel {
     this.saved = saved;
   }
 
-  public int getId() {
-    return id;
+  public String getUid() {
+    return uid;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void setUid(String uid) {
+    this.uid = uid;
   }
 }
