@@ -12,7 +12,7 @@ import org.springframework.ldap.core.support.LdapContextSource;
  */
 
 @Configuration
-@PropertySource("classpath:ldap.yml")
+@PropertySource("classpath:ldap.properties")
 public class DataAccessConfig {
 
   @Value("${sample.ldap.url}")
