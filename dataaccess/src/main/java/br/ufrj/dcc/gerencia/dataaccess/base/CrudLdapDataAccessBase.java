@@ -4,6 +4,7 @@ import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.query.LdapQuery;
 import org.springframework.stereotype.Component;
@@ -21,37 +22,52 @@ public abstract class CrudLdapDataAccessBase<PO extends LciModelPO> {
   @Autowired
   private LdapTemplate ldapTemplate;
 
-  public PO insert(PO register) {
-    ldapTemplate.create(register);
-    return register;
+  protected LdapTemplate getLdapTemplate() {
+    return ldapTemplate;
   }
 
-  public PO get(LciLdapSpecification specification) {
-    return ldapTemplate.findOne(specification.toQuery(), getModelTypeClass());
+  protected void setLdapTemplate(LdapTemplate ldapTemplate) {
+    this.ldapTemplate = ldapTemplate;
   }
 
-  public PO get(LdapQuery query) {
-    return ldapTemplate.findOne(query, getModelTypeClass());
-  }
-
-  public void update(PO M) {
-    ldapTemplate.update(M);
-  }
-
-  public void delete(PO M) {
-    ldapTemplate.delete(M);
-  }
-
-  public List<PO> list(LciLdapSpecification specification) {
-    return ldapTemplate.find(specification.toQuery(), getModelTypeClass());
-  }
-
-  private Class<PO> getModelTypeClass(){
+  protected Class<PO> getModelTypeClass(){
     ParameterizedType parameterizedType = (ParameterizedType) getClass()
       .getGenericSuperclass();
     @SuppressWarnings("unchecked")
     Class<PO> ret = (Class<PO>) parameterizedType.getActualTypeArguments()[0];
     return ret;
+  }
+
+  protected List<PO> find(LdapQuery query){
+    try {
+      return getLdapTemplate().find(query, getModelTypeClass());
+    }catch (EmptyResultDataAccessException e){
+      return null;
+    }
+  }
+
+  protected List<PO> find(LciLdapSpecification specification){
+    try {
+      return getLdapTemplate().find(specification.toQuery(), getModelTypeClass());
+    }catch (EmptyResultDataAccessException e){
+      return null;
+    }
+  }
+
+  protected PO findOne(LdapQuery query){
+    try {
+      return getLdapTemplate().findOne(query, getModelTypeClass());
+    }catch (EmptyResultDataAccessException e){
+      return null;
+    }
+  }
+
+  protected PO findOne(LciLdapSpecification specification){
+    try {
+      return getLdapTemplate().findOne(specification.toQuery(), getModelTypeClass());
+    }catch (EmptyResultDataAccessException e){
+      return null;
+    }
   }
 
 }

@@ -24,6 +24,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/example")
 public class ExampleAPI
-  extends CrudRestAPI<Example,ExampleVO,ExampleSpecification,ExampleFacade,ExampleRepository> implements ExampleContract{
+  extends
+  CrudRestAPI<Example,
+    ExampleVO,
+    ExampleSpecification,
+    ExampleFacade,
+    ExampleRepository> implements ExampleContract{
+
+
+  @RequestMapping("/teste")
+  public String teste(ExampleSpecification specification){
+    return specification.getUid();
+  }
 
 }

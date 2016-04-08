@@ -19,7 +19,7 @@ import java.util.List;
  * Created by fausto on 4/3/16.
  */
 
-@Component
+@RequestMapping("/api")
 public abstract class CrudRestAPI
   <M extends LCIModel,
    V extends LciModelVO<M>,
@@ -40,7 +40,6 @@ public abstract class CrudRestAPI
     return register.toVO();
   }
 
-  @RequestMapping("/query")
   public List<V> query(S specification){
     List<M> registers = getFacade().query(specification);
     List<V> result = new ArrayList<>(registers.size());

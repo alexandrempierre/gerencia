@@ -12,10 +12,6 @@ public class ExampleSpecification extends LciLdapSpecification {
 
   private String uid;
 
-  public ExampleSpecification(String uid) {
-    this.uid = uid;
-  }
-
   public String getUid() {
     return uid;
   }
