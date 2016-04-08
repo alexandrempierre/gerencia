@@ -9,6 +9,7 @@ import br.ufrj.dcc.gerencia.repository.base.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public abstract class CrudRestAPI
     M register = getFacade().save(registerVO.toModel());
     return register.toVO();
   }
+
+  @RequestMapping("/query")
   public List<V> query(S specification){
     List<M> registers = getFacade().query(specification);
     List<V> result = new ArrayList<>(registers.size());

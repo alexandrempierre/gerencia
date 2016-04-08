@@ -16,6 +16,14 @@ public class ExampleSpecification extends LciLdapSpecification {
     this.uid = uid;
   }
 
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
+
   @Override
   public LdapQuery toQuery() {
     return query().base("ou=aluno,ou=academico,ou=usuario").where("uid").is(uid);

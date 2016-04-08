@@ -26,12 +26,4 @@ import java.util.List;
 public class ExampleAPI
   extends CrudRestAPI<Example,ExampleVO,ExampleSpecification,ExampleFacade,ExampleRepository> implements ExampleContract{
 
-  @RequestMapping("/junda")
-  public ExampleVO junda(){
-    ExampleSpecification specification = new ExampleSpecification("jvitor");
-    List<Example> examples = getFacade().query(specification);
-
-    return examples.get(0).toVO();
-  }
-
 }
