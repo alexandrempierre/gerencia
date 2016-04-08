@@ -8,17 +8,18 @@ import javax.naming.Name;
 
 public abstract class LCIModel {
 
-  public LCIModel() {}
+  private String id;
 
-  private boolean saved;
-
-  public boolean isSaved() {
-    return saved;
-  }
-  public void setSaved(boolean saved) {
-    this.saved = saved;
+  public String getId() {
+    return id;
   }
 
-  public abstract String getIdentify();
+  public void setId(String id) {
+    this.id = id;
+  }
 
+  public abstract <TReturn extends LciModelVO> TReturn toVO();
+  public abstract <TReturn extends LciModelPO> TReturn toPO();
 }
+
+

@@ -3,11 +3,11 @@ package br.ufrj.dcc.gerencia.repository.base;
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
-import br.ufrj.dcc.gerencia.domain.base.LciSpecification;
+import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +15,11 @@ import java.util.List;
  */
 
 @Component
-public abstract
-class RepositoryImpl<M extends LCIModel, DAO extends CrudLdapDataAccess<M>, Spec extends LciLdapSpecification>
-  implements Repository<M, Spec> {
+public abstract class RepositoryImpl<
+  M extends LCIModel,
+  PO extends LciModelPO<M>,
+  DAO extends CrudLdapDataAccess<PO>,
+  Spec extends LciLdapSpecification> implements Repository<M, Spec> {
 
   @Autowired
   protected DAO dataAccess;
@@ -27,32 +29,32 @@ class RepositoryImpl<M extends LCIModel, DAO extends CrudLdapDataAccess<M>, Spec
   }
 
   public M save(M register) {
-    if(register.isSaved()){
-      getDataAccess().insert(register);
-    }else{
-      getDataAccess().update(register);
+    PO registerPO = register.toPO();
+    if (!registerPO.isSaved()) {
+      getDataAccess().insert(registerPO);
+    } else {
+      getDataAccess().update(registerPO);
     }
 
-    register.setSaved(true);
-    return register;
+    registerPO.setSaved(true);
+    return registerPO.toModel();
   }
 
   public List<M> query(Spec specification) {
-    List<M> list = getDataAccess().list(specification);
-    list.forEach((x) -> x.setSaved(true));
-    return list;
+    List<PO> list = getDataAccess().list(specification);
+    List<M> listModel = new ArrayList<>(list.size());
+
+    list.forEach((x) -> listModel.add(x.toModel()));
+    return listModel;
   }
 
   public M get(String uid) {
-    M register = getDataAccess().getByUid(uid);
-    register.setSaved(true);
-    return register;
+    return getDataAccess().getByUid(uid).toModel();
   }
 
   public M delete(String uid) {
-    M register = get(uid);
+    PO register = getDataAccess().getByUid(uid);
     getDataAccess().delete(register);
-    register.setSaved(false);
-    return register;
+    return register.toModel();
   }
 }

@@ -2,6 +2,7 @@ package br.ufrj.dcc.gerencia.dataaccess.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
+import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.query.LdapQuery;
@@ -15,41 +16,41 @@ import java.util.List;
  */
 
 @Component
-public abstract class CrudLdapDataAccessBase<M extends LCIModel> {
+public abstract class CrudLdapDataAccessBase<PO extends LciModelPO> {
 
   @Autowired
   private LdapTemplate ldapTemplate;
 
-  public M insert(M register) {
+  public PO insert(PO register) {
     ldapTemplate.create(register);
     return register;
   }
 
-  public M get(LciLdapSpecification specification) {
+  public PO get(LciLdapSpecification specification) {
     return ldapTemplate.findOne(specification.toQuery(), getModelTypeClass());
   }
 
-  public M get(LdapQuery query) {
+  public PO get(LdapQuery query) {
     return ldapTemplate.findOne(query, getModelTypeClass());
   }
 
-  public void update(M M) {
+  public void update(PO M) {
     ldapTemplate.update(M);
   }
 
-  public void delete(M M) {
+  public void delete(PO M) {
     ldapTemplate.delete(M);
   }
 
-  public List<M> list(LciLdapSpecification specification) {
+  public List<PO> list(LciLdapSpecification specification) {
     return ldapTemplate.find(specification.toQuery(), getModelTypeClass());
   }
 
-  private Class<M> getModelTypeClass(){
+  private Class<PO> getModelTypeClass(){
     ParameterizedType parameterizedType = (ParameterizedType) getClass()
       .getGenericSuperclass();
     @SuppressWarnings("unchecked")
-    Class<M> ret = (Class<M>) parameterizedType.getActualTypeArguments()[0];
+    Class<PO> ret = (Class<PO>) parameterizedType.getActualTypeArguments()[0];
     return ret;
   }
 
