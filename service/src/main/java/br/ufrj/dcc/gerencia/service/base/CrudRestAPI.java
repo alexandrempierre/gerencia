@@ -48,11 +48,11 @@ public abstract class CrudRestAPI
     }
     return result;
   }
-  public V get(@RequestParam("uid") String uid){
+  public V get(String uid){
     M register = getFacade().get(uid);
     return register.toVO();
   }
-  public V delete(@RequestParam("uid") String uid){
+  public V delete(String uid){
     M register = getFacade().delete(uid);
     return register.toVO();
   }
