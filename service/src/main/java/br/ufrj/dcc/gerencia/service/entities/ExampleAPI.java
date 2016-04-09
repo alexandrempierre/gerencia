@@ -4,13 +4,11 @@ import br.ufrj.dcc.gerencia.business.entities.ExampleFacade;
 import br.ufrj.dcc.gerencia.contract.entities.ExampleContract;
 import br.ufrj.dcc.gerencia.domain.entities.Example;
 import br.ufrj.dcc.gerencia.domain.specification.ExampleSpecification;
-import br.ufrj.dcc.gerencia.domain.vo.ExampleVO;
 import br.ufrj.dcc.gerencia.repository.contract.ExampleRepository;
 import br.ufrj.dcc.gerencia.service.base.CrudRestAPI;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 /**
  * Created by fausto on 4/2/16.
@@ -25,16 +23,4 @@ import java.util.List;
 @RequestMapping("/example")
 public class ExampleAPI
   extends
-  CrudRestAPI<Example,
-    ExampleVO,
-    ExampleSpecification,
-    ExampleFacade,
-    ExampleRepository> implements ExampleContract{
-
-
-  @RequestMapping("/teste")
-  public String teste(ExampleSpecification specification){
-    return specification.getUid();
-  }
-
-}
+  CrudRestAPI<Example, ExampleSpecification, ExampleFacade, ExampleRepository> implements ExampleContract{}

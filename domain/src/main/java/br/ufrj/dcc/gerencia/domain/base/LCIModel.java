@@ -18,8 +18,9 @@ public abstract class LCIModel {
     this.id = id;
   }
 
-  public abstract <TReturn extends LciModelVO> TReturn toVO();
-  public abstract <TReturn extends LciModelPO> TReturn toPO();
+  public <TReturn extends LciModelPO> TReturn toPO(){
+    return null;
+  }
 }
 
 
