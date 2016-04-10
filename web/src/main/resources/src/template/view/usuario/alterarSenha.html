@@ -1,0 +1,56 @@
+<div class="modal-body gerencia-modal">
+  <form class="form-horizontal gerencia-formulario" name="alterarSenhaForm" ng-init="alterarSenhaForm.$setPristine()"
+        novalidate>
+    <fieldset>
+      <div class="gerencia-formulario-corpo row">
+        <lci-formtitulo>Alteração de Senha</lci-formtitulo>
+
+        <div class="form-group">
+          <label for="login" class="col-sm-4 control-label">Login</span></label>
+
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="login" name="login" ng-model="usuario.login" placeholder="Login"
+                   ng-disabled="true">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="senha" class="col-sm-4 control-label">Senha<span class="lci-require"></span></label>
+
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="senha" name="senha" ng-model="usuario.senha"
+                   placeholder="Senha" ng-required="true" ng-minlength="8" ng-maxlength="30" ng-trim="true"
+                   lci-validacao-senha>
+            <lci-mensagens expressao="alterarSenhaForm.senha.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="alunoForm.senha.$touched">Por favor preencher a senha</lci-mensagem>
+              <lci-mensagem caso="maxlength">A senha deve ter no máximo 30 caracteres</lci-mensagem>
+              <lci-mensagem caso="minlength">A senha deve ter no mínimo 8 caracteres</lci-mensagem>
+              <lci-mensagem caso="validacaoSenhaMaiuscula">A senha deve ter pelo menos uma maiuscula</lci-mensagem>
+              <lci-mensagem caso="validacaoSenhaMinuscula">A senha deve ter pelo menos uma minuscula</lci-mensagem>
+              <lci-mensagem caso="validacaoSenhaNumero">A senha deve ter pelo menos um numero</lci-mensagem>
+            </lci-mensagens>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rsenha" class="col-sm-4 control-label">Repita a senha</label>
+
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="rsenha" name="rsenha" ng-model="usuario.rsenha"
+                   placeholder="Repita a senha" lci-validacao-repetir-senha senha="usuario.senha" ng-required="true"
+                   ng-trim="true">
+            <lci-mensagens expressao="alterarSenhaForm.rsenha.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="alterarSenhaForm.rsenha.$touched">Por favor preencher novamente a
+                senha
+              </lci-mensagem>
+              <lci-mensagem caso="validacaoRepetirSenha">As senhas são diferentes</lci-mensagem>
+            </lci-mensagens>
+          </div>
+        </div>
+
+        <lci-formbotoessalvar ng-model="aluno" fn-salvar="salvar(usuario)" fn-cancelar="cancelar()"
+                              lci-disabled="alterarSenhaForm.$invalid"></lci-formbotoessalvar>
+      </div>
+    </fieldset>
+  </form>
+</div>

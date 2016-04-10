@@ -1,0 +1,13 @@
+<div class="gerencia-dialogo">
+  <div class="modal-header">
+    <button ng-if="botaoFechar" type="button" class="close" ng-click="dismissFn()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title"><i ng-class="iconeClass"></i> {{titulo}}</h4>
+  </div>
+  <div class="modal-body">
+    <p>{{mensagem}}</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-if="botao.fechar" type="button" class="btn btn-default" ng-click="fnFechar()"><i class="glyphicon glyphicon-remove"></i> {{botao.fechar.titulo}}</button>
+    <button type="button" class="btn btn-default gerencia-botao-executar" ng-click="fnOk()"><i class="glyphicon glyphicon-ok"></i> {{botao.ok.titulo}}</button>
+  </div>
+</div>

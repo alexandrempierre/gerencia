@@ -1,0 +1,16 @@
+$cor-texto: #888888;
+
+.lcilogin-topbar {
+  margin: 0;
+  padding: 5px 20px;
+  width: 100%;
+  color: $cor-texto;
+  background-color: white;
+  .lcilogin-logo {
+    height: 50px;
+  }
+
+  a {
+    color: $cor-texto;
+  }
+}

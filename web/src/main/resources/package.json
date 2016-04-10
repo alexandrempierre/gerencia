@@ -1,0 +1,51 @@
+{
+  "name": "sugarloaf-cli",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-cookie": "^4.0.10",
+    "angular-route": "^1.4.9",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.0",
+    "sugarloaf-cli": "https://github.com/faustofjunqueira/sugarloaf-cli.git",
+    "angular-ui-bootstrap": "~1.1.2",
+    "angular-bootstrap3-datepicker": "git://github.com/benzen/angular-bootstrap3-datepicker.git",
+    "moment": "~2.11.2",
+    "font-awesome": "~4.5.0",
+    "angular-bootstrap-switch": "~0.4.1",
+    "bootstrap-switch": "~3.3.2",
+    "angular-ui-mask": "~1.7.2"
+  },
+  "devDependencies": {
+    "event-stream": "^3.3.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.3",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-ng-annotate": "~1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uglifyjs": "^0.6.2",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "run-sequence": "^1.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/faustofjunqueira/sugarloaf-cli.git"
+  },
+  "author": "Fausto Junqueira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faustofjunqueira/sugarloaf-cli/issues"
+  }
+}

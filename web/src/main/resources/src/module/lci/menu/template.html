@@ -1,0 +1,24 @@
+<nav class="navbar hidden-xs hidden-sm navbar-top lcimenu-nav">
+  <div class="navbar-collapse">
+
+    <ul class="nav navbar-nav">
+      <li><p><strong>{{titulo}}</strong></p></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-if="!menu.interno" ng-repeat="menu in ctrl.listaMenu">
+        <a href="{{menu.link}}"><span ng-if="menu.icone" ng-class="menu.icone" class="glyphicon" aria-hidden="true"></span> {{menu.nome}}</a>
+      </li>
+
+      <li class="dropdown" ng-if="menu.interno" ng-repeat="menu in ctrl.listaMenu">
+        <a href="{{menu.link}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-if="menu.icone" class="glyphicon" ng-class="menu.icone" aria-hidden="true"></span> {{menu.nome}} <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li ng-repeat="menuInterno in menu.interno">
+            <a href="{{menuInterno.link}}"><span ng-if="menuInterno.icone" ng-class="menuInterno.icone" class="glyphicon" aria-hidden="true"></span> {{menuInterno.nome}}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</nav>

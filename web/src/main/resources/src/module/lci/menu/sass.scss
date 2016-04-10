@@ -1,0 +1,32 @@
+/**
+ * Created by fausto on 2/11/16.
+ */
+$cor-primaria: #22425D;
+$cor-secundaria: #365871;
+
+.lcimenu-nav{
+  background-color: $cor-primaria;
+
+  .dropdown-menu {
+    background-color: $cor-primaria;
+    a:hover,
+    a:focus{
+      background-color: $cor-secundaria !important;
+    }
+  }
+
+
+  li>a,
+  li>p{
+    color: white !important;
+  }
+
+  .active > a,
+  li>a:hover,
+  li>a:active,
+  li>a:focus,
+  li.dropdown.open > a{
+    background-color: $cor-primaria;
+  }
+
+}

@@ -1,0 +1,20 @@
+body{
+    background-color: #eeeeee;
+    overflow-x: hidden;
+}
+
+.navbar-top {
+    border-radius: 0;
+    min-height: 40px;
+}
+
+nav.navbar-top {
+    margin-bottom: 0;
+}
+nav.navbar-top a{
+    padding: 10px;
+}
+
+nav.navbar-top p{
+    margin: 10px;
+}

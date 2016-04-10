@@ -1,0 +1,47 @@
+<form class="form-horizontal gerencia-formulario">
+  <fieldset>
+    <lci-formtitulo>Filtro</lci-formtitulo>
+    <div class="form-group">
+      <label for="nome" class="col-sm-1 control-label">Nome</label>
+
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="nome" ng-model="filtro.nome" placeholder="Nome">
+      </div>
+    </div>
+
+    <lci-formbotoesfiltro ng-model="filtro" fn-limpar="limpar" fn-inserir="inserir()"
+                          filtrar="buscar(filtro)"></lci-formbotoesfiltro>
+  </fieldset>
+</form>
+<hr>
+<table class="table gerencia-tabela">
+  <thead>
+  <tr>
+    <th width="15">#</th>
+    <th colspan="3">Nome</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="sistema in lista">
+    <td>{{sistema.id}}</td>
+    <td>{{sistema.nome}}</td>
+    <td width="5">
+      <button type="button" ng-click="editar(sistema.id)" class="btn btn-link gerencia-botao-link"><i
+        class="glyphicon glyphicon-pencil"></i></button>
+    </td>
+    <td width="5">
+      <button type="button" class="btn btn-link gerencia-botao-link" ng-click="deletar(sistema.id)"><i
+        class="glyphicon glyphicon-trash"></i></button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <uib-pagination ng-change="buscarPagina(filtro)" total-items="filtro.pageInfo.totalRegistros"
+                      ng-model="filtro.pageInfo.pageIndex" items-per-page="filtro.pageInfo.pageSize"
+                      class="pagination-sm pull-right" direction-links="true" rotate="true"
+                      boundary-link-numbers="true" previous-text="&lsaquo;" next-text="&rsaquo;"
+                      force-ellipses="true"></uib-pagination>
+    </td>
+  </tr>
+  </tbody>
+</table>

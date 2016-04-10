@@ -1,0 +1,56 @@
+$corVermelhoInvalido: #a30000;
+$paddingInterno: 5px;
+$borderInterno: 1px solid #eee;
+
+form.gerencia-formulario {
+  fieldset {
+    background-color: white;
+    border: $borderInterno;
+    padding: 0;
+    margin: 20px 0;
+
+    .gerencia-formulario-header {
+      border-bottom: $borderInterno;
+      padding: $paddingInterno;
+      margin-bottom: 10px;
+      p.lead{
+        margin: 0;
+      }
+    }
+
+    .gerencia-formulario-corpo{
+      padding: 0 20px;
+    }
+
+    .gerencia-formulario-foot {
+      padding: $paddingInterno;
+      border-top: $borderInterno;
+      margin: 10px 0 0 0;
+    }
+
+    .gerencia-formulario-buttons {
+      button,a {
+        float: right;
+        margin: 0 5px;
+      }
+    }
+
+    .lci-require::before{
+      content: "*";
+      color: $corVermelhoInvalido;
+    }
+
+    input.ng-invalid.ng-touched:not('lci-no-validate'){
+      border-color: $corVermelhoInvalido;
+    }
+
+    .lci-formulario-mensagens-erro{
+      color: $corVermelhoInvalido;
+    }
+
+  }
+}
+
+.gerencia-botao-link{
+  color: black;
+}

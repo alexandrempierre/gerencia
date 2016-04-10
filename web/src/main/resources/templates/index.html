@@ -1,10 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Getting Started: Serving Web Content</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Gerência - DCC</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" ></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1" ></meta>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+
+  <link rel="stylesheet" href="/css/gerencia.min.css"></link>
+  <script src="/js/gerencia.min.js"></script>
+
+  <script type="text/javascript">
+    var jq = jQuery.noConflict();
+  </script>
 </head>
-<body>
-<p th:text="'Hello, ' + ${name} + '!'" />
-</body>
+  <body ng-app="gerencia">
+    <sl-errmodal></sl-errmodal>
+    <div ng-controller="lciUsuarioLogadoCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
+    <div ng-controller="lciMenuCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
+
+    <div class="container">
+      <div class="col-lg-12">
+        <ng-view></ng-view>
+      </div>
+    </div>
+
+  </body>
 </html>
