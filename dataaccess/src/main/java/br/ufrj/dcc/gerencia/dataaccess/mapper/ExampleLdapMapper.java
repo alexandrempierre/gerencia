@@ -13,10 +13,8 @@ import org.springframework.stereotype.Component;
 public class ExampleLdapMapper extends LCIAbstractContextMapper<Example>{
 
   @Override
-  protected Example doMapFromContext(DirContextOperations ctx) {
-    Example example = new Example();
+  protected void mapperResult(Example example, DirContextOperations ctx) {
     example.setName(ctx.getStringAttribute("cn"));
     example.setId(ctx.getStringAttribute("uid"));
-    return example;
   }
 }

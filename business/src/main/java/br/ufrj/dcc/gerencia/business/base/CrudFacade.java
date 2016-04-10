@@ -12,7 +12,6 @@ import java.util.List;
  * Created by fausto on 4/3/16.
  */
 
-@Component
 public class CrudFacade
   <M extends LCIModel,S extends LciSpecification, R extends Repository<M,S>>
 {
