@@ -3,6 +3,8 @@ package br.ufrj.dcc.gerencia.domain.specification;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import org.springframework.ldap.query.LdapQuery;
 
+import javax.naming.Name;
+
 import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
 /**
@@ -21,7 +23,7 @@ public class ExampleSpecification extends LciLdapSpecification {
   }
 
   @Override
-  public LdapQuery toQuery() {
-    return query().base("ou=aluno,ou=academico,ou=usuario").where("uid").is(uid);
+  public LdapQuery toQuery(Name base) {
+    return query().base(base).where("uid").is(uid);
   }
 }

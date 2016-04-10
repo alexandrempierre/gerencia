@@ -1,6 +1,7 @@
 package br.ufrj.dcc.gerencia.repository.base;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
+import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
@@ -17,8 +18,8 @@ import java.util.List;
 @Component
 public abstract class RepositoryImpl<
   M extends LCIModel,
-  PO extends LciModelPO<M>,
-  DAO extends CrudLdapDataAccess<PO>,
+  Mapper extends LCIAbstractContextMapper<M>,
+  DAO extends CrudLdapDataAccess<M, Mapper>,
   Spec extends LciLdapSpecification> implements Repository<M, Spec> {
 
   @Autowired
@@ -29,32 +30,31 @@ public abstract class RepositoryImpl<
   }
 
   public M save(M register) {
-    PO registerPO = register.toPO();
-    if (!registerPO.isSaved()) {
-      getDataAccess().insert(registerPO);
+    if (!register.isSaved()) {
+      getDataAccess().create(register);
     } else {
-      getDataAccess().update(registerPO);
+      getDataAccess().update(register);
     }
-
-    registerPO.setSaved(true);
-    return registerPO.toModel();
+    register.setSaved(true);
+    return register;
   }
 
   public List<M> query(Spec specification) {
-    List<PO> list = getDataAccess().list(specification);
-    List<M> listModel = new ArrayList<>(list.size());
-
-    list.forEach((x) -> listModel.add(x.toModel()));
-    return listModel;
+    List<M> list = getDataAccess().find(specification);
+    list.forEach((x) -> x.setSaved(true));
+    return list;
   }
 
   public M get(String uid) {
-    return getDataAccess().getByUid(uid).toModel();
+    M register = getDataAccess().findByKey(uid);
+    register.setSaved(true);
+    return register;
   }
 
   public M delete(String uid) {
-    PO register = getDataAccess().getByUid(uid);
-    getDataAccess().delete(register);
-    return register.toModel();
+    M register = getDataAccess().findByKey(uid);
+    getDataAccess().delete(uid);
+    register.setSaved(false);
+    return register;
   }
 }

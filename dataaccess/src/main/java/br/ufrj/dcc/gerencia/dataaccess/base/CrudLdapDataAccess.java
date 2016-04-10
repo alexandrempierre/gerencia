@@ -1,50 +1,64 @@
+/**
+ * Created by fausto on 4/5/16.
+ */
 package br.ufrj.dcc.gerencia.dataaccess.base;
 
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
-import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
-import org.springframework.ldap.query.LdapQuery;
+import org.springframework.ldap.core.DirContextAdapter;
+import org.springframework.ldap.core.DirContextOperations;
+import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.support.LdapNameBuilder;
 
+import javax.naming.Name;
 import java.util.List;
 
-import static org.springframework.ldap.query.LdapQueryBuilder.query;
+@Component
+public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIAbstractContextMapper<M>>{
 
-/**
- * Created by fausto on 4/6/16.
- */
-public class CrudLdapDataAccess<PO extends LciModelPO> extends CrudLdapDataAccessBase<PO> {
+  protected final String DEFAULT_PRIMARY_KEY = "uid";
 
-  public PO getByUid(String uid) {
-    return get(query().where("uid").is(uid));
+  @Autowired
+  protected LdapTemplate ldapTemplate;
+
+  @Autowired
+  protected Mapper mapper;
+
+  protected Name buildDnByKey(String key){
+    return getBaseDN(LdapNameBuilder.newInstance()).add(DEFAULT_PRIMARY_KEY, key).build();
   }
 
-  public PO insert(PO register) {
-    getLdapTemplate().create(register);
-    return register;
+  protected Name getBaseName(){
+    return getBaseDN(LdapNameBuilder.newInstance()).build();
   }
 
-  public PO get(LciLdapSpecification specification) {
-    return findOne(specification);
+  public void delete(String key) {
+    ldapTemplate.unbind(buildDnByKey(key));
   }
 
-  public PO get(LdapQuery query) {
-    return findOne(query);
+  public void create(M register) {
+    DirContextAdapter context = new DirContextAdapter(buildDnByKey(register.getId()));
+    mapper.mapInsertToContext(register, context);
+    ldapTemplate.bind(context);
   }
 
-  public void update(PO M) {
-    getLdapTemplate().update(M);
+  public void update(M register) {
+    Name dn = buildDnByKey(register.getId());
+    DirContextOperations context = ldapTemplate.lookupContext(dn);
+    mapper.mapEditToContext(register, context);
+    ldapTemplate.modifyAttributes(context);
   }
 
-  public void delete(PO M) {
-    getLdapTemplate().delete(M);
+  public M findByKey(String key) {
+    Name dn = buildDnByKey(key);
+    return ldapTemplate.lookup(dn, mapper);
   }
 
-  public List<PO> list(LciLdapSpecification specification) {
-    return find(specification);
+  public List<M> find(LciLdapSpecification specification){
+    return ldapTemplate.search(specification.toQuery(getBaseName()), mapper);
   }
 
-  public List<PO> list(LdapQuery query){
-    return find(query);
-  }
-
+  protected abstract LdapNameBuilder getBaseDN(LdapNameBuilder instance);
 }

@@ -18,8 +18,14 @@ public abstract class LCIModel {
     this.id = id;
   }
 
-  public <TReturn extends LciModelPO> TReturn toPO(){
-    return null;
+  private boolean saved;
+
+  public boolean isSaved() {
+    return saved;
+  }
+
+  public void setSaved(boolean saved) {
+    this.saved = saved;
   }
 }
 
