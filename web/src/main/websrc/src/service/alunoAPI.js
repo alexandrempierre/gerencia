@@ -5,6 +5,6 @@
 (function(app){
   app.service('alunoAPI', function($http){
     CrudAbstractService.call(this,$http);
-    this.servicePath = 'aluno';
+    this.servicePath = 'student';
   });
 })(angular.module('gerencia'));
