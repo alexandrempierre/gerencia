@@ -1,18 +1,15 @@
 package br.ufrj.dcc.gerencia.domain.entities;
 
-import org.springframework.ldap.odm.annotations.Attribute;
+import br.ufrj.dcc.gerencia.domain.auxiliar.GerenciaDefaultConstraint;
 
 /**
  * Created by fausto on 4/10/16.
  */
 public class User {
 
-  @Attribute(name = "cota")
   private Integer limitHDSpace;
   private String login;
   private String password;
-  private String mail;
-
 
   public Integer getLimitHDSpace() {
     return limitHDSpace;
@@ -39,10 +36,7 @@ public class User {
   }
 
   public String getMail() {
-    return mail;
+    return String.format(GerenciaDefaultConstraint.MAIL_TEMPLATE, getLogin());
   }
 
-  public void setMail(String mail) {
-    this.mail = mail;
-  }
 }
