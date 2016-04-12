@@ -89,7 +89,7 @@ gulp.task('copyImg',function(){
 });
 
 gulp.task('copyBSFonts', function(){
-  return gulp.src('node_modules/bootstrap/dist/fonts/*').pipe(gulp.dest('./../resources/dist/fonts'));
+  return gulp.src(['node_modules/bootstrap/dist/fonts/*','node_modules/font-awesome/fonts/*']).pipe(gulp.dest('./../resources/dist/fonts'));
 });
 
 
