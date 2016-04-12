@@ -10,9 +10,6 @@
     $scope.filtro = $scope.getFiltro();
     $scope.lista = listaTO.data.list || [];
 
-    if(!$scope.filtro.pageInfo) $scope.filtro.pageInfo = lciCrudPageInfo;
-    $scope.filtro.pageInfo.totalRegistros = listaTO.data.totalRegister;
-
     $scope.mapFiltro = function(filtro){
       if(filtro.infinito){
         filtro.expiracaoAte = filtro.expiracaoDe = null;
