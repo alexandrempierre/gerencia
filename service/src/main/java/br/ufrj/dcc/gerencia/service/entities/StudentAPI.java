@@ -18,9 +18,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentAPI extends
   CrudRestAPI<Student, StudentSpecification, StudentFacade, StudentRepository> implements StudentContract {
 
-  @RequestMapping("/teste")
-  public Student teste(){
-    return get("faustofjunqueira");
-  }
 
 }

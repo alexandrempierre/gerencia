@@ -27,8 +27,8 @@ public abstract class LCIAbstractContextMapper<M extends LCIModel> extends Abstr
       throw new RuntimeException(e);
     }
 
-    register.setCreatedAt(new Integer(ctx.getStringAttribute("dataCriacao")));
-    register.setUpdatedAt(new Integer(ctx.getStringAttribute("dataRenovacao")));
+    register.setCreatedAt(new Long(ctx.getStringAttribute("dataCriacao")));
+    register.setUpdatedAt(new Long(ctx.getStringAttribute("dataRenovacao")));
 
     mapperResult(register,ctx);
     return register;
