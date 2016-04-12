@@ -20,4 +20,12 @@ public class GerenciaDefaultConstraint {
   public static final Integer SHADOW_WARNING = 7;
   public static final Integer SHADOW_NUMBERS_DAY_TO_EXPIRE = 365*6; // quatro anos
   //endregion
+
+  //region Samba
+  public static final String SAMBA_ACCT_FLAGS = "[U          ]";
+  //endregion
+
+  //region Mail
+  public static final String MAIL_TEMPLATE = "%s@dcc.ufrj.br";
+  //endregion
 }

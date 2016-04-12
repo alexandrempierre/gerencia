@@ -6,15 +6,15 @@ package br.ufrj.dcc.gerencia.domain.entities;
 public class SambaObj {
   private String sambaSID;
   private String sambaAcctFlags;
-  private String sambaKickoffTime;
+  private Long sambaKickoffTime;
   private String sambaLMPassword;
   private String sambaNTPassword;
   private String sambaPrimaryGroupSID;
-  private String sambaPwdCanChange;
-  private String sambaPwdLastSet;
+  private Long sambaPwdCanChange;
+  private Long sambaPwdLastSet;
   private String sambaPwdMustChange;
 
-  public SambaObj(String sambaSID, String sambaAcctFlags, String sambaKickoffTime, String sambaLMPassword, String sambaNTPassword, String sambaPrimaryGroupSID, String sambaPwdCanChange, String sambaPwdLastSet, String sambaPwdMustChange) {
+  public SambaObj(String sambaSID, String sambaAcctFlags, Long sambaKickoffTime, String sambaLMPassword, String sambaNTPassword, String sambaPrimaryGroupSID, Long sambaPwdCanChange, Long sambaPwdLastSet, String sambaPwdMustChange) {
     this.sambaSID = sambaSID;
     this.sambaAcctFlags = sambaAcctFlags;
     this.sambaKickoffTime = sambaKickoffTime;
@@ -45,11 +45,11 @@ public class SambaObj {
     this.sambaAcctFlags = sambaAcctFlags;
   }
 
-  public String getSambaKickoffTime() {
+  public Long getSambaKickoffTime() {
     return sambaKickoffTime;
   }
 
-  public void setSambaKickoffTime(String sambaKickoffTime) {
+  public void setSambaKickoffTime(Long sambaKickoffTime) {
     this.sambaKickoffTime = sambaKickoffTime;
   }
 
@@ -77,19 +77,19 @@ public class SambaObj {
     this.sambaPrimaryGroupSID = sambaPrimaryGroupSID;
   }
 
-  public String getSambaPwdCanChange() {
+  public Long getSambaPwdCanChange() {
     return sambaPwdCanChange;
   }
 
-  public void setSambaPwdCanChange(String sambaPwdCanChange) {
+  public void setSambaPwdCanChange(Long sambaPwdCanChange) {
     this.sambaPwdCanChange = sambaPwdCanChange;
   }
 
-  public String getSambaPwdLastSet() {
+  public Long getSambaPwdLastSet() {
     return sambaPwdLastSet;
   }
 
-  public void setSambaPwdLastSet(String sambaPwdLastSet) {
+  public void setSambaPwdLastSet(Long sambaPwdLastSet) {
     this.sambaPwdLastSet = sambaPwdLastSet;
   }
 
