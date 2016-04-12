@@ -36,9 +36,6 @@
 
       filtroObj.resolve[crudConstants.resolveVar.filtrar] = [servicoAPI, "lciCaminhoUrl", "lciMenuAPI",function (s, r, menu) {
         var filtro = r.buscarFiltroNaUrl() || {};
-        if(!filtro.pageInfo && pageInfo){
-          filtro.pageInfo = pageInfo;
-        }
         return s.list(filtro);
       }];
 

@@ -47,17 +47,12 @@
     this.$get = function($route, $location){
       return {
         buscarFiltroNaUrl: function _buscarFiltroNaUrl(){
-          var param = $location.search();
-          if(param && param.obj){
-            return JSON.parse(param.obj);
-          } else {
-            return {};
-          }
+          return $location.search();
         },
         getCaminho: getCaminho,
         marcarFiltroNaUrl: function _marcarFiltroNaUrl(filtro){
           if(filtro){
-            $location.path($location.path(), false).search({obj: JSON.stringify(filtro)});
+            $location.path($location.path(), false).search(filtro);
           }
         },
         AdicionaSharpNoCaminho: AdicionaSharpNoCaminho,
