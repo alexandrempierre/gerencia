@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
 public class StudentAPI extends
   CrudRestAPI<Student, StudentSpecification, StudentFacade, StudentRepository> implements StudentContract {
 
