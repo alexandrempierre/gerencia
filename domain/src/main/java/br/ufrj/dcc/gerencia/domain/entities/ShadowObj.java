@@ -4,10 +4,10 @@ package br.ufrj.dcc.gerencia.domain.entities;
  * Created by fausto on 4/10/16.
  */
 public class ShadowObj {
-  private Integer shadowExpire;
+  private Long shadowExpire;
   private Integer shadowFlag;
   private Integer shadowInactive;
-  private Integer shadowLastChange;
+  private Long shadowLastChange;
   private Integer shadowMax;
   private Integer shadowMin;
   private Integer shadowWarning;
@@ -15,7 +15,7 @@ public class ShadowObj {
   public ShadowObj() {
   }
 
-  public ShadowObj(Integer shadowExpire, Integer shadowFlag, Integer shadowInactive, Integer shadowLastChange, Integer shadowMax, Integer shadowMin, Integer shadowWarning) {
+  public ShadowObj(Long shadowExpire, Integer shadowFlag, Integer shadowInactive, Long shadowLastChange, Integer shadowMax, Integer shadowMin, Integer shadowWarning) {
     this.shadowExpire = shadowExpire;
     this.shadowFlag = shadowFlag;
     this.shadowInactive = shadowInactive;
@@ -25,11 +25,11 @@ public class ShadowObj {
     this.shadowWarning = shadowWarning;
   }
 
-  public Integer getShadowExpire() {
+  public Long getShadowExpire() {
     return shadowExpire;
   }
 
-  public void setShadowExpire(Integer shadowExpire) {
+  public void setShadowExpire(Long shadowExpire) {
     this.shadowExpire = shadowExpire;
   }
 
@@ -49,11 +49,11 @@ public class ShadowObj {
     this.shadowInactive = shadowInactive;
   }
 
-  public Integer getShadowLastChange() {
+  public Long getShadowLastChange() {
     return shadowLastChange;
   }
 
-  public void setShadowLastChange(Integer shadowLastChange) {
+  public void setShadowLastChange(Long shadowLastChange) {
     this.shadowLastChange = shadowLastChange;
   }
 

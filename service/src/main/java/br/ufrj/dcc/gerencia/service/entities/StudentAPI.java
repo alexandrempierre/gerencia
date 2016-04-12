@@ -1,6 +1,6 @@
 package br.ufrj.dcc.gerencia.service.entities;
 
-import br.ufrj.dcc.gerencia.business.entities.StudentBO;
+import br.ufrj.dcc.gerencia.business.entities.StudentFacade;
 import br.ufrj.dcc.gerencia.contract.entities.StudentContract;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import br.ufrj.dcc.gerencia.domain.specification.StudentSpecification;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/student")
 public class StudentAPI extends
-  CrudRestAPI<Student, StudentSpecification,StudentBO, StudentRepository> implements StudentContract {
+  CrudRestAPI<Student, StudentSpecification, StudentFacade, StudentRepository> implements StudentContract {
 
   @RequestMapping("/teste")
   public Student teste(){

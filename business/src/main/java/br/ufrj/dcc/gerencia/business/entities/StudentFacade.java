@@ -11,5 +11,5 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StudentBO extends CrudFacade<Student,StudentSpecification,StudentRepository> {
+public class StudentFacade extends CrudFacade<Student,StudentSpecification,StudentRepository> {
 }

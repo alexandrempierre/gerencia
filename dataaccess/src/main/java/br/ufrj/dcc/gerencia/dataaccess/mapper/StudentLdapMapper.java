@@ -16,7 +16,6 @@ public class StudentLdapMapper extends LCIAbstractContextMapper<Student> {
   public void mapperResult(Student student,DirContextOperations ctx) {
     student.getUser().setLimitHDSpace(new Integer(ctx.getStringAttribute("cota")));
     student.getUser().setLogin(ctx.getStringAttribute("uid"));
-    //student.getUser().setPassword(ctx.getStringAttribute("userPassword"));
     student.getUser().setMail(ctx.getStringAttribute("mail"));
     student.getPerson().setName(ctx.getStringAttribute("cn"));
     student.getPerson().setSurname(ctx.getStringAttribute("sn"));
@@ -47,7 +46,7 @@ public class StudentLdapMapper extends LCIAbstractContextMapper<Student> {
 
     student.setId(student.getUser().getLogin());
     student.setDRE(ctx.getStringAttribute("DRE"));
-    student.setOperator(ctx.getStringAttribute("shadowWarning").equals("1"));
+    student.setOperator(ctx.getStringAttribute("monitor").equals("1"));
   }
 
 
