@@ -10,8 +10,8 @@ public abstract class LCIModel {
 
   private String id;
   private boolean saved;
-  private Integer createdAt;
-  private Integer updatedAt;
+  private Long createdAt;
+  private Long updatedAt;
 
   public String getId() {
     return id;
@@ -29,20 +29,19 @@ public abstract class LCIModel {
     this.saved = saved;
   }
 
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  public Integer getCreatedAt() {
-
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Integer createdAt) {
+  public void setCreatedAt(Long createdAt) {
     this.createdAt = createdAt;
   }
 }

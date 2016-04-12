@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -30,7 +31,11 @@ public abstract class RepositoryImpl<
   }
 
   public M save(M register) {
+    Long timeNow = GregorianCalendar.getInstance().getTime().getTime();
+
+    register.setUpdatedAt(timeNow);
     if (!register.isSaved()) {
+      register.setCreatedAt(timeNow);
       getDataAccess().create(register);
     } else {
       getDataAccess().update(register);
