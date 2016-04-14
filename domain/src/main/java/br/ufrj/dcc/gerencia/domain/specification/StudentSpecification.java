@@ -2,6 +2,8 @@ package br.ufrj.dcc.gerencia.domain.specification;
 
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import org.springframework.ldap.filter.AndFilter;
+import org.springframework.ldap.filter.GreaterThanOrEqualsFilter;
+import org.springframework.ldap.filter.LessThanOrEqualsFilter;
 import org.springframework.ldap.filter.LikeFilter;
 import org.springframework.ldap.query.LdapQuery;
 import org.springframework.ldap.query.LdapQueryBuilder;
@@ -20,7 +22,6 @@ public class StudentSpecification extends LciLdapSpecification{
   private String dre;
   private Long from;
   private Long to;
-  private Boolean expired; //TODO: add this filter
 
   public String getName() {
     return name;
@@ -70,14 +71,6 @@ public class StudentSpecification extends LciLdapSpecification{
     this.to = to;
   }
 
-  public Boolean getExpired() {
-    return expired;
-  }
-
-  public void setExpired(Boolean expired) {
-    this.expired = expired;
-  }
-
   @Override
   public LdapQuery toQuery(Name base) {
     LdapQueryBuilder queryBuilder = query().base(base);
@@ -87,31 +80,27 @@ public class StudentSpecification extends LciLdapSpecification{
     andFilter.and(new LikeFilter("uid", "*"));
 
     if(uid != null && uid.length() > 0){
-      System.out.println("uid("+uid.length()+"): "+uid);
       andFilter.and(new LikeFilter("uid", "*"+uid+"*"));
     }
 
     if(name != null && name.length() > 0){
-      System.out.println("cn("+name.length()+"): "+name);
       andFilter.and(new LikeFilter("cn", "*"+name+"*"));
     }
 
     if(surname != null && surname.length() > 0){
-      System.out.println("sn("+surname.length()+"): "+surname);
       andFilter.and(new LikeFilter("sn", "*"+surname+"*"));
     }
 
     if(dre != null && dre.length() > 0){
-      System.out.println("dre("+dre.length()+"): "+dre);
       andFilter.and(new LikeFilter("dre", "*"+dre+"*"));
     }
 
     if(to != null && to > 0){
-      //TODO: fazer o filtro aqui
+      andFilter.and(new LessThanOrEqualsFilter("shadowExpire", (int) (long) to));
     }
 
     if(from != null && from > 0){
-      //TODO: fazer o filtro aqui
+      andFilter.and(new GreaterThanOrEqualsFilter("shadowExpire", (int) (long) from));
     }
 
     return queryBuilder.filter(andFilter);
