@@ -17,8 +17,10 @@
 
     // Para validar o login
     $scope.loginUnico = validacaoAPI.loginUnico;
+
+    //Deprecated
     // Para validar o CPF
-    $scope.cpfUnico = validacaoAPI.cpfUnico;
+    //$scope.cpfUnico = validacaoAPI.cpfUnico;
 
     $scope.aluno = {
       usuario:{
