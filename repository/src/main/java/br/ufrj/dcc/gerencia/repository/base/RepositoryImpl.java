@@ -8,6 +8,7 @@ import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.naming.NameNotFoundException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -51,9 +52,13 @@ public abstract class RepositoryImpl<
   }
 
   public M get(String uid) {
-    M register = getDataAccess().findByKey(uid);
-    register.setSaved(true);
-    return register;
+    try {
+      M register = getDataAccess().findByKey(uid);
+      register.setSaved(true);
+      return register;
+    }catch(Exception e){
+      return null;
+    }
   }
 
   public M delete(String uid) {
