@@ -14,7 +14,7 @@ public class GerenciaDefaultConstraint {
 
   //region Shadow
   public static final Integer SHADOW_FLAG = -1;
-  public static final Integer SHADOW_INACTIVE = -1;
+  public static final Integer SHADOW_INACTIVE  = -1;
   public static final Integer SHADOW_MAX = 180;
   public static final Integer SHADOW_MIN = 0;
   public static final Integer SHADOW_WARNING = 7;

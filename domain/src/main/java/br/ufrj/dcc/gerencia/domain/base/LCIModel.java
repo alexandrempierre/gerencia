@@ -1,7 +1,5 @@
 package br.ufrj.dcc.gerencia.domain.base;
 
-import javax.naming.Name;
-
 /**
  * Created by fausto on 4/3/16.
  */

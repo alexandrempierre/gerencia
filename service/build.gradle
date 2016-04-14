@@ -4,4 +4,5 @@ dependencies {
   compile project(":repository")
   compile project(":business")
   compile('org.springframework:spring-web')
+  compile('com.fasterxml.jackson.core:jackson-databind:2.0.1')
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface CrudRestAPIContract<M extends LCIModel, S extends LciSpecification> {
 
-  @RequestMapping(value="/save", method=RequestMethod.POST)
+  @RequestMapping(value="/saves", method=RequestMethod.POST)
   M save(M register);
 
   @RequestMapping(value="/list", method=RequestMethod.GET)

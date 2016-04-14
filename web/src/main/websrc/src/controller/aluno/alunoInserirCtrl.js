@@ -3,15 +3,12 @@
  */
 
 (function(app){
-  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI){
+  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI, $http){
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
 
     //Sobrecarregando o método salvar
     var salvarFn = $scope.salvar;
     $scope.salvar = function(registro){
-      if(registro.usuario.infinito){
-        registro.usuario.expiracao = null;
-      }
       salvarFn(registro);
     };
 
