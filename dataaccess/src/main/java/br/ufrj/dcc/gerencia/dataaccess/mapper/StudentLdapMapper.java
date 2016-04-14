@@ -2,6 +2,7 @@ package br.ufrj.dcc.gerencia.dataaccess.mapper;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
+import static br.ufrj.dcc.gerencia.domain.auxiliar.ObjectClassLdap.*;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.stereotype.Component;
 
@@ -48,5 +49,40 @@ public class StudentLdapMapper extends LCIAbstractContextMapper<Student> {
     student.setOperator(ctx.getStringAttribute("monitor").equals("1"));
   }
 
+  @Override
+  public void mapInsertToContext(Student register, DirContextOperations ctx) {
+    ctx.setAttributeValues("objectclass", STUDENT_OBJECT_CLASS);
 
+    ctx.setAttributeValue("cota", register.getUser().getLimitHDSpace());
+    ctx.setAttributeValue("uid", register.getUser().getLogin());
+    ctx.setAttributeValue("cn", register.getPerson().getName());
+    ctx.setAttributeValue("sn", register.getPerson().getSurname());
+    ctx.setAttributeValue("emailExterno", register.getPerson().getExternMail());
+    ctx.setAttributeValue("telephoneNumber", register.getPerson().getPhoneNumber());
+    ctx.setAttributeValue("displayName", register.getPerson().getDisplayName());
+    ctx.setAttributeValue("homeDirectory", register.getServerData().getHomeDirectory());
+    ctx.setAttributeValue("loginShell", register.getServerData().getLoginShellApplication());
+    ctx.setAttributeValue("gidNumber", register.getServerData().getGidNumber());
+    ctx.setAttributeValue("uidNumber", register.getServerData().getUidNumber());
+    ctx.setAttributeValue("gecos", register.getServerData().getGecos());
+    ctx.setAttributeValue("sambaSID", register.getSamba().getSambaSID());
+    ctx.setAttributeValue("sambaAcctFlags", register.getSamba().getSambaAcctFlags());
+    ctx.setAttributeValue("sambaKickoffTime", register.getSamba().getSambaKickoffTime());
+    ctx.setAttributeValue("sambaLMPassword", register.getSamba().getSambaLMPassword());
+    ctx.setAttributeValue("sambaNTPassword", register.getSamba().getSambaNTPassword());
+    ctx.setAttributeValue("sambaPrimaryGroupSID", register.getSamba().getSambaPrimaryGroupSID());
+    ctx.setAttributeValue("sambaPwdCanChange", register.getSamba().getSambaPwdCanChange());
+    ctx.setAttributeValue("sambaPwdLastSet", register.getSamba().getSambaPwdLastSet());
+    ctx.setAttributeValue("sambaPwdMustChange", register.getSamba().getSambaPwdMustChange());
+    ctx.setAttributeValue("shadowExpire", register.getShadow().getShadowExpire());
+    ctx.setAttributeValue("shadowFlag", register.getShadow().getShadowFlag());
+    ctx.setAttributeValue("shadowInactive", register.getShadow().getShadowInactive());
+    ctx.setAttributeValue("shadowLastChange", register.getShadow().getShadowLastChange());
+    ctx.setAttributeValue("shadowMax", register.getShadow().getShadowMax());
+    ctx.setAttributeValue("shadowMin", register.getShadow().getShadowMin());
+    ctx.setAttributeValue("shadowWarning", register.getShadow().getShadowWarning());
+
+    ctx.setAttributeValue("DRE", register.getDRE());
+    ctx.setAttributeValue("monitor", register.isOperator() ? 1 : 0);
+  }
 }
