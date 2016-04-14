@@ -50,7 +50,7 @@ public class StudentLdapMapper extends LCIAbstractContextMapper<Student> {
   }
 
   @Override
-  public void mapInsertToContext(Student register, DirContextOperations ctx) {
+  public void mapToContext(Student register, DirContextOperations ctx) {
     ctx.setAttributeValues("objectclass", STUDENT_OBJECT_CLASS);
 
     ctx.setAttributeValue("cota", register.getUser().getLimitHDSpace());

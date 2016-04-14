@@ -4,6 +4,7 @@ import br.ufrj.dcc.gerencia.business.base.CrudFacade;
 import br.ufrj.dcc.gerencia.business.businessObjects.SambaBO;
 import br.ufrj.dcc.gerencia.business.businessObjects.ServerDataBO;
 import br.ufrj.dcc.gerencia.business.businessObjects.ShadowObjBO;
+import br.ufrj.dcc.gerencia.business.util.PasswordUtil;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import br.ufrj.dcc.gerencia.domain.specification.StudentSpecification;
 import br.ufrj.dcc.gerencia.repository.contract.StudentRepository;
@@ -28,6 +29,7 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
     register.setServerData(ServerDataBO.createStudent(register));
     register.setSamba(SambaBO.create(register.getUser()));
     register.setShadow(ShadowObjBO.create());
+    register.getUser().setPassword(PasswordUtil.passowordHash(register.getUser().getPassword()));
   }
 
 }
