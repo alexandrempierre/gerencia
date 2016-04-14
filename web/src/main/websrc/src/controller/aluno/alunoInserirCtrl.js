@@ -3,7 +3,7 @@
  */
 
 (function(app){
-  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho,validacaoAPI){
+  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI){
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
 
     //Sobrecarregando o método salvar
@@ -16,11 +16,7 @@
     };
 
     // Para validar o login
-    $scope.loginUnico = validacaoAPI.loginUnico;
-
-    //Deprecated
-    // Para validar o CPF
-    //$scope.cpfUnico = validacaoAPI.cpfUnico;
+    $scope.loginUnico = validacaoAPI.loginUnico(alunoAPI);
 
     $scope.aluno = {
       usuario:{

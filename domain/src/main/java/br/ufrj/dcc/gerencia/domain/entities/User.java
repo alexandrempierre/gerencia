@@ -1,11 +1,12 @@
 package br.ufrj.dcc.gerencia.domain.entities;
 
 import br.ufrj.dcc.gerencia.domain.auxiliar.GerenciaDefaultConstraint;
+import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 
 /**
  * Created by fausto on 4/10/16.
  */
-public class User {
+public class User extends LCIModel{
 
   private Integer limitHDSpace;
   private String login;
