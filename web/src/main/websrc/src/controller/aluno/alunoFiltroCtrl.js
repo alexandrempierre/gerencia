@@ -8,11 +8,11 @@
     $scope.abrirAlterarSenha = alterarSenhaModal.abrirModal;
 
     $scope.filtro = $scope.getFiltro();
-    $scope.lista = listaTO.data.list || [];
+    $scope.lista = listaTO.data || [];
 
     $scope.mapFiltro = function(filtro){
       if(filtro.infinito){
-        filtro.expiracaoAte = filtro.expiracaoDe = null;
+        filtro.from = filtro.to = null;
       }
       return filtro;
     };

@@ -6,17 +6,17 @@
         <label for="nome" class="col-sm-1 control-label">Nome</label>
 
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="nome" ng-model="filtro.nome" placeholder="Nome">
+          <input type="text" class="form-control" id="nome" ng-model="filtro.name" placeholder="Nome">
         </div>
         <label for="sobrenome" class="col-sm-1 control-label">Sobrenome</label>
 
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="sobrenome" ng-model="filtro.sobrenome" placeholder="Sobrenome">
+          <input type="text" class="form-control" id="sobrenome" ng-model="filtro.surname" placeholder="Sobrenome">
         </div>
         <label for="login" class="col-sm-1 control-label">Login</label>
 
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="login" ng-model="filtro.login" placeholder="login">
+          <input type="text" class="form-control" id="login" ng-model="filtro.uid" placeholder="login">
         </div>
       </div>
       <div class="form-group">
@@ -28,13 +28,13 @@
 
         <label for="expiracaoDe" class="col-sm-1 control-label">De</label>
         <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.expiracaoDe" id="expiracaoDe" name="expiracaoDe"
+          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.from" id="expiracaoDe" name="expiracaoDe"
                              language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
         </span>
 
         <label for="expiracaoAte" class="col-sm-1 control-label">Até</label>
         <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.expiracaoAte" id="expiracaoAte" name="expiracaoAte"
+          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.to" id="expiracaoAte" name="expiracaoAte"
                              language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
         </span>
       </div>
@@ -54,7 +54,6 @@
 <table class="table table-hover gerencia-tabela">
   <thead>
   <tr>
-    <th width="15">#</th>
     <th>Nome</th>
     <th>DRE</th>
     <th>Login</th>
@@ -63,11 +62,10 @@
   </thead>
   <tbody>
   <tr ng-repeat="aluno in lista">
-    <td>{{aluno.id}}</td>
-    <td>{{aluno.nome}} {{aluno.sobrenome}}</td>
+    <td>{{aluno.person.displayName}}</td>
     <td>{{aluno.dre | lciDREFilter}}</td>
-    <td>{{aluno.usuario.login}}</td>
-    <td width="15" class="text-center">{{aluno.expiracao||'-' | date:'dd/MM/yyyy'}}</td>
+    <td>{{aluno.id}}</td>
+    <td width="15" class="text-center">{{aluno.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
     <td width="5">
       <button id="senha" type="button" ng-click="abrirAlterarSenha(aluno.usuario)" class="btn btn-link gerencia-botao-link"><i
         class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
