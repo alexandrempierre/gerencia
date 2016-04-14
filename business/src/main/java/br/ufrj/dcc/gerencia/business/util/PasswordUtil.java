@@ -17,7 +17,9 @@ package br.ufrj.dcc.gerencia.business.util;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -42,6 +44,17 @@ public class PasswordUtil{
     } catch (UnsupportedEncodingException e) {
       throw new RuntimeException(e);
     }
+  }
+  public static String passowordHash(String password){
+    try {
+      MessageDigest digest = MessageDigest.getInstance("MD5");
+      digest.update(password.getBytes("UTF8"));
+      String md5Password = Base64.getEncoder().encodeToString(digest.digest());
+      return "{MD5}" + md5Password;
+    } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
   private static byte[] lmHash(String password)
