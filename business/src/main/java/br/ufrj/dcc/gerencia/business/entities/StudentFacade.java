@@ -29,6 +29,10 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
     register.setServerData(ServerDataBO.createStudent(register));
     register.setSamba(SambaBO.create(register.getUser()));
     register.setShadow(ShadowObjBO.create());
+    hashUserPassword(register);
+  }
+
+  private void hashUserPassword(Student register){
     register.getUser().setPassword(PasswordUtil.passowordHash(register.getUser().getPassword()));
   }
 
