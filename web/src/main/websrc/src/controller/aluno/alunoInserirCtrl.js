@@ -3,7 +3,7 @@
  */
 
 (function(app){
-  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI, $http){
+  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI, defaultValues){
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
 
     //Sobrecarregando o método salvar
@@ -16,10 +16,10 @@
     $scope.loginUnico = validacaoAPI.loginUnico(alunoAPI);
 
     $scope.aluno = {
-      usuario:{
-        ativo: true,
-        infinito: false
-      }
+      user:{
+        limitHDSpace: defaultValues.limitHDSpace
+      },
+      person: {}  
     };
   });
 
