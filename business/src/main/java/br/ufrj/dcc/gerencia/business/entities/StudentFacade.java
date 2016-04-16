@@ -6,9 +6,11 @@ import br.ufrj.dcc.gerencia.business.businessObjects.SambaBO;
 import br.ufrj.dcc.gerencia.business.businessObjects.ServerDataBO;
 import br.ufrj.dcc.gerencia.business.businessObjects.ShadowObjBO;
 import br.ufrj.dcc.gerencia.business.util.PasswordUtil;
+import br.ufrj.dcc.gerencia.domain.entities.SambaObj;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import br.ufrj.dcc.gerencia.domain.specification.StudentSpecification;
 import br.ufrj.dcc.gerencia.repository.contract.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StudentFacade extends CrudFacade<Student,StudentSpecification,StudentRepository> {
+
+  @Autowired
+  private SambaBO sambaBO;
 
   @Override
   public Student save(Student register) {
@@ -27,8 +32,9 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
   }
 
   private void populateRegister(Student register){
-    register.setServerData(ServerDataBO.createStudent(register));
-    register.setSamba(SambaBO.create(register.getUser()));
+    SambaObj sambaObj = sambaBO.create(register.getUser());
+    register.setSamba(sambaObj);
+    register.setServerData(ServerDataBO.createStudent(register, sambaObj.getSambaInfo().getUidNumber()));
     register.setShadow(ShadowObjBO.create());
     PersonBO.populate(register.getPerson());
     hashUserPassword(register);

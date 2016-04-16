@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SambaInfo extends LCIModel {
+public class SambaInfo extends LCIModel implements Cloneable {
 
   private Integer uidNumber;
   private Integer sambaNextRid;
@@ -22,6 +22,10 @@ public class SambaInfo extends LCIModel {
     this.uidNumber = uidNumber;
   }
 
+  public void incrementUidNumber(){
+    this.uidNumber++;
+  }
+
   public Integer getSambaNextRid() {
     return sambaNextRid;
   }
@@ -30,11 +34,20 @@ public class SambaInfo extends LCIModel {
     this.sambaNextRid = sambaNextRid;
   }
 
+  public void incrementSambaNextRid(){
+    this.sambaNextRid++;
+  }
+
   public String getSambaSID() {
     return sambaSID;
   }
 
   public void setSambaSID(String sambaSID) {
     this.sambaSID = sambaSID;
+  }
+
+  @Override
+  public SambaInfo clone() throws CloneNotSupportedException {
+    return (SambaInfo) super.clone();
   }
 }

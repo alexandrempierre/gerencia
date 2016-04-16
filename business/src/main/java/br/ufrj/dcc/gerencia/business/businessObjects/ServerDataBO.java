@@ -13,7 +13,7 @@ import br.ufrj.dcc.gerencia.domain.auxiliar.GerenciaDefaultConstraint;
 @Component
 public class ServerDataBO {
 
-  public static ServerData createStudent(Student student) {
+  public static ServerData createStudent(Student student, Integer uid) {
     ServerData serverData = new ServerData();
 
     serverData.setHomeDirectory(
@@ -26,7 +26,7 @@ public class ServerDataBO {
 
     serverData.setGidNumber(GerenciaDefaultConstraint.GID_NUMBER);
 
-    //TODO: fazer o serverData.setUidNumber(); colocar o incremental
+    serverData.setUidNumber(uid);
 
 
     return serverData;

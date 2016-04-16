@@ -23,6 +23,7 @@ public class GerenciaDefaultConstraint {
 
   //region Samba
   public static final String SAMBA_ACCT_FLAGS = "[U          ]";
+  public static final String SAMBA_PRIMARY_GROUP_SID_TEMPLATE = "%s-513"; //Gerencia Antigo, concatena -513
   //endregion
 
   //region Mail
