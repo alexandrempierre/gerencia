@@ -42,6 +42,16 @@ public abstract class LCIModel {
   public void setCreatedAt(Long createdAt) {
     this.createdAt = createdAt;
   }
+
+  @Override
+  public String toString() {
+    return "LCIModel{" +
+      "id='" + id + '\'' +
+      ", saved=" + saved +
+      ", createdAt=" + createdAt +
+      ", updatedAt=" + updatedAt +
+      '}';
+  }
 }
 
 

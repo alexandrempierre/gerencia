@@ -102,6 +102,7 @@ public class Student extends LCIModel {
       ", shadow=" + shadow +
       ", DRE='" + DRE + '\'' +
       ", operator=" + operator +
+      ", lciModel=" + super.toString() +
       '}';
   }
 }
