@@ -16,15 +16,9 @@ import javax.naming.Name;
 import java.util.List;
 
 @Component
-public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIAbstractContextMapper<M>>{
+public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIAbstractContextMapper<M>> extends CrudLdapDataAccessBase<M,Mapper>{
 
   protected final String DEFAULT_PRIMARY_KEY = "uid";
-
-  @Autowired
-  protected LdapTemplate ldapTemplate;
-
-  @Autowired
-  protected Mapper mapper;
 
   protected Name buildDnByKey(String key){
     return getBaseDN(LdapNameBuilder.newInstance()).add(DEFAULT_PRIMARY_KEY, key).build();
@@ -39,25 +33,21 @@ public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIA
   }
 
   public void create(M register) {
-    DirContextAdapter context = new DirContextAdapter(buildDnByKey(register.getId()));
-    mapper.mapInsertToContext(register, context);
-    ldapTemplate.bind(context);
+    create(register, buildDnByKey(register.getId()));
   }
 
   public void update(M register) {
     Name dn = buildDnByKey(register.getId());
-    DirContextOperations context = ldapTemplate.lookupContext(dn);
-    mapper.mapEditToContext(register, context);
-    ldapTemplate.modifyAttributes(context);
+    update(register, dn);
   }
 
   public M findByKey(String key) {
     Name dn = buildDnByKey(key);
-    return ldapTemplate.lookup(dn, mapper);
+    return findByKey(dn);
   }
 
   public List<M> find(LciLdapSpecification specification){
-    return ldapTemplate.search(specification.toQuery(getBaseName()), mapper);
+    return find(specification, getBaseName());
   }
 
   protected abstract LdapNameBuilder getBaseDN(LdapNameBuilder instance);
