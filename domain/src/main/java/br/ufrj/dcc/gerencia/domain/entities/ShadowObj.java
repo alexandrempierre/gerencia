@@ -80,4 +80,17 @@ public class ShadowObj {
   public void setShadowWarning(Integer shadowWarning) {
     this.shadowWarning = shadowWarning;
   }
+
+  @Override
+  public String toString() {
+    return "ShadowObj{" +
+      "shadowExpire=" + shadowExpire +
+      ", shadowFlag=" + shadowFlag +
+      ", shadowInactive=" + shadowInactive +
+      ", shadowLastChange=" + shadowLastChange +
+      ", shadowMax=" + shadowMax +
+      ", shadowMin=" + shadowMin +
+      ", shadowWarning=" + shadowWarning +
+      '}';
+  }
 }

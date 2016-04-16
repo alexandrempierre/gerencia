@@ -40,4 +40,12 @@ public class User extends LCIModel{
     return String.format(GerenciaDefaultConstraint.MAIL_TEMPLATE, getLogin());
   }
 
+  @Override
+  public String toString() {
+    return "User{" +
+      "limitHDSpace=" + limitHDSpace +
+      ", login='" + login + '\'' +
+      ", password='" + password + '\'' +
+      '}';
+  }
 }

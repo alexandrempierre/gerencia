@@ -113,4 +113,20 @@ public class SambaObj {
   public void setSambaInfo(SambaInfo sambaInfo) {
     this.sambaInfo = sambaInfo;
   }
+
+  @Override
+  public String toString() {
+    return "SambaObj{" +
+      "sambaSID='" + sambaSID + '\'' +
+      ", sambaAcctFlags='" + sambaAcctFlags + '\'' +
+      ", sambaKickoffTime=" + sambaKickoffTime +
+      ", sambaLMPassword='" + sambaLMPassword + '\'' +
+      ", sambaNTPassword='" + sambaNTPassword + '\'' +
+      ", sambaPrimaryGroupSID='" + sambaPrimaryGroupSID + '\'' +
+      ", sambaPwdCanChange=" + sambaPwdCanChange +
+      ", sambaPwdLastSet=" + sambaPwdLastSet +
+      ", sambaPwdMustChange='" + sambaPwdMustChange + '\'' +
+      ", sambaInfo=" + sambaInfo +
+      '}';
+  }
 }

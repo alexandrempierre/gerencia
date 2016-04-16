@@ -50,4 +50,14 @@ public class Person {
     this.displayName = displayName;
   }
 
+  @Override
+  public String toString() {
+    return "Person{" +
+      "name='" + name + '\'' +
+      ", surname='" + surname + '\'' +
+      ", externMail='" + externMail + '\'' +
+      ", phoneNumber='" + phoneNumber + '\'' +
+      ", displayName='" + displayName + '\'' +
+      '}';
+  }
 }

@@ -60,4 +60,15 @@ public class ServerData {
   public void setGecos(String gecos) {
     this.gecos = gecos;
   }
+
+  @Override
+  public String toString() {
+    return "ServerData{" +
+      "homeDirectory='" + homeDirectory + '\'' +
+      ", loginShellApplication='" + loginShellApplication + '\'' +
+      ", gidNumber=" + gidNumber +
+      ", uidNumber=" + uidNumber +
+      ", gecos='" + gecos + '\'' +
+      '}';
+  }
 }

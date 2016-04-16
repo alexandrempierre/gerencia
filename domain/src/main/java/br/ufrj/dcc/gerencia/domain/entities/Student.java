@@ -91,4 +91,17 @@ public class Student extends LCIModel {
   public void setOperator(boolean operator) {
     this.operator = operator;
   }
+
+  @Override
+  public String toString() {
+    return "Student{" +
+      "user=" + user +
+      ", person=" + person +
+      ", serverData=" + serverData +
+      ", samba=" + samba +
+      ", shadow=" + shadow +
+      ", DRE='" + DRE + '\'' +
+      ", operator=" + operator +
+      '}';
+  }
 }

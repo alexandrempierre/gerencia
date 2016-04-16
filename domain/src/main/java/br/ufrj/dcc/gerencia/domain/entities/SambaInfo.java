@@ -50,4 +50,13 @@ public class SambaInfo extends LCIModel implements Cloneable {
   public SambaInfo clone() throws CloneNotSupportedException {
     return (SambaInfo) super.clone();
   }
+
+  @Override
+  public String toString() {
+    return "SambaInfo{" +
+      "uidNumber=" + uidNumber +
+      ", sambaNextRid=" + sambaNextRid +
+      ", sambaSID='" + sambaSID + '\'' +
+      '}';
+  }
 }
