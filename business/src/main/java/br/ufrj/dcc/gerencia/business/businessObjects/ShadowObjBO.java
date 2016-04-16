@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 @Component
 public class ShadowObjBO {
 
-  public static ShadowObj create(){
+  public static ShadowObj create(boolean changePassword){
     ShadowObj shadowObj = new ShadowObj();
 
     shadowObj.setShadowFlag(GerenciaDefaultConstraint.SHADOW_FLAG);
@@ -25,7 +25,7 @@ public class ShadowObjBO {
 
     Calendar now = GregorianCalendar.getInstance();
 
-    shadowObj.setShadowLastChange(now.getTime().getTime());
+    shadowObj.setShadowLastChange(changePassword ? 0 : now.getTime().getTime() /  ( 60 * 60 * 24 )); // DSE stands for Days Since Epoch
 
     now.add(Calendar.DAY_OF_YEAR, GerenciaDefaultConstraint.SHADOW_NUMBERS_DAY_TO_EXPIRE);
     shadowObj.setShadowExpire(now.getTime().getTime());

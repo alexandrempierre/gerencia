@@ -9,7 +9,6 @@ import br.ufrj.dcc.gerencia.domain.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
 import java.util.GregorianCalendar;
 
 /**
@@ -22,7 +21,7 @@ public class SambaBO {
   @Autowired
   private SambaInfoFacade sambaInfoFacade;
 
-  public SambaObj create(User user){
+  public SambaObj create(User user, boolean changePassword){
     SambaObj sambaObj = new SambaObj();
     SambaInfo sambaInfo = sambaInfoFacade.getStats();
     Long timeNow = GregorianCalendar.getInstance().getTime().getTime();
@@ -36,6 +35,8 @@ public class SambaBO {
     sambaObj.setSambaLMPassword(PasswordUtil.lmPasswordHash(user.getPassword()));
     sambaObj.setSambaSID(sambaInfo.getSambaSID(), sambaInfo.getSambaNextRid());
     sambaObj.setSambaPrimaryGroupSID(String.format(GerenciaDefaultConstraint.SAMBA_PRIMARY_GROUP_SID_TEMPLATE, sambaInfo.getSambaSID()));
+
+    sambaObj.setSambaPwdMustChange(changePassword ? 0 : timeNow + GerenciaDefaultConstraint.SAMBA_PWD_MUST_CHANGE);
 
     return sambaObj;
   }

@@ -103,8 +103,9 @@
             crudConstants.salvar.mensagem,
             crudConstants.salvar.btnOk,
             crudConstants.salvar.btnFechar).then(function(){
-            serviceAPI.save(registro).then(function(){
-              _redirecionamento.filtrar();
+            serviceAPI.save(registro).then(function(data){
+              console.log(data);
+              //_redirecionamento.filtrar();
             });
           });
         }

@@ -32,10 +32,10 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
   }
 
   private void populateRegister(Student register){
-    SambaObj sambaObj = sambaBO.create(register.getUser());
+    SambaObj sambaObj = sambaBO.create(register.getUser(), true);
     register.setSamba(sambaObj);
     register.setServerData(ServerDataBO.createStudent(register, sambaObj.getSambaInfo().getUidNumber()));
-    register.setShadow(ShadowObjBO.create());
+    register.setShadow(ShadowObjBO.create(true));
     PersonBO.populate(register.getPerson());
     hashUserPassword(register);
   }
