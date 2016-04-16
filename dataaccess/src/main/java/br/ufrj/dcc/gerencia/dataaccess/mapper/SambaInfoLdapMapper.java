@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SambaInfoLdapMapperUser extends LCIAbstractContextMapper<SambaInfo> {
+public class SambaInfoLdapMapper extends LCIAbstractContextMapper<SambaInfo> {
 
   @Override
   protected void mapperResult(SambaInfo register, DirContextOperations ctx) {

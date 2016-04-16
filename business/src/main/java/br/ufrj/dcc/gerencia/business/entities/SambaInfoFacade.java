@@ -27,7 +27,7 @@ public class SambaInfoFacade extends CrudFacade<SambaInfo, LciLdapSpecification,
     }
 
     register.incrementUidNumber();
-    save(register);
+    //save(register);
 
     return result;
   }
