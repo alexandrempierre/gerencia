@@ -5,6 +5,8 @@ import br.ufrj.dcc.gerencia.domain.entities.SambaInfo;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.stereotype.Component;
 
+import static br.ufrj.dcc.gerencia.domain.auxiliar.ObjectClassLdap.SAMBA_INFO_OBJECT_CLASS;
+
 /**
  * Created by fausto on 4/14/16.
  */
@@ -21,8 +23,10 @@ public class SambaInfoLdapMapper extends LCIAbstractContextMapper<SambaInfo> {
 
   @Override
   public void mapToContext(SambaInfo register, DirContextOperations ctx) {
-    ctx.setAttributeValue("uidNumber", register.getUidNumber());
-    ctx.setAttributeValue("sambaNextRid", register.getSambaNextRid());
+    ctx.setAttributeValues("objectclass", SAMBA_INFO_OBJECT_CLASS);
+
+    ctx.setAttributeValue("uidNumber", Integer.toString(register.getUidNumber()));
+    ctx.setAttributeValue("sambaNextRid", Integer.toString(register.getSambaNextRid()));
     ctx.setAttributeValue("sambaSID", register.getSambaSID());
   }
 }
