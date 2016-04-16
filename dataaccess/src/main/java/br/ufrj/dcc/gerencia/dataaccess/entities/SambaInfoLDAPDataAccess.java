@@ -16,7 +16,17 @@ public class SambaInfoLDAPDataAccess extends CrudLdapDataAccess<SambaInfo, Samba
       .add("sambaDomainName","DCC");
   }
 
-  public SambaInfo get() {
-    return findByKey(getBaseDN());
+  @Override
+  public void update(SambaInfo register) {
+    update(register, getBaseDN());
+  }
+
+  @Override
+  public SambaInfo findByKey(String key) {
+    if (key == null){
+      return super.findByKey(getBaseDN());
+    }else{
+      return super.findByKey(key);
+    }
   }
 }

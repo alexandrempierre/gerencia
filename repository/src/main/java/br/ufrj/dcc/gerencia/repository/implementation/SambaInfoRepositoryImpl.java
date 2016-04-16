@@ -13,4 +13,5 @@ import br.ufrj.dcc.gerencia.repository.contract.SambaInfoRepository;
 public class SambaInfoRepositoryImpl
   extends RepositoryImpl<SambaInfo, SambaInfoLdapMapper, SambaInfoLDAPDataAccess, LciLdapSpecification>
   implements SambaInfoRepository {
+
 }

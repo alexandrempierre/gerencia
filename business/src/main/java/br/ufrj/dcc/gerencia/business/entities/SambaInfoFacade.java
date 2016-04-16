@@ -10,4 +10,8 @@ import br.ufrj.dcc.gerencia.repository.contract.SambaInfoRepository;
  */
 public class SambaInfoFacade extends CrudFacade<SambaInfo, LciLdapSpecification, SambaInfoRepository> {
 
+  public SambaInfo get() {
+    return super.get(null);
+  }
+
 }
