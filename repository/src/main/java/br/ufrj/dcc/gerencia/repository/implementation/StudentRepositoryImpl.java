@@ -1,7 +1,7 @@
 package br.ufrj.dcc.gerencia.repository.implementation;
 
 import br.ufrj.dcc.gerencia.dataaccess.entities.StudentLDAPDataAccess;
-import br.ufrj.dcc.gerencia.dataaccess.mapper.StudentLdapMapperUser;
+import br.ufrj.dcc.gerencia.dataaccess.mapper.StudentLdapMapper;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import br.ufrj.dcc.gerencia.domain.specification.StudentSpecification;
 import br.ufrj.dcc.gerencia.repository.base.RepositoryImpl;
@@ -14,5 +14,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StudentRepositoryImpl extends
-  RepositoryImpl<Student, StudentLdapMapperUser,StudentLDAPDataAccess,StudentSpecification> implements StudentRepository {
+  RepositoryImpl<Student, StudentLdapMapper,StudentLDAPDataAccess,StudentSpecification> implements StudentRepository {
 }

@@ -12,10 +12,10 @@ public class SambaObj {
   private String sambaPrimaryGroupSID;
   private Long sambaPwdCanChange;
   private Long sambaPwdLastSet;
-  private String sambaPwdMustChange;
+  private Long sambaPwdMustChange;
   private SambaInfo sambaInfo;
 
-  public SambaObj(String sambaSID, String sambaAcctFlags, Long sambaKickoffTime, String sambaLMPassword, String sambaNTPassword, String sambaPrimaryGroupSID, Long sambaPwdCanChange, Long sambaPwdLastSet, String sambaPwdMustChange) {
+  public SambaObj(String sambaSID, String sambaAcctFlags, Long sambaKickoffTime, String sambaLMPassword, String sambaNTPassword, String sambaPrimaryGroupSID, Long sambaPwdCanChange, Long sambaPwdLastSet, Long sambaPwdMustChange) {
     this.sambaSID = sambaSID;
     this.sambaAcctFlags = sambaAcctFlags;
     this.sambaKickoffTime = sambaKickoffTime;
@@ -98,11 +98,11 @@ public class SambaObj {
     this.sambaPwdLastSet = sambaPwdLastSet;
   }
 
-  public String getSambaPwdMustChange() {
+  public Long getSambaPwdMustChange() {
     return sambaPwdMustChange;
   }
 
-  public void setSambaPwdMustChange(String sambaPwdMustChange) {
+  public void setSambaPwdMustChange(Long sambaPwdMustChange) {
     this.sambaPwdMustChange = sambaPwdMustChange;
   }
 

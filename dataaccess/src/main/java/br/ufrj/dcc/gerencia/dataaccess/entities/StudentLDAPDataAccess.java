@@ -1,7 +1,7 @@
 package br.ufrj.dcc.gerencia.dataaccess.entities;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
-import br.ufrj.dcc.gerencia.dataaccess.mapper.StudentLdapMapperUser;
+import br.ufrj.dcc.gerencia.dataaccess.mapper.StudentLdapMapper;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StudentLDAPDataAccess extends CrudLdapDataAccess<Student, StudentLdapMapperUser> {
+public class StudentLDAPDataAccess extends CrudLdapDataAccess<Student, StudentLdapMapper> {
 
   @Override
   protected LdapNameBuilder getBaseDN(LdapNameBuilder instance) {

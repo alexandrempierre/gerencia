@@ -57,6 +57,7 @@ public class SambaInfo extends LCIModel implements Cloneable {
       "uidNumber=" + uidNumber +
       ", sambaNextRid=" + sambaNextRid +
       ", sambaSID='" + sambaSID + '\'' +
-      '}';
+      ", lci{" + super.toString()+
+      "}}";
   }
 }

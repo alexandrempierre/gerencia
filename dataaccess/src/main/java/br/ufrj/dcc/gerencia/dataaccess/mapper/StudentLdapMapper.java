@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StudentLdapMapperUser extends LCIUserAbstractContextMapper<Student> {
+public class StudentLdapMapper extends LCIUserAbstractContextMapper<Student> {
 
   @Override
   public void mapperResult(Student student,DirContextOperations ctx) {
@@ -35,7 +35,7 @@ public class StudentLdapMapperUser extends LCIUserAbstractContextMapper<Student>
     student.getSamba().setSambaPrimaryGroupSID(ctx.getStringAttribute("sambaPrimaryGroupSID"));
     student.getSamba().setSambaPwdCanChange(new Long(ctx.getStringAttribute("sambaPwdCanChange")));
     student.getSamba().setSambaPwdLastSet(new Long(ctx.getStringAttribute("sambaPwdLastSet")));
-    student.getSamba().setSambaPwdMustChange(ctx.getStringAttribute("sambaPwdMustChange"));
+    student.getSamba().setSambaPwdMustChange(new Long(ctx.getStringAttribute("sambaPwdMustChange")));
     student.getShadow().setShadowExpire(new Long(ctx.getStringAttribute("shadowExpire")));
     student.getShadow().setShadowFlag(new Integer(ctx.getStringAttribute("shadowFlag")));
     student.getShadow().setShadowInactive(new Integer(ctx.getStringAttribute("shadowInactive")));
