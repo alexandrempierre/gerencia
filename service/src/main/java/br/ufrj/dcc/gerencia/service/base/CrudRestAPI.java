@@ -6,6 +6,7 @@ import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciSpecification;
 import br.ufrj.dcc.gerencia.repository.base.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public abstract class CrudRestAPI
     return facade;
   }
 
-  public M save(M register){
+  public M save(@RequestBody M register){
     return getFacade().save(register);
   }
 

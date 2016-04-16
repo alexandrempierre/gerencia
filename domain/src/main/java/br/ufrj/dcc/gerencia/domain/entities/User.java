@@ -11,6 +11,24 @@ public class User extends LCIModel{
   private Integer limitHDSpace;
   private String login;
   private String password;
+  private String SambaLMPassword;
+  private String SambaNTPassword;
+
+  public String getSambaLMPassword() {
+    return SambaLMPassword;
+  }
+
+  public void setSambaLMPassword(String sambaLMPassword) {
+    SambaLMPassword = sambaLMPassword;
+  }
+
+  public String getSambaNTPassword() {
+    return SambaNTPassword;
+  }
+
+  public void setSambaNTPassword(String sambaNTPassword) {
+    SambaNTPassword = sambaNTPassword;
+  }
 
   public Integer getLimitHDSpace() {
     return limitHDSpace;

@@ -19,6 +19,9 @@ public class GerenciaDefaultConstraint {
   public static final Integer SHADOW_MIN = 0;
   public static final Integer SHADOW_WARNING = 7;
   public static final Integer SHADOW_NUMBERS_DAY_TO_EXPIRE = 365*6; // quatro anos
+  public static final Long ShadowLastChange(Long time){
+    return time /  ( 60 * 60 * 24 );
+  }
   //endregion
 
   //region Samba

@@ -54,6 +54,7 @@ public abstract class RepositoryImpl<
       register.setSaved(true);
       return register;
     }catch(Exception e){
+      e.printStackTrace();
       return null;
     }
   }

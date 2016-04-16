@@ -18,8 +18,4 @@ import org.springframework.web.bind.annotation.*;
 public class StudentAPI extends
   CrudRestAPI<Student, StudentSpecification, StudentFacade, StudentRepository> implements StudentContract {
 
-  @RequestMapping(value="/save", method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-  public Student save(@RequestBody Student student) {
-    return super.save(student);
-  }
 }

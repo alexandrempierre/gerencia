@@ -2,6 +2,7 @@ package br.ufrj.dcc.gerencia.contract.base;
 
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciSpecification;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public interface CrudRestAPIContract<M extends LCIModel, S extends LciSpecification> {
 
-  @RequestMapping(value="/saves", method=RequestMethod.POST)
+  @RequestMapping(value="/save", method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
   M save(M register);
 
   @RequestMapping(value="/list", method=RequestMethod.GET)

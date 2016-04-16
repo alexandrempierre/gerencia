@@ -81,7 +81,7 @@ public class StudentLdapMapper extends LCIUserAbstractContextMapper<Student> {
     ctx.setAttributeValue("shadowMax", Integer.toString(register.getShadow().getShadowMax()));
     ctx.setAttributeValue("shadowMin", Integer.toString(register.getShadow().getShadowMin()));
     ctx.setAttributeValue("shadowWarning", Integer.toString(register.getShadow().getShadowWarning()));
-
+    ctx.setAttributeValue("userPassword", register.getUser().getPassword());
     ctx.setAttributeValue("DRE", register.getDRE());
     ctx.setAttributeValue("monitor", register.isOperator() ? "1" : "0");
   }

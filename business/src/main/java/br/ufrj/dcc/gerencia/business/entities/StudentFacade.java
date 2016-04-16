@@ -23,6 +23,9 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
   @Autowired
   private SambaBO sambaBO;
 
+  @Autowired
+  private UserFacade userFacade;
+
   @Override
   public Student save(Student register) {
     if (!register.isSaved()){
@@ -37,11 +40,7 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
     register.setServerData(ServerDataBO.createStudent(register, sambaObj.getSambaInfo().getUidNumber()));
     register.setShadow(ShadowObjBO.create(true));
     PersonBO.populate(register.getPerson());
-    hashUserPassword(register);
-  }
-
-  private void hashUserPassword(Student register){
-    register.getUser().setPassword(PasswordUtil.passowordHash(register.getUser().getPassword()));
+    userFacade.hashPassword(register.getUser());
   }
 
 }
