@@ -1,6 +1,6 @@
 package br.ufrj.dcc.gerencia.dataaccess.mapper;
 
-import br.ufrj.dcc.gerencia.dataaccess.base.LCIUserAbstractContextMapper;
+import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.entities.SambaInfo;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SambaInfoLdapMapperUser extends LCIUserAbstractContextMapper<SambaInfo> {
+public class SambaInfoLdapMapperUser extends LCIAbstractContextMapper<SambaInfo> {
 
   @Override
   protected void mapperResult(SambaInfo register, DirContextOperations ctx) {

@@ -1,7 +1,7 @@
 package br.ufrj.dcc.gerencia.repository.base;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
-import br.ufrj.dcc.gerencia.dataaccess.base.LCIUserAbstractContextMapper;
+import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public abstract class RepositoryImpl<
   M extends LCIModel,
-  Mapper extends LCIUserAbstractContextMapper<M>,
+  Mapper extends LCIAbstractContextMapper<M>,
   DAO extends CrudLdapDataAccess<M, Mapper>,
   Spec extends LciLdapSpecification> implements Repository<M, Spec> {
 
