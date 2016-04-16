@@ -1,15 +1,12 @@
 package br.ufrj.dcc.gerencia.repository.base;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
-import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
+import br.ufrj.dcc.gerencia.dataaccess.base.LCIUserAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
-import br.ufrj.dcc.gerencia.domain.base.LciModelPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.naming.NameNotFoundException;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -20,7 +17,7 @@ import java.util.List;
 @Component
 public abstract class RepositoryImpl<
   M extends LCIModel,
-  Mapper extends LCIAbstractContextMapper<M>,
+  Mapper extends LCIUserAbstractContextMapper<M>,
   DAO extends CrudLdapDataAccess<M, Mapper>,
   Spec extends LciLdapSpecification> implements Repository<M, Spec> {
 

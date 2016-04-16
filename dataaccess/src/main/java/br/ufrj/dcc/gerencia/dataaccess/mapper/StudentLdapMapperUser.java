@@ -1,6 +1,6 @@
 package br.ufrj.dcc.gerencia.dataaccess.mapper;
 
-import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
+import br.ufrj.dcc.gerencia.dataaccess.base.LCIUserAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.entities.Student;
 import static br.ufrj.dcc.gerencia.domain.auxiliar.ObjectClassLdap.*;
 import org.springframework.ldap.core.DirContextOperations;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StudentLdapMapper extends LCIAbstractContextMapper<Student> {
+public class StudentLdapMapperUser extends LCIUserAbstractContextMapper<Student> {
 
   @Override
   public void mapperResult(Student student,DirContextOperations ctx) {

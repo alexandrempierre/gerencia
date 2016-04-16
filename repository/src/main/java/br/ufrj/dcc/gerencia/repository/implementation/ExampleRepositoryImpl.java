@@ -1,7 +1,7 @@
 package br.ufrj.dcc.gerencia.repository.implementation;
 
 import br.ufrj.dcc.gerencia.dataaccess.entities.ExampleLDAPDataAccessBase;
-import br.ufrj.dcc.gerencia.dataaccess.mapper.ExampleLdapMapper;
+import br.ufrj.dcc.gerencia.dataaccess.mapper.ExampleLdapMapperUser;
 import br.ufrj.dcc.gerencia.domain.entities.Example;
 import br.ufrj.dcc.gerencia.domain.specification.ExampleSpecification;
 import br.ufrj.dcc.gerencia.repository.base.RepositoryImpl;
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ExampleRepositoryImpl extends
-  RepositoryImpl<Example,ExampleLdapMapper,ExampleLDAPDataAccessBase,ExampleSpecification> implements ExampleRepository {
+  RepositoryImpl<Example, ExampleLdapMapperUser,ExampleLDAPDataAccessBase,ExampleSpecification> implements ExampleRepository {
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Component
-public abstract class CrudLdapDataAccessBase<M extends LCIModel, Mapper extends LCIAbstractContextMapper<M>>{
+public abstract class CrudLdapDataAccessBase<M extends LCIModel, Mapper extends LCIUserAbstractContextMapper<M>>{
 
   @Autowired
   protected LdapTemplate ldapTemplate;

@@ -7,10 +7,9 @@ import org.springframework.ldap.core.support.AbstractContextMapper;
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by fausto on 4/10/16.
+ * Created by fausto on 4/16/16.
  */
 public abstract class LCIAbstractContextMapper<M extends LCIModel> extends AbstractContextMapper<M> {
-
   private Class<M> getLciModelClass(){
     return (Class<M>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
   }
@@ -26,9 +25,6 @@ public abstract class LCIAbstractContextMapper<M extends LCIModel> extends Abstr
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-
-    register.setCreatedAt(new Long(ctx.getStringAttribute("dataCriacao")));
-    register.setUpdatedAt(new Long(ctx.getStringAttribute("dataRenovacao")));
 
     mapperResult(register,ctx);
     return register;

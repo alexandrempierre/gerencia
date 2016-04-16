@@ -12,7 +12,7 @@ import javax.naming.Name;
 import java.util.List;
 
 @Component
-public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIAbstractContextMapper<M>> extends CrudLdapDataAccessBase<M,Mapper>{
+public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIUserAbstractContextMapper<M>> extends CrudLdapDataAccessBase<M,Mapper>{
 
   protected final String DEFAULT_PRIMARY_KEY = "uid";
 

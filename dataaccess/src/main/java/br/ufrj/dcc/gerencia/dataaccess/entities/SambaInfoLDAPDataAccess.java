@@ -1,7 +1,7 @@
 package br.ufrj.dcc.gerencia.dataaccess.entities;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
-import br.ufrj.dcc.gerencia.dataaccess.mapper.SambaInfoLdapMapper;
+import br.ufrj.dcc.gerencia.dataaccess.mapper.SambaInfoLdapMapperUser;
 import br.ufrj.dcc.gerencia.domain.entities.SambaInfo;
 import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SambaInfoLDAPDataAccess extends CrudLdapDataAccess<SambaInfo, SambaInfoLdapMapper> {
+public class SambaInfoLDAPDataAccess extends CrudLdapDataAccess<SambaInfo, SambaInfoLdapMapperUser> {
 
   @Override
   protected LdapNameBuilder getBaseDN(LdapNameBuilder instance) {
