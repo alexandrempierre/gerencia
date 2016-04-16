@@ -7,5 +7,5 @@ gradle/*
 */.gradle/*
 */gradle/*
 .idea
-web/src/main/resources/dist
+web/src/main/resources/*
 web/src/main/websrc/node_modules
