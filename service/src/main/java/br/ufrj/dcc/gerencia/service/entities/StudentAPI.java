@@ -20,9 +20,6 @@ public class StudentAPI extends
 
   @RequestMapping(value="/save", method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
   public Student save(@RequestBody Student student) {
-    System.out.println("student.getUser().getLimitHDSpace(): " + student.getUser().getLimitHDSpace());
-    System.out.println("student.isOperator(): " + student.isOperator());
-    return student;
-    //return super.save(student);
+    return super.save(student);
   }
 }

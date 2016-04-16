@@ -4,12 +4,8 @@
 package br.ufrj.dcc.gerencia.dataaccess.base;
 
 import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
-import org.springframework.ldap.core.DirContextAdapter;
-import org.springframework.ldap.core.DirContextOperations;
-import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.support.LdapNameBuilder;
 
 import javax.naming.Name;
@@ -24,7 +20,7 @@ public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIA
     return getBaseDN(LdapNameBuilder.newInstance()).add(DEFAULT_PRIMARY_KEY, key).build();
   }
 
-  protected Name getBaseName(){
+  protected Name getBaseDN(){
     return getBaseDN(LdapNameBuilder.newInstance()).build();
   }
 
@@ -47,7 +43,7 @@ public abstract class CrudLdapDataAccess<M extends LCIModel, Mapper extends LCIA
   }
 
   public List<M> find(LciLdapSpecification specification){
-    return find(specification, getBaseName());
+    return find(specification, getBaseDN());
   }
 
   protected abstract LdapNameBuilder getBaseDN(LdapNameBuilder instance);
