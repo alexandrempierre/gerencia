@@ -17,8 +17,8 @@ public class StudentLDAPDataAccess extends CrudLdapDataAccess<Student,StudentLda
   @Override
   protected LdapNameBuilder getBaseDN(LdapNameBuilder instance) {
     return instance
-      .add("ou","usuario")
-      .add("ou","academico")
-      .add("ou","aluno");
+      .add("ou","usuarios")
+      .add("ou","academicos")
+      .add("ou","alunos");
   }
 }
