@@ -25,7 +25,7 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
 
   @Override
   public Student save(Student register) {
-    if (register.isSaved()){
+    if (!register.isSaved()){
       populateRegister(register);
     }
     return getRepository().save(register);
