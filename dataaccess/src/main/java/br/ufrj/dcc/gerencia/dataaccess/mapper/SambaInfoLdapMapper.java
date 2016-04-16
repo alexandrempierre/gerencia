@@ -3,10 +3,13 @@ package br.ufrj.dcc.gerencia.dataaccess.mapper;
 import br.ufrj.dcc.gerencia.dataaccess.base.LCIAbstractContextMapper;
 import br.ufrj.dcc.gerencia.domain.entities.SambaInfo;
 import org.springframework.ldap.core.DirContextOperations;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by fausto on 4/14/16.
  */
+
+@Component
 public class SambaInfoLdapMapper extends LCIAbstractContextMapper<SambaInfo> {
 
   @Override

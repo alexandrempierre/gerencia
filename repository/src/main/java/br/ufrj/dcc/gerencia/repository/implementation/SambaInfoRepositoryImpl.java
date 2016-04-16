@@ -6,10 +6,13 @@ import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import br.ufrj.dcc.gerencia.domain.entities.SambaInfo;
 import br.ufrj.dcc.gerencia.repository.base.RepositoryImpl;
 import br.ufrj.dcc.gerencia.repository.contract.SambaInfoRepository;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by fausto on 4/14/16.
  */
+
+@Component
 public class SambaInfoRepositoryImpl
   extends RepositoryImpl<SambaInfo, SambaInfoLdapMapper, SambaInfoLDAPDataAccess, LciLdapSpecification>
   implements SambaInfoRepository {
