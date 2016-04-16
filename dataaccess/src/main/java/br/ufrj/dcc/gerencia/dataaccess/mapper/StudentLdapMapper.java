@@ -53,7 +53,7 @@ public class StudentLdapMapper extends LCIUserAbstractContextMapper<Student> {
   public void mapToContext(Student register, DirContextOperations ctx) {
     ctx.setAttributeValues("objectclass", STUDENT_OBJECT_CLASS);
 
-    ctx.setAttributeValue("cota", register.getUser().getLimitHDSpace());
+    ctx.setAttributeValue("cota", Integer.toString(register.getUser().getLimitHDSpace()));
     ctx.setAttributeValue("uid", register.getUser().getLogin());
     ctx.setAttributeValue("cn", register.getPerson().getName());
     ctx.setAttributeValue("sn", register.getPerson().getSurname());
@@ -62,27 +62,27 @@ public class StudentLdapMapper extends LCIUserAbstractContextMapper<Student> {
     ctx.setAttributeValue("displayName", register.getPerson().getDisplayName());
     ctx.setAttributeValue("homeDirectory", register.getServerData().getHomeDirectory());
     ctx.setAttributeValue("loginShell", register.getServerData().getLoginShellApplication());
-    ctx.setAttributeValue("gidNumber", register.getServerData().getGidNumber());
-    ctx.setAttributeValue("uidNumber", register.getServerData().getUidNumber());
+    ctx.setAttributeValue("gidNumber", Integer.toString(register.getServerData().getGidNumber()));
+    ctx.setAttributeValue("uidNumber", Integer.toString(register.getServerData().getUidNumber()));
     ctx.setAttributeValue("gecos", register.getServerData().getGecos());
     ctx.setAttributeValue("sambaSID", register.getSamba().getSambaSID());
     ctx.setAttributeValue("sambaAcctFlags", register.getSamba().getSambaAcctFlags());
-    ctx.setAttributeValue("sambaKickoffTime", register.getSamba().getSambaKickoffTime());
+    ctx.setAttributeValue("sambaKickoffTime", Long.toString(register.getSamba().getSambaKickoffTime()));
     ctx.setAttributeValue("sambaLMPassword", register.getSamba().getSambaLMPassword());
     ctx.setAttributeValue("sambaNTPassword", register.getSamba().getSambaNTPassword());
     ctx.setAttributeValue("sambaPrimaryGroupSID", register.getSamba().getSambaPrimaryGroupSID());
-    ctx.setAttributeValue("sambaPwdCanChange", register.getSamba().getSambaPwdCanChange());
-    ctx.setAttributeValue("sambaPwdLastSet", register.getSamba().getSambaPwdLastSet());
-    ctx.setAttributeValue("sambaPwdMustChange", register.getSamba().getSambaPwdMustChange());
-    ctx.setAttributeValue("shadowExpire", register.getShadow().getShadowExpire());
-    ctx.setAttributeValue("shadowFlag", register.getShadow().getShadowFlag());
-    ctx.setAttributeValue("shadowInactive", register.getShadow().getShadowInactive());
-    ctx.setAttributeValue("shadowLastChange", register.getShadow().getShadowLastChange());
-    ctx.setAttributeValue("shadowMax", register.getShadow().getShadowMax());
-    ctx.setAttributeValue("shadowMin", register.getShadow().getShadowMin());
-    ctx.setAttributeValue("shadowWarning", register.getShadow().getShadowWarning());
+    ctx.setAttributeValue("sambaPwdCanChange", Long.toString(register.getSamba().getSambaPwdCanChange()));
+    ctx.setAttributeValue("sambaPwdLastSet", Long.toString(register.getSamba().getSambaPwdLastSet()));
+    ctx.setAttributeValue("sambaPwdMustChange", Long.toString(register.getSamba().getSambaPwdMustChange()));
+    ctx.setAttributeValue("shadowExpire", Long.toString(register.getShadow().getShadowExpire()));
+    ctx.setAttributeValue("shadowFlag", Integer.toString(register.getShadow().getShadowFlag()));
+    ctx.setAttributeValue("shadowInactive", Integer.toString(register.getShadow().getShadowInactive()));
+    ctx.setAttributeValue("shadowLastChange", Long.toString(register.getShadow().getShadowLastChange()));
+    ctx.setAttributeValue("shadowMax", Integer.toString(register.getShadow().getShadowMax()));
+    ctx.setAttributeValue("shadowMin", Integer.toString(register.getShadow().getShadowMin()));
+    ctx.setAttributeValue("shadowWarning", Integer.toString(register.getShadow().getShadowWarning()));
 
     ctx.setAttributeValue("DRE", register.getDRE());
-    ctx.setAttributeValue("monitor", register.isOperator() ? 1 : 0);
+    ctx.setAttributeValue("monitor", register.isOperator() ? "1" : "0");
   }
 }
