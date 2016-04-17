@@ -15,35 +15,8 @@ import static org.springframework.ldap.query.LdapQueryBuilder.query;
 /**
  * Created by fausto on 4/10/16.
  */
-public class StudentSpecification extends LciLdapSpecification{
-  private String uid;
-  private String name;
-  private String surname;
+public class StudentSpecification extends UserBaseSpecification{
   private String dre;
-
-  public String getUid() {
-    return uid;
-  }
-
-  public void setUid(String uid) {
-    this.uid = uid;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getSurname() {
-    return surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
 
   public String getDre() {
     return dre;
@@ -54,40 +27,10 @@ public class StudentSpecification extends LciLdapSpecification{
   }
 
   @Override
-  public LdapQuery toQuery(Name base) {
-    System.out.println(this);
-    LdapQueryBuilder queryBuilder = query().base(base);
-    AndFilter andFilter = new AndFilter();
-
-    //Para garantir que todos os usuario apareçam
-    andFilter.and(new LikeFilter("uid", "*"));
-
-    if(uid != null && uid.length() > 0){
-      andFilter.and(new LikeFilter("uid", "*"+uid+"*"));
-    }
-
-    if(name != null && name.length() > 0){
-      andFilter.and(new LikeFilter("cn", "*"+name+"*"));
-    }
-
-    if(surname != null && surname.length() > 0){
-      andFilter.and(new LikeFilter("sn", "*"+surname+"*"));
-    }
-
+  protected void makeFilter(AndFilter filter) {
     if(dre != null && dre.length() > 0){
-      andFilter.and(new LikeFilter("dre", "*"+dre+"*"));
+      filter.and(new LikeFilter("dre", "*"+dre+"*"));
     }
-
-    return queryBuilder.filter(andFilter);
   }
 
-  @Override
-  public String toString() {
-    return "StudentSpecification{" +
-      "uid='" + uid + '\'' +
-      ", name='" + name + '\'' +
-      ", surname='" + surname + '\'' +
-      ", dre='" + dre + '\'' +
-      '}';
-  }
 }
