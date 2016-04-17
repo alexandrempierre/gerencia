@@ -3,9 +3,9 @@
  */
 
 (function(app){
-  app.controller('alunoFiltroCtrl', function(lciCrudScope, $scope, alunoAPI, listaTO, caminho, lciCrudPageInfo/*, alterarSenhaModal*/){
+  app.controller('alunoFiltroCtrl', function(lciCrudScope, $scope, alunoAPI, listaTO, caminho, lciCrudPageInfo, changePasswordModal){
     lciCrudScope.Scope.call($scope, alunoAPI, caminho);
-    /*$scope.abrirAlterarSenha = alterarSenhaModal.abrirModal;*/
+    $scope.changePasswordModalOpen = changePasswordModal.openModal;
 
     $scope.filtro = $scope.getFiltro();
     $scope.lista = listaTO.data || [];

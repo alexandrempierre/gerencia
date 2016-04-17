@@ -66,10 +66,10 @@
     <td>{{aluno.dre | lciDREFilter}}</td>
     <td>{{aluno.id}}</td>
     <td width="15" class="text-center">{{aluno.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
-    <!--<td width="5">-->
-      <!--<button id="senha" type="button" ng-click="abrirAlterarSenha(aluno.usuario)" class="btn btn-link gerencia-botao-link"><i-->
-        <!--class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>-->
-    <!--</td>-->
+    <td width="5">
+      <button id="senha" type="button" ng-click="changePasswordModalOpen(aluno.user)" class="btn btn-link gerencia-botao-link"><i
+        class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
+    </td>
     <td width="5">
       <button type="button" ng-click="editar(aluno.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
         class="glyphicon glyphicon-pencil"></i></button>

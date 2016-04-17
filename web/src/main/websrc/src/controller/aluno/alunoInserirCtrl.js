@@ -3,11 +3,11 @@
  */
 
 (function(app){
-  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validacaoAPI, defaultValues){
+  app.controller('alunoInserirCtrl', function(lciCrudScope,$scope,alunoAPI, caminho, validateAPI, defaultValues){
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
 
     // Para validar o login
-    $scope.loginUnico = validacaoAPI.loginUnico(alunoAPI);
+    $scope.loginUnico = validateAPI.loginUnico;
 
     $scope.aluno = {
       user:{
