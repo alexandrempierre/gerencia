@@ -36,7 +36,7 @@
 
       var _filtro = lciCaminhoUrl.buscarFiltroNaUrl() || {};
 
-      self[crudConstants.varScope.filtroResultado] = [];
+      self.list = [];
 
       function _resultadoBuscaFn(filtro) {
         return function (resultado) {
@@ -44,7 +44,7 @@
             filtro.pageInfo.totalRegistros = resultado.data.totalRegister;
           }
           setFiltro(filtro);
-          self[crudConstants.varScope.filtroResultado] = resultado.data.list || [];
+          self.list = resultado.data.list || [];
         };
       }
 

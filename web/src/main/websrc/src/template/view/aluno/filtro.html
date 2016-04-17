@@ -4,50 +4,28 @@
     <div class="gerencia-formulario-corpo row">
       <div class="form-group">
         <label for="nome" class="col-sm-1 control-label">Nome</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="nome" ng-model="filtro.name" placeholder="Nome">
+          <input type="text" class="form-control" id="nome" ng-model="filter.name" placeholder="Nome">
         </div>
+
         <label for="sobrenome" class="col-sm-1 control-label">Sobrenome</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="sobrenome" ng-model="filtro.surname" placeholder="Sobrenome">
+          <input type="text" class="form-control" id="sobrenome" ng-model="filter.surname" placeholder="Sobrenome">
         </div>
-        <label for="login" class="col-sm-1 control-label">Login</label>
 
+        <label for="login" class="col-sm-1 control-label">Login</label>
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="login" ng-model="filtro.uid" placeholder="login">
+          <input type="text" class="form-control" id="login" ng-model="filter.uid" placeholder="login">
         </div>
       </div>
       <div class="form-group">
         <label for="dre" class="col-sm-1 control-label">DRE</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="dre" ng-model="filtro.dre" placeholder="DRE">
-        </div>
-
-        <label for="expiracaoDe" class="col-sm-1 control-label">De</label>
-        <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.from" id="expiracaoDe" name="expiracaoDe"
-                             language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
-        </span>
-
-        <label for="expiracaoAte" class="col-sm-1 control-label">Até</label>
-        <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.to" id="expiracaoAte" name="expiracaoAte"
-                             language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
-        </span>
-      </div>
-
-      <div class="form-group">
-        <label for="expiracao" class="col-sm-1 control-label">Expiração:</label>
-        <div class="col-sm-3">
-          <input bs-switch ng-model="filtro.infinito" id="expiracao" name="infinito" type="checkbox" switch-label="Infinito" switch-on-text="Sim" switch-off-text="Não" switch-size="">
+          <input type="text" class="form-control" id="dre" ng-model="filter.dre" placeholder="DRE">
         </div>
       </div>
     </div>
-    <lci-formbotoesfiltro ng-model="filtro" fn-limpar="limpar" fn-inserir="inserir()"
-                          filtrar="buscar(filtro)"></lci-formbotoesfiltro>
+    <lci-formbotoesfiltro ng-model="filtro" fn-limpar="limpar" fn-inserir="inserir()" filtrar="buscar(filter)"></lci-formbotoesfiltro>
   </fieldset>
 </form>
 <hr>
@@ -61,25 +39,25 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="aluno in lista">
-    <td>{{aluno.person.displayName}}</td>
-    <td>{{aluno.dre | lciDREFilter}}</td>
-    <td>{{aluno.id}}</td>
-    <td width="15" class="text-center">{{aluno.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
+  <tr ng-repeat="student in list">
+    <td>{{student.person.displayName}}</td>
+    <td>{{student.dre | lciDREFilter}}</td>
+    <td>{{student.id}}</td>
+    <td width="15" class="text-center">{{student.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
     <td width="5">
-      <button id="senha" type="button" ng-click="changePasswordModalOpen(aluno.user)" class="btn btn-link gerencia-botao-link"><i
+      <button id="senha" type="button" ng-click="changePasswordModalOpen(student.user)" class="btn btn-link gerencia-botao-link"><i
         class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
     </td>
     <td width="5">
-      <button type="button" ng-click="editar(aluno.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
+      <button type="button" ng-click="editar(student.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
         class="glyphicon glyphicon-pencil"></i></button>
     </td>
     <td width="5">
-      <button type="button" class="btn btn-link gerencia-botao-link" uib-tooltip="Remover" tooltip-placement="top" ng-click="deletar(aluno.id)"><i
+      <button type="button" class="btn btn-link gerencia-botao-link" uib-tooltip="Remover" tooltip-placement="top" ng-click="deletar(student.id)"><i
         class="glyphicon glyphicon-trash"></i></button>
     </td>
   </tr>
-  <tr ng-if="!lista || lista.length == 0">
+  <tr ng-if="!list || list.length == 0">
     <td colspan="9"><p class="text-danger">Nenhum resultado encontrado!</p></td>
   </tr>
   </tbody>

@@ -19,9 +19,6 @@
       editar: 'registroTO',
       caminho: 'caminho'
     },
-    varScope:{
-      filtroResultado: 'lista'
-    },
     deletar: {
       titulo:'Excluir',
       mensagem: "Deseja realmente deletar esse item?",
