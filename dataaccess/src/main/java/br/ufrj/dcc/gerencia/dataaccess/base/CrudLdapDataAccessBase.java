@@ -36,6 +36,12 @@ public abstract class CrudLdapDataAccessBase<M extends LCIModel, Mapper extends 
     ldapTemplate.modifyAttributes(context);
   }
 
+  public void update(M register, String dn) {
+    DirContextOperations context = ldapTemplate.lookupContext(dn);
+    mapper.mapEditToContext(register, context);
+    ldapTemplate.modifyAttributes(context);
+  }
+
   public M findByKey(Name dn){
     return ldapTemplate.lookup(dn, mapper);
   }

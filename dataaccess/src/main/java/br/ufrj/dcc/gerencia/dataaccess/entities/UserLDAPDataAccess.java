@@ -13,7 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserLDAPDataAccess extends CrudLdapDataAccess<User, UserLdapMapper> {
 
-
+  @Override
+  public void update(User register) {
+    super.update(register, register.getDn());
+  }
 
   @Override
   protected LdapNameBuilder getBaseDN(LdapNameBuilder instance) {

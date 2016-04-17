@@ -7,7 +7,7 @@ import br.ufrj.dcc.gerencia.domain.base.LCIModel;
  * Created by fausto on 4/10/16.
  */
 public class User extends LCIModel{
-
+  private String dn;
   private Integer limitHDSpace;
   private String login;
   private String password;
@@ -57,6 +57,14 @@ public class User extends LCIModel{
 
   public String getMail() {
     return String.format(GerenciaDefaultConstraint.MAIL_TEMPLATE, getLogin());
+  }
+
+  public String getDn() {
+    return dn;
+  }
+
+  public void setDn(String dn) {
+    this.dn = dn;
   }
 
   @Override

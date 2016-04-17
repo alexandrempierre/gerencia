@@ -15,7 +15,7 @@ public class UserLdapMapper extends LCIUserAbstractContextMapper<User> {
 
   @Override
   protected void mapperResult(User register, DirContextOperations ctx) {
-    System.out.println("no mapper");
+    register.setDn(ctx.getDn().toString());
     register.setLimitHDSpace(new Integer(ctx.getStringAttribute("cota")));
     register.setLogin(ctx.getStringAttribute("uid"));
   }
