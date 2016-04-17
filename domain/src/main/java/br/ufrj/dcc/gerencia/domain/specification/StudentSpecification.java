@@ -20,8 +20,14 @@ public class StudentSpecification extends LciLdapSpecification{
   private String name;
   private String surname;
   private String dre;
-  private Long from;
-  private Long to;
+
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
   public String getName() {
     return name;
@@ -39,14 +45,6 @@ public class StudentSpecification extends LciLdapSpecification{
     this.surname = surname;
   }
 
-  public String getUid() {
-    return uid;
-  }
-
-  public void setUid(String uid) {
-    this.uid = uid;
-  }
-
   public String getDre() {
     return dre;
   }
@@ -55,24 +53,9 @@ public class StudentSpecification extends LciLdapSpecification{
     this.dre = dre;
   }
 
-  public Long getFrom() {
-    return from;
-  }
-
-  public void setFrom(Long from) {
-    this.from = from;
-  }
-
-  public Long getTo() {
-    return to;
-  }
-
-  public void setTo(Long to) {
-    this.to = to;
-  }
-
   @Override
   public LdapQuery toQuery(Name base) {
+    System.out.println(this);
     LdapQueryBuilder queryBuilder = query().base(base);
     AndFilter andFilter = new AndFilter();
 
@@ -95,14 +78,16 @@ public class StudentSpecification extends LciLdapSpecification{
       andFilter.and(new LikeFilter("dre", "*"+dre+"*"));
     }
 
-    if(to != null && to > 0){
-      andFilter.and(new LessThanOrEqualsFilter("shadowExpire", (int) (long) to));
-    }
-
-    if(from != null && from > 0){
-      andFilter.and(new GreaterThanOrEqualsFilter("shadowExpire", (int) (long) from));
-    }
-
     return queryBuilder.filter(andFilter);
+  }
+
+  @Override
+  public String toString() {
+    return "StudentSpecification{" +
+      "uid='" + uid + '\'' +
+      ", name='" + name + '\'' +
+      ", surname='" + surname + '\'' +
+      ", dre='" + dre + '\'' +
+      '}';
   }
 }

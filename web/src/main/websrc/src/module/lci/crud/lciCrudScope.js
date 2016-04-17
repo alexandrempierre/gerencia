@@ -44,7 +44,7 @@
             filtro.pageInfo.totalRegistros = resultado.data.totalRegister;
           }
           setFiltro(filtro);
-          self.list = resultado.data.list || [];
+          self.list = resultado.data || [];
         };
       }
 
