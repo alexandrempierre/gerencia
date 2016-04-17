@@ -44,6 +44,7 @@ public class User extends LCIModel{
 
   public void setLogin(String login) {
     this.login = login;
+    setId(login);
   }
 
   public String getPassword() {
@@ -64,6 +65,7 @@ public class User extends LCIModel{
       "limitHDSpace=" + limitHDSpace +
       ", login='" + login + '\'' +
       ", password='" + password + '\'' +
+      ", lci='" + super.toString() + '\'' +
       '}';
   }
 }
