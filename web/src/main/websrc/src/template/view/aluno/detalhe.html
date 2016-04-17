@@ -1,14 +1,16 @@
-<form class="form-horizontal gerencia-formulario" name="alunoForm" ng-init="alunoForm.$setPristine()" novalidate>
+<form class="form-horizontal gerencia-formulario" name="studentForm" ng-init="studentForm.$setPristine()" novalidate>
   <fieldset>
-    <lci-formtitulo>Aluno</lci-formtitulo>
+    <lci-formtitulo>student</lci-formtitulo>
     <div class="gerencia-formulario-corpo row">
       <div class="col-sm-6">
         <div class="form-group">
           <label for="nome" class="col-sm-4 control-label">Nome<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="nome" name="nome" ng-model="aluno.person.name" placeholder="Nome" ng-required="true" ng-minlength="1" ng-maxlength="64" ng-trim="true" lci-capitalize-nome>
-            <lci-mensagens expressao="alunoForm.nome.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.nome.$touched">Por favor preencher o nome</lci-mensagem>
+            <input type="text" class="form-control" id="nome" name="nome" ng-model="student.person.name"
+                   placeholder="Nome" ng-required="true" ng-minlength="1" ng-maxlength="64" ng-trim="true"
+                   lci-capitalize-nome>
+            <lci-mensagens expressao="studentForm.nome.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.nome.$touched">Por favor preencher o nome</lci-mensagem>
               <lci-mensagem caso="maxlength">O nome deve ter menos de 64 caracteres</lci-mensagem>
             </lci-mensagens>
           </div>
@@ -17,9 +19,12 @@
         <div class="form-group">
           <label for="sobrenome" class="col-sm-4 control-label">Sobrenome<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="sobrenome" name="sobrenome" ng-model="aluno.person.surname" placeholder="Sobrenome" ng-required="true"  ng-minlength="1" ng-maxlength="64" ng-trim="true" lci-capitalize-nome>
-            <lci-mensagens expressao="alunoForm.sobrenome.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.sobrenome.$touched">Por favor preencher o sobrenome</lci-mensagem>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" ng-model="student.person.surname"
+                   placeholder="Sobrenome" ng-required="true" ng-minlength="1" ng-maxlength="64" ng-trim="true"
+                   lci-capitalize-nome>
+            <lci-mensagens expressao="studentForm.sobrenome.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.sobrenome.$touched">Por favor preencher o sobrenome
+              </lci-mensagem>
               <lci-mensagem caso="maxlength">O nome deve ter menos de 64 caracteres</lci-mensagem>
             </lci-mensagens>
           </div>
@@ -28,9 +33,10 @@
         <div class="form-group">
           <label for="dre" class="col-sm-4 control-label">DRE<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="dre" ui-mask="99999999-9" ui-mask-placeholder name="dre" ng-model="aluno.dre" placeholder="DRE" ng-required="true">
-            <lci-mensagens expressao="alunoForm.dre.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.dre.$touched">Por favor preencher o DRE</lci-mensagem>
+            <input type="text" class="form-control" id="dre" ui-mask="99999999-9" ui-mask-placeholder name="dre"
+                   ng-model="student.dre" placeholder="DRE" ng-required="true">
+            <lci-mensagens expressao="studentForm.dre.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.dre.$touched">Por favor preencher o DRE</lci-mensagem>
               <lci-mensagem caso="maxlength">O DRE deve ter exatamente 10 caracteres</lci-mensagem>
               <lci-mensagem caso="mask">Por favor inserir um DRE válido</lci-mensagem>
             </lci-mensagens>
@@ -38,11 +44,16 @@
         </div>
 
         <div class="form-group">
-          <label for="limitHDSpace" class="col-sm-4 control-label">Cota de HD<small>(mb)</small><span class="lci-require"></span></label>
+          <label for="limitHDSpace" class="col-sm-4 control-label">Cota de HD
+            <small>(mb)</small>
+            <span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="limitHDSpace" name="limitHDSpace" ng-model="aluno.user.limitHDSpace" placeholder="Cota ex 500" ng-required="true" ng-pattern="'^[0-9]*'">
-            <lci-mensagens expressao="alunoForm.limitHDSpace.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.limitHDSpace.$touched">Por favor preencher a cota</lci-mensagem>
+            <input type="text" class="form-control" id="limitHDSpace" name="limitHDSpace"
+                   ng-model="student.user.limitHDSpace" placeholder="Cota ex 500" ng-required="true"
+                   ng-pattern="'^[0-9]*'">
+            <lci-mensagens expressao="studentForm.limitHDSpace.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.limitHDSpace.$touched">Por favor preencher a cota
+              </lci-mensagem>
               <lci-mensagem caso="pattern">Cota inválida</lci-mensagem>
               <lci-mensagem caso="maxlength">O DRE deve ter exatamente 10 caracteres</lci-mensagem>
               <lci-mensagem caso="mask">Por favor inserir um DRE válido</lci-mensagem>
@@ -53,19 +64,23 @@
         <div class="form-group">
           <label for="phone" class="col-sm-4 control-label">Telefone<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="phone" name="phone" ng-model="aluno.person.phoneNumber" ui-mask="(99) 9?9999-9999" ui-mask-placeholder placeholder="(99) 99999-9999" ng-required="true">
-            <lci-mensagens expressao="alunoForm.phone.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.phone.$touched">Por favor preencher um telefone</lci-mensagem>
+            <input type="text" class="form-control" id="phone" name="phone" ng-model="student.person.phoneNumber"
+                   ui-mask="(99) 9?9999-9999" ui-mask-placeholder placeholder="(99) 99999-9999" ng-required="true">
+            <lci-mensagens expressao="studentForm.phone.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.phone.$touched">Por favor preencher um telefone
+              </lci-mensagem>
               <lci-mensagem caso="mask">Telefone inválido</lci-mensagem>
             </lci-mensagens>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
+
         <div class="form-group">
           <label for="mail" class="col-sm-4 control-label">E-mail</label>
           <div class="col-sm-8 input-group" style="padding: 0 15px">
-            <input type="text" id="mail" class="form-control" ng-model="aluno.user.login" aria-describedby="basic-addon2" ng-disabled="true">
+            <input type="text" id="mail" class="form-control" ng-model="student.user.login"
+                   aria-describedby="basic-addon2" ng-disabled="true">
             <span class="input-group-addon" id="basic-addon2">@dcc.ufrj.br</span>
           </div>
         </div>
@@ -73,31 +88,36 @@
         <div class="form-group">
           <label for="login" class="col-sm-4 control-label">Login<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="login" name="login" ng-model="aluno.user.login" placeholder="Login" ng-disabled="true">
+            <input type="text" class="form-control" id="login" name="login" ng-model="student.user.login" ng-disabled="true">
           </div>
         </div>
 
         <div class="form-group">
           <label for="externMail" class="col-sm-4 control-label">E-mail Externo<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="externMail" name="externMail" ng-model="aluno.person.externMail" placeholder="exemplo@minhaempresa.com.br" ng-required="true">
-            <lci-mensagens expressao="alunoForm.externMail.$error" class="help-block lci-formulario-mensagens-erro">
-              <lci-mensagem caso="required" ng-if="alunoForm.externMail.$touched">Por favor preencher um email</lci-mensagem>
+            <input type="email" class="form-control" id="externMail" name="externMail"
+                   ng-model="student.person.externMail" placeholder="exemplo@minhaempresa.com.br" ng-required="true">
+            <lci-mensagens expressao="studentForm.externMail.$error" class="help-block lci-formulario-mensagens-erro">
+              <lci-mensagem caso="required" ng-if="studentForm.externMail.$touched">Por favor preencher um email
+              </lci-mensagem>
               <lci-mensagem caso="email">E-mail inválido</lci-mensagem>
             </lci-mensagens>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="senha" class="col-sm-4 control-label">Senha</label>
+          <label for="password" class="col-sm-4 control-label">Senha</label>
           <div class="col-sm-8">
-            <button id="senha" type="button" ng-click="abrirAlterarSenha(aluno.usuario)" class="btn btn-block btn-primary">Alterar senha</button>
+            <button id="password" type="button" ng-click="changePasswordModalOpen(student.user)"
+                    class="btn btn-block btn-primary">Alterar senha
+            </button>
           </div>
         </div>
 
       </div>
     </div>
 
-    <lci-formbotoessalvar ng-model="aluno" fn-cancelar="filtrar()" fn-salvar="salvar(aluno)" lci-disabled="alunoForm.$invalid"></lci-formbotoessalvar>
+    <lci-formbotoessalvar ng-model="student" fn-cancelar="filtrar()" fn-salvar="salvar(student)"
+                          lci-disabled="studentForm.$invalid"></lci-formbotoessalvar>
   </fieldset>
 </form>

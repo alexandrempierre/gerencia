@@ -3,15 +3,12 @@
  */
 
 (function(app){
-  app.controller('alunoDetalheCtrl', function($scope,lciCrudScope, alunoAPI,caminho,registroTO, /*alterarSenhaModal,*/ validacaoAPI){
+  app.controller('alunoDetalheCtrl', function($scope,lciCrudScope, alunoAPI,caminho,registroTO, changePasswordModal){
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
-    
-    /*$scope.abrirAlterarSenha = alterarSenhaModal.abrirModal;*/
-    
-    // Para validar o login
-    $scope.loginUnico = validacaoAPI.loginUnico(alunoAPI);
 
-    $scope.aluno = registroTO.data;
+    $scope.changePasswordModalOpen = changePasswordModal.openModal;
+
+    $scope.student = registroTO.data;
 
   });
 
