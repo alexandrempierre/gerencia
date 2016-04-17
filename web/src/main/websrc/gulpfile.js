@@ -56,13 +56,12 @@ gulp.task('uglifyProd', function () {
 });
 
 gulp.task('uglifyDev', function () {
-  return gulp.src('./src/**/*.js')
+  return gulp.src('./src/**/*.js', {base:'./'})
     .pipe(sourcemaps.init())
-    .pipe(concat('gerencia.js'))
-    .pipe(ngAnnotate())
-    .pipe(uglify({mangle: false}))
+    .pipe(concat("gerencia.js"))
     .pipe(rename({suffix: '.min'}))
-    .pipe(sourcemaps.write('./maps'))
+    .pipe(ngAnnotate())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./../resources/dist/js'));
 });
 
