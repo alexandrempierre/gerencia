@@ -7,9 +7,9 @@
     lciCrudScope.Scope.call($scope,alunoAPI,caminho);
 
     // Para validar o login
-    $scope.loginUnico = validateAPI.loginUnico;
+    $scope.uniqueLogin = validateAPI.uniqueLogin;
 
-    $scope.aluno = {
+    $scope.student = {
       user:{
         limitHDSpace: defaultValues.limitHDSpace
       },

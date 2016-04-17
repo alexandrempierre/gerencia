@@ -10,7 +10,7 @@
       return resolve();
     });
 
-    this.loginUnique = function _loginUnique(login){
+    this.uniqueLogin = function _loginUnique(login){
         if(login.length > 0){
           return userAPI.get(login).then(
             function _resolve(loginTO){
