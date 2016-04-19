@@ -3,6 +3,7 @@ package br.ufrj.dcc.gerencia.dataaccess.base;
 import br.ufrj.dcc.gerencia.domain.base.LCIModel;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ldap.NameNotFoundException;
 import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.LdapTemplate;
@@ -43,7 +44,11 @@ public abstract class CrudLdapDataAccessBase<M extends LCIModel, Mapper extends 
   }
 
   public M findByKey(Name dn){
-    return ldapTemplate.lookup(dn, mapper);
+    try {
+      return ldapTemplate.lookup(dn, mapper);
+    }catch (NameNotFoundException e){
+      return null;
+    }
   }
 
   public List<M> find(LciLdapSpecification specification, Name dnBase){

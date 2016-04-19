@@ -49,14 +49,12 @@ public abstract class RepositoryImpl<
   }
 
   public M get(String uid) {
-    try {
-      M register = getDataAccess().findByKey(uid);
-      register.setSaved(true);
-      return register;
-    }catch(Exception e){
-      e.printStackTrace();
+    M register = getDataAccess().findByKey(uid);
+    if(register == null){
       return null;
     }
+    register.setSaved(true);
+    return register;
   }
 
   public M delete(String uid) {
