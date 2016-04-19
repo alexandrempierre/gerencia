@@ -3,8 +3,8 @@
  */
 
 (function(app){
-  app.service('professorAPI', function($http){
+  app.service('teacherAPI', function($http){
     CrudAbstractService.call(this,$http);
-    this.servicePath = 'professor';
+    this.servicePath = 'teacher';
   });
 })(angular.module('gerencia'));

@@ -4,100 +4,53 @@
     <div class="gerencia-formulario-corpo row">
       <div class="form-group">
         <label for="nome" class="col-sm-1 control-label">Nome</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="nome" ng-model="filtro.nome" placeholder="Nome">
+          <input type="text" class="form-control" id="nome" ng-model="filter.name" placeholder="Nome">
         </div>
+
         <label for="sobrenome" class="col-sm-1 control-label">Sobrenome</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="sobrenome" ng-model="filtro.sobrenome" placeholder="Sobrenome">
+          <input type="text" class="form-control" id="sobrenome" ng-model="filter.surname" placeholder="Sobrenome">
         </div>
+
         <label for="login" class="col-sm-1 control-label">Login</label>
-
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="login" ng-model="filtro.login" placeholder="login">
+          <input type="text" class="form-control" id="login" ng-model="filter.uid" placeholder="login">
         </div>
-      </div>
-      <div class="form-group">
-        <label for="matricula" class="col-sm-1 control-label">Matrícula</label>
-
-        <div class="col-sm-3">
-          <input type="text" class="form-control" id="matricula" ng-model="filtro.matricula" placeholder="Matrícula">
-        </div>
-
-        <label for="cpf" class="col-sm-1 control-label">CPF</label>
-
-        <div class="col-sm-3">
-          <input type="text" class="form-control" id="cpf" ng-model="filtro.cpf" placeholder="CPF">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="expiracao" class="col-sm-1 control-label">Expiração:</label>
-        <div class="col-sm-3">
-          <input bs-switch ng-model="filtro.infinito" id="expiracao" name="infinito" type="checkbox" switch-label="Infinito" switch-on-text="Sim" switch-off-text="Não" switch-size="">
-        </div>
-        <label for="expiracaoDe" class="col-sm-1 control-label">De</label>
-        <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.expiracaoDe" id="expiracaoDe" name="expiracaoDe"
-                             language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
-        </span>
-
-        <label for="expiracaoAte" class="col-sm-1 control-label">Até</label>
-        <span class="col-md-3 control-label">
-          <ng-bs3-datepicker class="lci-no-validate" ng-model="filtro.expiracaoAte" id="expiracaoAte" name="expiracaoAte"
-                             language="pt-br" date-format="DD/MM/YYYY" lci-date ng-disabled="filtro.infinito">
-        </span>
       </div>
     </div>
-    <lci-formbotoesfiltro ng-model="filtro" fn-limpar="limpar" fn-inserir="inserir()"
-                          filtrar="buscar(filtro)"></lci-formbotoesfiltro>
+    <lci-formbotoesfiltro ng-model="filter" fn-limpar="limpar" fn-inserir="inserir()" filtrar="buscar(filter)"></lci-formbotoesfiltro>
   </fieldset>
 </form>
 <hr>
 <table class="table table-hover gerencia-tabela">
   <thead>
   <tr>
-    <th width="15">#</th>
     <th>Nome</th>
-    <th>CPF</th>
-    <th>Matrícula</th>
+    <th>DRE</th>
     <th>Login</th>
-    <th colspan="4" width="15">Expiração</th>
+    <th colspan="3" width="15">Expiração</th>
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="professor in lista">
-    <td>{{professor.id}}</td>
-    <td>{{professor.nome}} {{professor.sobrenome}}</td>
-    <td>{{professor.cpf | lciCPFFilter}}</td>
-    <td>{{professor.matricula}}</td>
-    <td>{{professor.usuario.login}}</td>
-    <td width="15" class="text-center">{{professor.expiracao||'-' | date:'dd/MM/yyyy'}}</td>
+  <tr ng-repeat="teacher in list">
+    <td>{{teacher.person.displayName}}</td>
+    <td>{{teacher.id}}</td>
+    <td width="15" class="text-center">{{teacher.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
     <td width="5">
-      <button id="senha" type="button" ng-click="abrirAlterarSenha(professor.usuario)" class="btn btn-link gerencia-botao-link"><i
-        class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
+      <button id="senha" type="button" ng-click="changePasswordModalOpen(teacher.user)" class="btn btn-link gerencia-botao-link"><i
+          class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
     </td>
     <td width="5">
-      <button type="button" ng-click="editar(professor.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
-        class="glyphicon glyphicon-pencil"></i></button>
+      <button type="button" ng-click="editar(teacher.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
+          class="glyphicon glyphicon-pencil"></i></button>
     </td>
     <td width="5">
-      <button type="button" class="btn btn-link gerencia-botao-link" uib-tooltip="Remover" tooltip-placement="top" ng-click="deletar(professor.id)"><i
-        class="glyphicon glyphicon-trash"></i></button>
+      <button type="button" class="btn btn-link gerencia-botao-link" uib-tooltip="Remover" tooltip-placement="top" ng-click="deletar(teacher.id)"><i
+          class="glyphicon glyphicon-trash"></i></button>
     </td>
   </tr>
-  <tr ng-if="lista && lista.length">
-    <td colspan="9">
-      <uib-pagination ng-change="buscarPagina(filtro)" total-items="filtro.pageInfo.totalRegistros"
-                      ng-model="filtro.pageInfo.pageIndex" items-per-page="filtro.pageInfo.pageSize"
-                      class="pagination-sm pull-right" direction-links="true" rotate="true"
-                      boundary-link-numbers="true" previous-text="&lsaquo;" next-text="&rsaquo;"
-                      force-ellipses="true"></uib-pagination>
-    </td>
-  </tr>
-  <tr ng-if="!lista || lista.length == 0">
+  <tr ng-if="!list || list.length == 0">
     <td colspan="9"><p class="text-danger">Nenhum resultado encontrado!</p></td>
   </tr>
   </tbody>

@@ -10,15 +10,6 @@
 app.config(function(lciCrudRouteProvider, lciCrudPageInfo){
 
 
-  lciCrudRouteProvider.registrar('Cadastramento de Sistema', 'Sistema', null, '/sistema', 'sistemaAPI',lciCrudPageInfo,
-    {
-      controller: 'sistemaCtrl',
-      templateUrl: '/view/template/view/sistema/filtro.html'
-    }, {
-      controller: 'sistemaAtualizarCtrl',
-      templateUrl: '/view/template/view/sistema/detalhe.html'
-    });
-
   lciCrudRouteProvider.registrar('Cadastramento de Aluno', 'Aluno', null, '/aluno', 'alunoAPI',lciCrudPageInfo,
     {
       controller: 'alunoFiltroCtrl',
@@ -31,7 +22,7 @@ app.config(function(lciCrudRouteProvider, lciCrudPageInfo){
       templateUrl: '/view/template/view/aluno/inserir.html'
     });
 
-  lciCrudRouteProvider.registrar('Cadastramento de Professor', 'Professor', null, '/professor', 'professorAPI',lciCrudPageInfo,
+  lciCrudRouteProvider.registrar('Cadastramento de Professor', 'Professor', null, '/professor', 'teacherAPI',lciCrudPageInfo,
     {
       controller: 'professorFiltroCtrl',
       templateUrl: '/view/template/view/professor/filtro.html'

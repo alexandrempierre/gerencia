@@ -3,22 +3,12 @@
  */
 
 (function(app){
-  app.controller('professorFiltroCtrl', function(lciCrudScope, $scope, professorAPI, listaTO, caminho, lciCrudPageInfo, alterarSenhaModal){
-    lciCrudScope.Scope.call($scope, professorAPI, caminho);
-    $scope.abrirAlterarSenha = alterarSenhaModal.abrirModal;
+  app.controller('professorFiltroCtrl', function(lciCrudScope, $scope, teacherAPI, listaTO, caminho, lciCrudPageInfo, changePasswordModal){
+    lciCrudScope.Scope.call($scope, teacherAPI, caminho);
 
-    $scope.filtro = $scope.getFiltro();
-    $scope.lista = listaTO.data.list || [];
-
-    if(!$scope.filtro.pageInfo) $scope.filtro.pageInfo = lciCrudPageInfo;
-    $scope.filtro.pageInfo.totalRegistros = listaTO.data.totalRegister;
-
-    $scope.mapFiltro = function(filtro){
-      if(filtro.infinito){
-        filtro.expiracaoAte = filtro.expiracaoDe = null;
-      }
-      return filtro;
-    };
+    $scope.changePasswordModalOpen = changePasswordModal.openModal;
+    $scope.filter = $scope.getFiltro();
+    $scope.list = listaTO.data || [];
 
   });
 
