@@ -3,29 +3,19 @@
  */
 
 (function(app){
-  app.controller('professorInserirCtrl', function(lciCrudScope,$scope,professorAPI, caminho,validacaoAPI){
-    lciCrudScope.Scope.call($scope,professorAPI,caminho);
-
-    //Sobrecarregando o método salvar
-    var salvarFn = $scope.salvar;
-    $scope.salvar = function(registro){
-      if(registro.usuario.infinito){
-        registro.usuario.expiracao = null;
-      }
-      salvarFn(registro);
-    };
+  app.controller('professorInserirCtrl', function(lciCrudScope,$scope, teacherAPI, caminho, validateAPI, defaultValues){
+    lciCrudScope.Scope.call($scope,teacherAPI,caminho);
 
     // Para validar o login
-    $scope.loginUnico = validacaoAPI.loginUnico;
-    // Para validar o CPF
-    $scope.cpfUnico = validacaoAPI.cpfUnico;
+    $scope.uniqueLogin = validateAPI.uniqueLogin;
 
-    $scope.professor = {
-      usuario:{
-        ativo: true,
-        infinito: false
-      }
+    $scope.teacher = {
+      user:{
+        limitHDSpace: defaultValues.limitHDSpace
+      },
+      person: {}
     };
+
   });
 
 })(angular.module('gerencia'));

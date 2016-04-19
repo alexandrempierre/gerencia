@@ -55,6 +55,9 @@ public class TeacherLdapMapper extends LCIUserAbstractContextMapper<Teacher>{
   public void mapToContext(Teacher register, DirContextOperations ctx) {
     ctx.setAttributeValues("objectclass", TEACHER_OBJECT_CLASS);
 
+    //TODO: fazer departamento
+    ctx.setAttributeValue("departamento", "nothing");
+
     ctx.setAttributeValue("cota", Integer.toString(register.getUser().getLimitHDSpace()));
     ctx.setAttributeValue("uid", register.getUser().getLogin());
     ctx.setAttributeValue("cn", register.getPerson().getName());

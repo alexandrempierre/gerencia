@@ -38,6 +38,7 @@ public class Teacher extends LCIModel {
 
   public void setUser(User user) {
     this.user = user;
+    this.setId(user.getLogin());
   }
 
   public Person getPerson() {
