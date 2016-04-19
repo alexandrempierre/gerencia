@@ -5,5 +5,6 @@ package br.ufrj.dcc.gerencia.domain.auxiliar;
  */
 public class ObjectClassLdap {
   public static final String[] STUDENT_OBJECT_CLASS = new String[] {"dcc","aluno","inetOrgPerson","posixAccount","shadowAccount","sambaSamAccount","person","organizationalPerson","top"};
+  public static final String[] TEACHER_OBJECT_CLASS = new String[] {"dcc","professor","inetOrgPerson","posixAccount","shadowAccount","sambaSamAccount","person","organizationalPerson","top"};
   public static final String[] SAMBA_INFO_OBJECT_CLASS = new String[] {"top","sambaDomain","sambaUnixIdPool"};
 }

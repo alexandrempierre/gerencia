@@ -68,4 +68,13 @@ public abstract class UserBaseSpecification extends LciLdapSpecification {
   }
 
   protected abstract void makeFilter(AndFilter filter);
+
+  @Override
+  public String toString() {
+    return "UserBaseSpecification{" +
+      "uid='" + uid + '\'' +
+      ", name='" + name + '\'' +
+      ", surname='" + surname + '\'' +
+      '}';
+  }
 }
