@@ -29,5 +29,6 @@ public class UserLdapMapper extends LCIUserAbstractContextMapper<User> {
     ctx.setAttributeValue("sambaNTPassword", register.getSambaNTPassword());
     ctx.setAttributeValue("sambaPwdMustChange", Long.toString(register.getUpdatedAt() + GerenciaDefaultConstraint.SAMBA_PWD_MUST_CHANGE));
     ctx.setAttributeValue("shadowLastChange", Long.toString(GerenciaDefaultConstraint.ShadowLastChange(register.getUpdatedAt())));
+    ctx.setAttributeValue("monitor", register.isOperator() ? "1" : "0");
   }
 }

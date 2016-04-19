@@ -73,14 +73,6 @@ public class Teacher extends LCIModel {
     this.shadow = shadow;
   }
 
-  public boolean isOperator() {
-    return operator;
-  }
-
-  public void setOperator(boolean operator) {
-    this.operator = operator;
-  }
-
   @Override
   public String toString() {
     return "Teacher{" +

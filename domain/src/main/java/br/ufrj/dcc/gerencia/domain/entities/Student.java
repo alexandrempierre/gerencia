@@ -15,7 +15,6 @@ public class Student extends LCIModel {
   private ShadowObj shadow;
 
   private String DRE;
-  private boolean operator;
 
   public Student() {
     user = new User();
@@ -84,14 +83,6 @@ public class Student extends LCIModel {
     this.DRE = DRE;
   }
 
-  public boolean isOperator() {
-    return operator;
-  }
-
-  public void setOperator(boolean operator) {
-    this.operator = operator;
-  }
-
   @Override
   public String toString() {
     return "Student{" +
@@ -101,8 +92,6 @@ public class Student extends LCIModel {
       ", samba=" + samba +
       ", shadow=" + shadow +
       ", DRE='" + DRE + '\'' +
-      ", operator=" + operator +
-      ", lciModel=" + super.toString() +
       '}';
   }
 }

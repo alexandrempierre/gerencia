@@ -43,7 +43,7 @@ public class TeacherLdapMapper extends LCIUserAbstractContextMapper<Teacher>{
     teacher.getShadow().setShadowMin(new Integer(ctx.getStringAttribute("shadowMin")));
     teacher.getShadow().setShadowWarning(new Integer(ctx.getStringAttribute("shadowWarning")));
     teacher.setId(teacher.getUser().getLogin());
-    //teacher.setOperator(ctx.getStringAttribute("monitor").equals("1"));
+    //teacher.getUser().setOperator(ctx.getStringAttribute("monitor").equals("1"));
   }
 
   @Override
@@ -82,6 +82,6 @@ public class TeacherLdapMapper extends LCIUserAbstractContextMapper<Teacher>{
     ctx.setAttributeValue("shadowMin", Integer.toString(register.getShadow().getShadowMin()));
     ctx.setAttributeValue("shadowWarning", Integer.toString(register.getShadow().getShadowWarning()));
     ctx.setAttributeValue("userPassword", register.getUser().getPassword());
-    //ctx.setAttributeValue("monitor", register.isOperator() ? "1" : "0");
+    //ctx.setAttributeValue("monitor", register.getUser().isOperator() ? "1" : "0");
   }
 }

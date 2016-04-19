@@ -13,6 +13,7 @@ public class User extends LCIModel{
   private String password;
   private String SambaLMPassword;
   private String SambaNTPassword;
+  private boolean operator;
 
   public String getSambaLMPassword() {
     return SambaLMPassword;
@@ -67,13 +68,24 @@ public class User extends LCIModel{
     this.dn = dn;
   }
 
+  public boolean isOperator() {
+    return operator;
+  }
+
+  public void setOperator(boolean operator) {
+    this.operator = operator;
+  }
+
   @Override
   public String toString() {
     return "User{" +
-      "limitHDSpace=" + limitHDSpace +
+      "dn='" + dn + '\'' +
+      ", limitHDSpace=" + limitHDSpace +
       ", login='" + login + '\'' +
       ", password='" + password + '\'' +
-      ", lci='" + super.toString() + '\'' +
+      ", SambaLMPassword='" + SambaLMPassword + '\'' +
+      ", SambaNTPassword='" + SambaNTPassword + '\'' +
+      ", operator=" + operator +
       '}';
   }
 }
