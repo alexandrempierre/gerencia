@@ -28,11 +28,12 @@
         <div class="form-group">
           <label for="dre" class="col-sm-4 control-label">DRE<span class="lci-require"></span></label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="dre" ui-mask="99999999-9" ui-mask-placeholder name="dre" ng-model="student.dre" placeholder="DRE" ng-required="true">
+            <input type="text" class="form-control" id="dre" ui-mask="99999999-9" ui-mask-placeholder name="dre" ng-model="student.dre" placeholder="DRE" ng-required="true" lci-validacao-promise promise-fn="validateUniqueDRE">
             <lci-mensagens expressao="studentForm.dre.$error" class="help-block lci-formulario-mensagens-erro">
               <lci-mensagem caso="required" ng-if="studentForm.dre.$touched">Por favor preencher o DRE</lci-mensagem>
               <lci-mensagem caso="maxlength">O DRE deve ter exatamente 10 caracteres</lci-mensagem>
               <lci-mensagem caso="mask">Por favor inserir um DRE válido</lci-mensagem>
+              <lci-mensagem caso="validacaoPromise">DRE cadastrado!</lci-mensagem>
             </lci-mensagens>
           </div>
         </div>
@@ -44,8 +45,6 @@
             <lci-mensagens expressao="studentForm.limitHDSpace.$error" class="help-block lci-formulario-mensagens-erro">
               <lci-mensagem caso="required" ng-if="studentForm.limitHDSpace.$touched">Por favor preencher a cota</lci-mensagem>
               <lci-mensagem caso="pattern">Cota inválida</lci-mensagem>
-              <lci-mensagem caso="maxlength">O DRE deve ter exatamente 10 caracteres</lci-mensagem>
-              <lci-mensagem caso="mask">Por favor inserir um DRE válido</lci-mensagem>
             </lci-mensagens>
           </div>
         </div>

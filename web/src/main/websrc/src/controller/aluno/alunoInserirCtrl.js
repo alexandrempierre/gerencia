@@ -8,6 +8,7 @@
 
     // Para validar o login
     $scope.uniqueLogin = validateAPI.uniqueLogin;
+    $scope.validateUniqueDRE = alunoAPI.validateUniqueDRE;
 
     $scope.student = {
       user:{
