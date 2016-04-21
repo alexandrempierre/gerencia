@@ -5,7 +5,7 @@
 (function(app){
   app.directive('lciFormbotoesfiltro', function(){
     return {
-      templateUrl:'/view/module/lci/util/template/formulario/lciFormbotoesfiltro.html',
+      templateUrl:'/assets/view/module/lci/util/template/formulario/lciFormbotoesfiltro.html',
       restrict: 'E',
       require: 'ngModel',
       scope: {

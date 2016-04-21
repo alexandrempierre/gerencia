@@ -4,7 +4,7 @@
 (function(app){
 
   app.controller('lciMenuCtrl', function($rootScope, $scope, lciMenuAPI){
-    this.templateUrl = '/view/module/lci/menu/template.html';
+    this.templateUrl = '/assets/view/module/lci/menu/template.html';
     this.listaMenu = lciMenuAPI.registrados();
     $scope.titulo = "";
 

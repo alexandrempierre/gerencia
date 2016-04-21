@@ -20,7 +20,7 @@
     lciDialogoAPIProvider.setInstanceDefault({
       animation: true,
       size: 'sm',
-      templateUrl: '/view/module/lci/dialogo/template.html',
+      templateUrl: '/assets/view/module/lci/dialogo/template.html',
       controller: 'lciDialogoAPICtrl'
     });
   });

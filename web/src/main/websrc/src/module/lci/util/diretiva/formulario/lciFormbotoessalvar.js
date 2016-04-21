@@ -5,7 +5,7 @@
 (function(app){
   app.directive('lciFormbotoessalvar', function(){
     return {
-      templateUrl:'/view/module/lci/util/template/formulario/lciFormbotoessalvar.html',
+      templateUrl:'/assets/view/module/lci/util/template/formulario/lciFormbotoessalvar.html',
       restrict: 'E',
       scope: {
         fnSalvar:'&',

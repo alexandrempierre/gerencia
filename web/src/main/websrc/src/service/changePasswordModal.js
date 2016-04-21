@@ -8,7 +8,7 @@
 
       return $uibModal.open({
         animation: true,
-        templateUrl: '/view/template/view/usuario/changePassword.html',
+        templateUrl: '/assets/view/template/view/usuario/changePassword.html',
         controller: 'userChangePasswordCtrl',
         resolve: {
           userTO: function () {

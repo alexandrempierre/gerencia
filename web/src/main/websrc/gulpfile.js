@@ -133,6 +133,10 @@ gulp.task('copyDevDepCSS', function(){
     .pipe(gulp.dest('./../resources/dist/css'));
 });
 
+gulp.task('copyTemplate', function(){
+  return gulp.src('template/login.html')
+    .pipe(gulp.dest('./../resources/templates'));
+});
 
 gulp.task('copyImg',function(){
   return gulp.src([
@@ -159,9 +163,9 @@ gulp.task('copyIndexDev', function(){
 });
 
 gulp.task('default', function (cb) {
-  return runSequence('clean', ['jshint', 'uglifyDev', 'htmlmin', 'cssDev', 'copyImg', 'copyBSFonts', 'copyDevDepCSS', 'copyDevDepJS', 'copyIndexDev'], cb)
+  return runSequence('clean', ['jshint', 'uglifyDev', 'htmlmin', 'cssDev', 'copyImg', 'copyBSFonts', 'copyDevDepCSS', 'copyDevDepJS', 'copyIndexDev', 'copyTemplate'], cb)
 });
 
 gulp.task('prod', function (cb) {
-  return runSequence('clean', ['jshint', 'uglifyProd', 'htmlmin', 'cssProd', 'copyImg', 'copyBSFonts', 'copyIndexProd'], cb)
+  return runSequence('clean', ['jshint', 'uglifyProd', 'htmlmin', 'cssProd', 'copyImg', 'copyBSFonts', 'copyIndexProd', 'copyTemplate'], cb)
 });
