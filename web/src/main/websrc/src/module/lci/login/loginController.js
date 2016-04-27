@@ -3,7 +3,10 @@
  */
 
 (function(app){
-  app.controller('loginController', function($scope){
-    
+  app.controller('loginController', function($rootScope, $scope, $location){
+    $rootScope.autheticated = true;
+    if($rootScope.autheticated){
+      $location.path('/');
+    }
   });
 })(angular.module('LCI.Login'));
