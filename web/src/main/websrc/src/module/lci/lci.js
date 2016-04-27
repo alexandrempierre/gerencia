@@ -13,6 +13,7 @@ angular.module('LCI.Dialogo',[
 ]);
 angular.module('LCI.Crud',['LCI.Angular','LCI.Util', 'LCI.Menu','LCI.Dialogo']);
 
+angular.module('LCI.Login',[]);
 angular.module('LCI',[
   'LCI.Angular',
   'LCI.Crud',
@@ -20,5 +21,6 @@ angular.module('LCI',[
   'LCI.Mensagem',
   'LCI.Menu',
   'LCI.UsuarioLogado',
-  'LCI.Util'
+  'LCI.Util',
+  'LCI.Login'
 ]);
