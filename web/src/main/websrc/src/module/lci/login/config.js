@@ -5,7 +5,7 @@
 
 (function(app){
 
-  app.config(function($routeProvider,$httpProvider){
+  app.config(function($routeProvider,$httpProvider, $authenticationServiceProvider){
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
@@ -14,6 +14,8 @@
       controllerAs: 'vm',
       templateUrl: '/assets/view/module/lci/login/login.html'
     });
+
+    $authenticationServiceProvider.setUrlLogin('');
 
   });
 
