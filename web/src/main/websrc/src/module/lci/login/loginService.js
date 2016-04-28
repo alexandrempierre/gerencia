@@ -14,18 +14,13 @@
 
     this.$get = function($http){
       return {
-        authenticate: function(credentials, callback) {
-          var headers = credentials ? {
-            authorization : "Basic " + btoa(credentials.name + ":" + credentials.password)
-          } : {};
+        authenticate: function(credentials) {
+          var headers =
+            credentials ?
+              {authorization : "Basic " + btoa(credentials.uid + ":" + credentials.password)} :
+              {};
 
-          $http.get('user', {headers : headers}).then(function(response) {
-            $rootScope.authenticated = !!response.data.name;
-            callback && callback();
-          }, function() {
-            $rootScope.authenticated = false;
-            callback && callback();
-          });
+          $http.get(urlAuthentication, {headers : headers});
         }
       };
     };

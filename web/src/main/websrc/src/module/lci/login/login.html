@@ -1,13 +1,17 @@
-<section ng-hide="autheticated" class="section-login">
-  <form role="form" ng-submit="vm.login()">
-    <div class="form-group">
-      <input type="text" class="form-control" id="uid" placeholder="Login" ng-model="vm.credentials.uid">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="password" placeholder="Senha" ng-model="vm.credentials.password">
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-block btn-primary">Entrar</button>
-    </div>
-  </form>
-</section>
+<div class="container">
+  <div class="col-lg-12">
+    <section class="section-login">
+      <form role="form" ng-submit="vm.login()">
+        <div class="form-group">
+          <input type="text" class="form-control" id="uid" placeholder="Login" ng-model="vm.credentials.uid">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" placeholder="Senha" ng-model="vm.credentials.password">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-block btn-primary">Entrar</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
