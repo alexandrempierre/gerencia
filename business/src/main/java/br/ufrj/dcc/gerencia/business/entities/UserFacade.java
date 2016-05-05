@@ -33,4 +33,8 @@ public class UserFacade extends CrudFacade<User,LciLdapSpecification,UserReposit
   public void hashPassword(User register){
     register.setPassword(PasswordUtil.passowordHash(register.getPassword()));
   }
+
+  public void authenticate(String login, String password){
+    getRepository().authenticate(login,password);
+  }
 }

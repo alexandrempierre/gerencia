@@ -9,4 +9,5 @@ import br.ufrj.dcc.gerencia.repository.base.Repository;
  */
 
 public interface UserRepository extends Repository<User,LciLdapSpecification>{
+  void authenticate(String login, String password);
 }

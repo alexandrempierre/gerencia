@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * Created by fausto on 4/5/16.
  */
 
-@Order(2) // Quando colocar o security, passar para 2 e colocar o @Order(1) no security
+@Order(1) // Quando colocar o security, passar para 2 e colocar o @Order(1) no security
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 

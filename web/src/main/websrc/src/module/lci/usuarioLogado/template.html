@@ -1,7 +1,7 @@
 <div class="row lcilogin-topbar">
   <img ng-src="{{logoUrl}}" class="lcilogin-logo" />
   <div class="pull-right">
-    <p>{{nomeUsuario | uppercase}} <span class="glyphicon glyphicon-user"></span></p>
-    <p class="pull-right"><a href="#!" class="">Sair <span class="glyphicon glyphicon-off"></span></a></p>
+    <p>{{user.login | uppercase}} <span class="glyphicon glyphicon-user"></span></p>
+    <p class="pull-right"><a href="#/" class="" ng-click="logout()">Sair <span class="glyphicon glyphicon-off"></span></a></p>
   </div>
 </div>

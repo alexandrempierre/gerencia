@@ -4,8 +4,12 @@
 
 
 (function(app){
-  app.controller('lciUsuarioLogadoCtrl', function($scope, lciUsuarioLogadoConfig){
+  app.controller('lciUsuarioLogadoCtrl', function($scope, lciUsuarioLogadoConfig, credentialManager){
     angular.extend($scope,lciUsuarioLogadoConfig);
     this.templateUrl = lciUsuarioLogadoConfig.templateUrl;
+    $scope.logout = function(){
+      credentialManager.logout();
+    };
+
   });
 })(angular.module('LCI.UsuarioLogado'));

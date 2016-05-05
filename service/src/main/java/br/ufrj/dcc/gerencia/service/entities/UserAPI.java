@@ -17,4 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/user")
 public class UserAPI extends CrudRestAPI<User, LciLdapSpecification, UserFacade, UserRepository> implements UserContract{
 
+  @Override
+  public void authenticate(String login, String password) {
+    getFacade().authenticate(login, password);
+  }
 }

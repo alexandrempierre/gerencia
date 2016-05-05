@@ -2,8 +2,10 @@ package br.ufrj.dcc.gerencia.dataaccess.entities;
 
 import br.ufrj.dcc.gerencia.dataaccess.base.CrudLdapDataAccess;
 import br.ufrj.dcc.gerencia.dataaccess.mapper.UserLdapMapper;
+import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import br.ufrj.dcc.gerencia.domain.entities.User;
 import org.springframework.ldap.support.LdapNameBuilder;
+import static org.springframework.ldap.query.LdapQueryBuilder.query;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,5 +23,9 @@ public class UserLDAPDataAccess extends CrudLdapDataAccess<User, UserLdapMapper>
   @Override
   protected LdapNameBuilder getBaseDN(LdapNameBuilder instance) {
     return instance.add("ou","usuarios");
+  }
+
+  public void authenticate(LciLdapSpecification query, String password){
+    ldapTemplate.authenticate(query.toQuery(getBaseDN()),password);
   }
 }

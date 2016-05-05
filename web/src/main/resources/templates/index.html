@@ -64,12 +64,11 @@
       <p><strong>DESENVOLVIMENTO</strong></p>
     </div>
     <sl-errmodal></sl-errmodal>
-    <div ng-show="$rootScope.authenticated" ng-controller="lciUsuarioLogadoCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
-    <div ng-show="$rootScope.authenticated" ng-controller="lciMenuCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
+    <div ng-show="authenticated" ng-controller="lciUsuarioLogadoCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
+    <div ng-show="authenticated" ng-controller="lciMenuCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
+    <div ng-hide="authenticated" ng-controller="loginController as vm" ng-include="vm.templateUrl"></div>
 
-    <div ng-hide="$rootScope.authenticated" ng-controller="loginController as vm" ng-include="vm.templateUrl"></div>
-
-    <div ng-show="$rootScope.authenticated" class="container">
+    <div ng-show="authenticated" class="container">
       <div class="col-lg-12">
         <ng-view></ng-view>
       </div>
