@@ -4,10 +4,10 @@
 
 angular.module('gerencia',[
   'ngRoute',
-  'sugarloaf',
   'ui.bootstrap',
+  'LCI',
+  'sugarloaf',
   'ng-bs3-datepicker',
   'ui.mask',
-  'frapontillo.bootstrap-switch',
-  'LCI'
+  'frapontillo.bootstrap-switch'
 ]);

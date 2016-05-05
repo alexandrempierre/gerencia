@@ -38,7 +38,7 @@ public class UserRepositoryImpl extends
     try {
       getDataAccess().authenticate(userGetSpecification, password);
     }catch (EmptyResultDataAccessException e){ //empty result
-      throw new AuthenticationException();
+      throw new AuthenticationException(null);
     }
   }
 

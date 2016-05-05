@@ -8,6 +8,7 @@
   app.factory('authenticatorInterceptor', function($q, credentialManager){
 
     return {
+
       request: function _requestAuthenticatorInterceptor(config){
         if(credentialManager.hasCredential()){
           config.headers.authorization = credentialManager.authorizationHeader(credentialManager.credential());
@@ -16,12 +17,11 @@
       },
 
       responseError: function _responseAuthenticatorInterceptor(response){
-        if(response.status == 401){
+        console.log(response);
+        if (response.status == 401){
           credentialManager.logout().withError();
-          return $q.resolve(response);
-        }else{
-          return $q.reject(response);
         }
+        return $q.reject(response);
       }
     };
 

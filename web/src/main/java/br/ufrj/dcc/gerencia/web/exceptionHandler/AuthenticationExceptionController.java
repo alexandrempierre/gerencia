@@ -1,5 +1,6 @@
 package br.ufrj.dcc.gerencia.web.exceptionHandler;
 
+import br.ufrj.dcc.gerencia.domain.to.ExceptionTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ldap.AuthenticationException;
@@ -21,10 +22,15 @@ public class AuthenticationExceptionController {
 
   @ExceptionHandler(AuthenticationException.class)
   @ResponseBody
-  public ResponseEntity<String> ResponseEntityauthenticationExceptionHandler(HttpServletRequest req, Exception ex){
-    MultiValueMap<String, String> header = new LinkedMultiValueMap<String,String>(1);
-    header.add("WWW-Authenticate", String.format("Basic realm=\"%s\"", ERROR_MESSAGE));
-    return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED.getReasonPhrase() ,header, HttpStatus.UNAUTHORIZED);
+  public ResponseEntity<ExceptionTO> ResponseEntityauthenticationExceptionHandler(HttpServletRequest req, Exception ex){
+    ExceptionTO exceptionTO = new ExceptionTO(null, HttpStatus.UNAUTHORIZED.getReasonPhrase());
+    String ajaxSending = req.getHeader("X-Requested-With");
+    if(ajaxSending != null && !ajaxSending.equals("XMLHttpRequest")){
+      MultiValueMap<String, String> header = new LinkedMultiValueMap<String, String>(1);
+      header.add("WWW-Authenticate", String.format("Basic realm=\"%s\"", ERROR_MESSAGE));
+      return new ResponseEntity<ExceptionTO>(exceptionTO, header, HttpStatus.UNAUTHORIZED);
+    }
+    return new ResponseEntity<ExceptionTO>(exceptionTO , HttpStatus.UNAUTHORIZED);
   }
 
 }
