@@ -11,7 +11,7 @@
 
     this.getUserByCredential = function(credentials){
       credentialManager.credential(credentials);
-      this.get(credentials.uid).then(function(response){
+      return this.get(credentials.uid).then(function(response){
         credentialManager.login(response.data);
       });
     };
