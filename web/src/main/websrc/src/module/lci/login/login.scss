@@ -1,3 +1,91 @@
-.section-login{
-  margin: 20vh 20vw;
+$colorPrimary: #22425D;
+
+.login-html {
+  background: url(/assets/img/module/lci/assets/loginbg.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-body {
+  background-color: transparent;
+}
+
+.form-signin-box {
+  //background-color: rgba(187,187,187,0.75);
+  background-color: #FFF;
+  padding: 0px;
+  margin:120px auto;
+  max-width: 800px;
+
+  .row{
+    margin: 0;
+    border: 1px solid $colorPrimary;
+
+    &.form-signin-foot{
+      padding: 15px;
+  //    background-color: rgba(40,40,40,0.75);
+      background-color: $colorPrimary;
+      color: #898989;
+    }
+
+    .form-signin-right{
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-left-color: #8B8B8B;
+    }
+
+    .form-signin-left{
+      padding: 35px;
+      color: #303030;
+    }
+
+    &.form-signin-body{
+      padding: 20px 0;
+    }
+
+    .checkbox {
+      color: #303030;
+    }
+
+    .form-signin-box-section {
+      padding: 30px;
+    }
+
+    .btn-submit-form-signin{
+      margin-top: 15px;
+      border-radius: 0px;
+    }
+
+    input.input-form-signin {
+      border-radius: 0;
+      margin: 10px 0;
+//      background-color: rgb(187,187,187);
+      border-color: #404040;
+    }
+
+    .form-control:focus {
+      z-index: 2;
+    }
+
+    .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+
+}
+
+
+.img-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1000;
 }

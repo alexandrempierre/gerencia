@@ -140,7 +140,8 @@ gulp.task('copyTemplate', function(){
 
 gulp.task('copyImg',function(){
   return gulp.src([
-      'src/**/*.png'
+      'src/**/*.png',
+      'src/**/*.jpeg'
     ])
     .pipe(gulp.dest('./../resources/dist/img'));
 });
