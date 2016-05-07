@@ -108,7 +108,7 @@ gulp.task('copyDevDepJS', function(){
     "./node_modules/moment/min/moment.min.js",
     "./node_modules/moment/locale/pt-br.js",
     "./node_modules/angular/angular.min.js",
-    "./node_modules/angular-cookie/angular-cookie.min.js",
+    "./node_modules/angular-cookies/angular-cookies.min.js",
     "./node_modules/angular-route/angular-route.min.js",
     "./node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js",
     "./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",

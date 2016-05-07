@@ -16,8 +16,7 @@
         return config;
       },
 
-      responseError: function _responseAuthenticatorInterceptor(response){
-        console.log(response);
+      responseError: function _responseErrorAuthenticatorInterceptor(response){
         if (response.status == 401){
           credentialManager.logout().withError();
         }

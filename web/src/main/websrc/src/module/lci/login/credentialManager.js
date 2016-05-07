@@ -4,64 +4,126 @@
 
 (function(app){
 
-  app.service('credentialManager', function($rootScope){
+  app.provider('credentialManager', function(){
 
-    this.hasCredential = function(){
-      return !!$rootScope.credentials;
+    var cookieKey = "";
+    var expiredLogin = 1; //In minutes
+    var expiredSession = 10;
+
+    this.setCookieKey = function(_cookieKey){
+      cookieKey = _cookieKey;
     };
 
-    this.user = function(userLogged){
-      if(arguments.length){
-        $rootScope.user = userLogged;
-      }else{
-        return $rootScope.user;
-      }
+    this.setExpiredLogin = function(_expiredLogin){
+      expiredLogin = _expiredLogin;
     };
 
-    this.credential = function (credential) {
-      if(arguments.length){
-        $rootScope.credentials = credential;
-      }
-      return $rootScope.credentials;
-    };
+    this.$get = function($rootScope, $cookies){
 
-    this.authorizationHeader = function buildAuthorization(){
-      var credentials = this.credential();
-      if(credentials){
-        try {
-          //authorization
-          return "Basic " + btoa(credentials.uid + ":" + credentials.password);
-        }catch (e){
-          return null;
-        }
-      }else{
-        return null;
-      }
-    };
-
-    this.error = function(){
-      $rootScope.authenticatedError = true;
-    };
-
-    this.logout = function(){
-      var that = this;
-      $rootScope.authenticated = false;
-      $rootScope.authenticatedError = false;
-      that.credential(null);
-      this.user(null);
-      return {
-        withError: function(){
-          that.error();
+      var cookieStore = function(credential){
+        if(credential && credential.uid) {
+          $cookies.putObject(cookieKey, credential);
+          cookieExpireUpdate();
         }
       };
-    };
 
-    this.login = function(user){
-      $rootScope.authenticated = true;
-      $rootScope.authenticatedError = false;
-      this.user(user);
-    };
+      var cookieExpireUpdate = function(){
+        var credential = $cookies.getObject(cookieKey);
+        if(credential && credential.uid) {
+          var now = moment();
+          var dateExpire;
+          if (credential && credential.keep) {
+            dateExpire = now.add(expiredLogin, 'minute').toDate();
+          } else { // +3 minutos
+            dateExpire = now.add(expiredSession, 'minute').toDate();
+          }
+          $cookies.putObject(cookieKey, credential, {expires: dateExpire});
+        }
+      };
 
+      var cookieGet = function(){
+        return $cookies.getObject(cookieKey);
+      };
+
+      var cookieRemove = function(){
+        $cookies.remove(cookieKey);
+      };
+
+      var hasCredential = function(){
+        return !!credential();
+      };
+
+      var user = function(userLogged){
+        if(arguments.length){
+          $rootScope.user = userLogged;
+        }else{
+          return $rootScope.user;
+        }
+      };
+
+      var credential = function (credential) {
+        if(arguments.length){
+          $rootScope.credentials = credential;
+          if(credential){
+            cookieStore(credential);
+          }else{
+            cookieRemove();
+          }
+        }else{
+          if(!$rootScope.credentials || ($rootScope.credentials && !$rootScope.credentials.uid)){
+            $rootScope.credentials = cookieGet();
+          }
+          cookieExpireUpdate();
+        }
+        return $rootScope.credentials;
+      };
+
+      var authorizationHeader = function buildAuthorization(){
+        var credentials = credential();
+        if(credentials){
+          try {
+            //authorization
+            return "Basic " + btoa(credentials.uid + ":" + credentials.password);
+          }catch (e){
+            return null;
+          }
+        }else{
+          return null;
+        }
+      };
+
+      var error = function(){
+        $rootScope.authenticatedError = true;
+      };
+
+      var logout = function(){
+        $rootScope.authenticated = false;
+        $rootScope.authenticatedError = false;
+        credential(null);
+        user(null);
+        return {
+          withError: function(){
+            error();
+          }
+        };
+      };
+
+      var login = function(_user){
+        $rootScope.authenticated = true;
+        $rootScope.authenticatedError = false;
+        user(_user);
+      };
+
+      return {
+        hasCredential: hasCredential,
+        user: user,
+        credential: credential,
+        authorizationHeader: authorizationHeader,
+        error: error,
+        logout: logout,
+        login: login
+      };
+    };
   });
 
 })(angular.module('LCI.Login'));

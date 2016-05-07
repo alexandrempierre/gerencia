@@ -13,7 +13,8 @@ angular.module('LCI.Dialogo',[
 ]);
 angular.module('LCI.Crud',['LCI.Angular','LCI.Util', 'LCI.Menu','LCI.Dialogo']);
 
-angular.module('LCI.Login',[]);
+angular.module('LCI.Login', ['ngCookies']);
+
 angular.module('LCI',[
   'LCI.Angular',
   'LCI.Crud',

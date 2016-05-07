@@ -5,18 +5,18 @@
   "main": "index.js",
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-cookie": "^4.0.10",
-    "angular-route": "^1.4.9",
-    "bootstrap": "~3.3.6",
-    "jquery": "~2.2.0",
-    "sugarloaf-cli": "https://github.com/faustofjunqueira/sugarloaf-cli.git",
-    "angular-ui-bootstrap": "~1.1.2",
-    "angular-bootstrap3-datepicker": "git://github.com/benzen/angular-bootstrap3-datepicker.git",
-    "moment": "~2.11.2",
-    "font-awesome": "~4.5.0",
     "angular-bootstrap-switch": "~0.4.1",
+    "angular-bootstrap3-datepicker": "git://github.com/benzen/angular-bootstrap3-datepicker.git",
+    "angular-cookies": "^1.5.5",
+    "angular-route": "^1.4.9",
+    "angular-ui-bootstrap": "~1.1.2",
+    "angular-ui-mask": "~1.7.2",
+    "bootstrap": "~3.3.6",
     "bootstrap-switch": "~3.3.2",
-    "angular-ui-mask": "~1.7.2"
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.2.0",
+    "moment": "~2.11.2",
+    "sugarloaf-cli": "https://github.com/faustofjunqueira/sugarloaf-cli.git"
   },
   "devDependencies": {
     "event-stream": "^3.3.2",

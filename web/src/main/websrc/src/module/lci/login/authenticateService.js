@@ -10,8 +10,15 @@
     this.servicePath = 'user';
 
     this.getUserByCredential = function(credentials){
-      credentialManager.credential(credentials);
-      return this.get(credentials.uid).then(function(response){
+      if(!credentials || (credentials && !credentials.uid)){
+        credentials = credentialManager.credential();
+      }else{
+        credentialManager.credential(credentials);
+      }
+
+      var uid = credentials ? credentials.uid : "";
+
+      return this.get(uid).then(function(response){
         credentialManager.login(response.data);
       });
     };
