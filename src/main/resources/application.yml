@@ -2,6 +2,12 @@ spring:
   profiles:
     active: development
 
+ldap:
+  url: ldap://localhost:389
+  userDn: cn=root, dc=dcc, dc=ufrj, dc=br
+  password: senha
+  base: dc=dcc, dc=ufrj, dc=br
+
 ---
 spring:
   profiles: development

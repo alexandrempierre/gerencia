@@ -12,16 +12,15 @@ import org.springframework.ldap.core.support.LdapContextSource;
  */
 
 @Configuration
-@PropertySource("classpath:ldap.properties")
 public class DataAccessConfig {
 
-  @Value("${sample.ldap.url}")
+  @Value("${ldap.url}")
   private String url;
-  @Value("${sample.ldap.userDn}")
+  @Value("${ldap.userDn}")
   private String userDn;
-  @Value("${sample.ldap.password}")
+  @Value("${ldap.password}")
   private String password;
-  @Value("${sample.ldap.base}")
+  @Value("${ldap.base}")
   private String base;
 
   @Bean
