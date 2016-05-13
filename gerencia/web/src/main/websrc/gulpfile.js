@@ -25,7 +25,6 @@ gulp.task('jshint', function () {
     .pipe(jshint.reporter('default'));
 });
 
-
 gulp.task('uglifyProd', function () {
   return es.merge([
       gulp.src([
@@ -35,7 +34,7 @@ gulp.task('uglifyProd', function () {
         "./node_modules/moment/min/moment.min.js",
         "./node_modules/moment/locale/pt-br.js",
         "./node_modules/angular/angular.min.js",
-        "./node_modules/angular-cookie/angular-cookie.min.js",
+        "./node_modules/angular-cookies/angular-cookies.min.js",
         "./node_modules/angular-route/angular-route.min.js",
         "./node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js",
         "./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
@@ -133,11 +132,6 @@ gulp.task('copyDevDepCSS', function(){
     .pipe(gulp.dest('./../resources/dist/css'));
 });
 
-gulp.task('copyTemplate', function(){
-  return gulp.src('template/login.html')
-    .pipe(gulp.dest('./../resources/templates'));
-});
-
 gulp.task('copyImg',function(){
   return gulp.src([
       'src/**/*.png',
@@ -149,7 +143,6 @@ gulp.task('copyImg',function(){
 gulp.task('copyBSFonts', function(){
   return gulp.src(['node_modules/bootstrap/dist/fonts/*','node_modules/font-awesome/fonts/*']).pipe(gulp.dest('./../resources/dist/fonts'));
 });
-
 
 gulp.task('copyIndexProd', function(){
   return gulp.src('template/indexProd.html')
@@ -164,9 +157,9 @@ gulp.task('copyIndexDev', function(){
 });
 
 gulp.task('default', function (cb) {
-  return runSequence('clean', ['jshint', 'uglifyDev', 'htmlmin', 'cssDev', 'copyImg', 'copyBSFonts', 'copyDevDepCSS', 'copyDevDepJS', 'copyIndexDev', 'copyTemplate'], cb)
+  return runSequence('clean', ['jshint', 'uglifyDev', 'htmlmin', 'cssDev', 'copyImg', 'copyBSFonts', 'copyDevDepCSS', 'copyDevDepJS', 'copyIndexDev'], cb)
 });
 
 gulp.task('prod', function (cb) {
-  return runSequence('clean', ['jshint', 'uglifyProd', 'htmlmin', 'cssProd', 'copyImg', 'copyBSFonts', 'copyIndexProd', 'copyTemplate'], cb)
+  return runSequence('clean', ['jshint', 'uglifyProd', 'htmlmin', 'cssProd', 'copyImg', 'copyBSFonts', 'copyIndexProd'], cb)
 });

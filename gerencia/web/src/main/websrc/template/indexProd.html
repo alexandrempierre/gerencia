@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 
-  <link rel="stylesheet" href="/css/gerencia.min.css"></link>
-  <script src="/js/gerencia.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/gerencia.min.css"></link>
+  <script src="/assets/js/gerencia.min.js"></script>
 
   <script type="text/javascript">
     var jq = jQuery.noConflict();
   </script>
 </head>
-<body ng-app="gerencia">
+<body ng-app="gerencia" class="login-html">
 <sl-errmodal></sl-errmodal>
 <div ng-show="authenticated" ng-controller="lciUsuarioLogadoCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
 <div ng-show="authenticated" ng-controller="lciMenuCtrl as ctrl" ng-include="ctrl.templateUrl"></div>
