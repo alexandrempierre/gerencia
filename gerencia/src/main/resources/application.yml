@@ -1,23 +1,20 @@
 spring:
   profiles:
-    active: production
-
-ldap:
-  url: ldap://localhost:389
-  userDn: cn=root, dc=dcc, dc=ufrj, dc=br
-  password: senha
-  base: dc=dcc, dc=ufrj, dc=br
-
----
-spring:
-  profiles: development
+    active: development
 
 server:
   port: 8000
 
 ---
 spring:
-  profiles: production
+  profiles: development
 
-server:
-  port: 8001
+ldap:
+  url: ldap://146.164.41.7:389
+  userDn: cn=root, dc=dcc, dc=ufrj, dc=br
+  password: senha
+  base: dc=dcc, dc=ufrj, dc=br
+
+---
+spring:
+  profiles: production
