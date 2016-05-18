@@ -5,12 +5,18 @@ spring:
 server:
   port: 8000
 
+path:
+  base:
+    student: /usuarios/alunos
+    teacher: /usuarios/professores
+
 ---
 spring:
   profiles: development
 
 ldap:
-  url: ldap://146.164.41.7:389
+  url: ldap://localhost:389
+  urlbkp: ldap://146.164.41.7:389
   userDn: cn=root, dc=dcc, dc=ufrj, dc=br
   password: senha
   base: dc=dcc, dc=ufrj, dc=br

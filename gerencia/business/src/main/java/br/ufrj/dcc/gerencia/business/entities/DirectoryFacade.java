@@ -14,6 +14,14 @@ import java.nio.file.Paths;
 @Component
 public class DirectoryFacade {
 
+  private String studentBasePath;
+  private String teacherBasePath;
+
+  public DirectoryFacade(String studentBasePath, String teacherBasePath) {
+    this.studentBasePath = studentBasePath;
+    this.teacherBasePath = teacherBasePath;
+  }
+
   public void createDirectory(Path path) throws IOException {
     if  (!Files.exists(path)){
       Files.createDirectory(path);
@@ -24,12 +32,12 @@ public class DirectoryFacade {
     createDirectory(Paths.get(path));
   }
 
-  void createStudentDirectory(String uid){
-
+  void createStudentDirectory(String uid) throws IOException {
+    createDirectory(String.format("%s/%s", studentBasePath, uid));
   }
 
-  void createTeacherDirectory(String uid){
-
+  void createTeacherDirectory(String uid) throws IOException {
+    createDirectory(String.format("%s/%s", teacherBasePath, uid));
   }
 
 }

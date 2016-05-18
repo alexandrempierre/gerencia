@@ -12,6 +12,8 @@ import br.ufrj.dcc.gerencia.repository.contract.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 /**
  * Created by fausto on 4/17/16.
  */
@@ -26,10 +28,18 @@ public class TeacherFacade extends CrudFacade<Teacher,TeacherSpecification,Teach
   @Autowired
   private UserFacade userFacade;
 
+  @Autowired
+  private DirectoryFacade directoryFacade;
+
   @Override
   public Teacher save(Teacher register) {
     if (!register.isSaved()){
       populateRegister(register);
+      try {
+        directoryFacade.createTeacherDirectory(register.getUser().getLogin());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
     }
     return getRepository().save(register);
   }

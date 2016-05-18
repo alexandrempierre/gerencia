@@ -13,6 +13,8 @@ import br.ufrj.dcc.gerencia.repository.contract.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 /**
  * Created by fausto on 4/10/16.
  */
@@ -26,10 +28,18 @@ public class StudentFacade extends CrudFacade<Student,StudentSpecification,Stude
   @Autowired
   private UserFacade userFacade;
 
+  @Autowired
+  private DirectoryFacade directoryFacade;
+
   @Override
   public Student save(Student register) {
     if (!register.isSaved()){
       populateRegister(register);
+      try {
+        directoryFacade.createStudentDirectory(register.getUser().getLogin());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
     }
     return getRepository().save(register);
   }
