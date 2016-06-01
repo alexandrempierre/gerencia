@@ -1,0 +1,62 @@
+<form class="form-horizontal gerencia-formulario">
+  <fieldset>
+    <lci-formtitulo>Filtro</lci-formtitulo>
+    <div class="gerencia-formulario-corpo row">
+      <div class="form-group">
+        <label for="nome" class="col-sm-1 control-label">Nome</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="nome" ng-model="filter.name" placeholder="Nome">
+        </div>
+
+        <label for="sobrenome" class="col-sm-1 control-label">Sobrenome</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="sobrenome" ng-model="filter.surname" placeholder="Sobrenome">
+        </div>
+
+        <label for="login" class="col-sm-1 control-label">Login</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="login" ng-model="filter.uid" placeholder="login">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dre" class="col-sm-1 control-label">DRE</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="dre" ng-model="filter.dre" placeholder="DRE">
+        </div>
+      </div>
+    </div>
+    <lci-formbotoesfiltro ng-model="filter" fn-limpar="limpar" fn-inserir="inserir()" filtrar="buscar(filter)"></lci-formbotoesfiltro>
+  </fieldset>
+</form>
+<hr>
+<table class="table table-hover gerencia-tabela">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Login</th>
+    <th colspan="3" width="15">Expiração</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="employee in list">
+    <td>{{employee.person.displayName}}</td>
+    <td>{{employee.id}}</td>
+    <td width="15" class="text-center">{{employee.shadow.shadowExpire ||'-' | date:'dd/MM/yyyy'}}</td>
+    <td width="5">
+      <button id="senha" type="button" ng-click="changePasswordModalOpen(employee.user)" class="btn btn-link gerencia-botao-link"><i
+        class="glyphicon glyphicon-lock" uib-tooltip="Alterar Senha" tooltip-placement="top"></i></button>
+    </td>
+    <td width="5">
+      <button type="button" ng-click="editar(employee.id)" class="btn btn-link gerencia-botao-link" uib-tooltip="Editar" tooltip-placement="top"><i
+        class="glyphicon glyphicon-pencil"></i></button>
+    </td>
+    <td width="5">
+      <button type="button" class="btn btn-link gerencia-botao-link" uib-tooltip="Remover" tooltip-placement="top" ng-click="deletar(employee.id)"><i
+        class="glyphicon glyphicon-trash"></i></button>
+    </td>
+  </tr>
+  <tr ng-if="!list || list.length == 0">
+    <td colspan="9"><p class="text-danger">Nenhum resultado encontrado!</p></td>
+  </tr>
+  </tbody>
+</table>

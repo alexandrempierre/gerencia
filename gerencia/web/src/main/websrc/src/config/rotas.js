@@ -34,6 +34,18 @@ app.config(function(lciCrudRouteProvider, lciCrudPageInfo){
       templateUrl: '/assets/view/template/view/professor/inserir.html'
     });
 
+  lciCrudRouteProvider.registrar('Cadastramento de Funcionário', 'Funcionário', null, '/employee', 'employeeAPI',lciCrudPageInfo,
+    {
+      controller: 'employeeFilterCtrl',
+      templateUrl: '/assets/view/template/view/employee/filter.html'
+    }, {
+      controller: 'professorDetalheCtrl',
+      templateUrl: '/assets/view/template/view/professor/detalhe.html'
+    },{
+      controller: 'professorInserirCtrl',
+      templateUrl: '/assets/view/template/view/professor/inserir.html'
+    });
+
 });
 
 })(angular.module('gerencia'));
