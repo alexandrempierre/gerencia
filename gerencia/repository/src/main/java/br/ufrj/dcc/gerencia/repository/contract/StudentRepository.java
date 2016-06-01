@@ -7,6 +7,4 @@ import br.ufrj.dcc.gerencia.repository.base.Repository;
 /**
  * Created by fausto on 4/10/16.
  */
-public interface StudentRepository extends Repository<Student, StudentSpecification> {
-
-}
+public interface StudentRepository extends Repository<Student, StudentSpecification> {}

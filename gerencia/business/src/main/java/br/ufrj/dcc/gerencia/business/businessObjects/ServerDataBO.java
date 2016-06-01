@@ -26,6 +26,12 @@ public class ServerDataBO {
     return serverData;
   }
 
+  public static ServerData createEmployee(Employee employee, Integer uidNumber){
+    ServerData serverData = new ServerData();
+    create(serverData, employee.getUser(), employee.getPerson(), uidNumber);
+    return serverData;
+  }
+
   public static ServerData createStudent(Student student, Integer uidNumber) {
     ServerData serverData = new ServerData();
     create(serverData, student.getUser(), student.getPerson(), uidNumber);
