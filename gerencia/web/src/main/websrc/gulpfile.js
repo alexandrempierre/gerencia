@@ -41,7 +41,8 @@ gulp.task('uglifyProd', function () {
         "./node_modules/sugarloaf-cli/dist/sugarloaf.js",
         "./node_modules/angular-bootstrap3-datepicker/dist/ng-bs3-datepicker.min.js",
         "./node_modules/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js",
-        "./node_modules/angular-ui-mask/dist/mask.min.js"
+        "./node_modules/angular-ui-mask/dist/mask.min.js",
+        "./node_modules/angular-block-ui/dist/angular-block-ui.min.js"
       ]),
       gulp.src('./src/**/*.js')
         .pipe(concat('scripts.js'))
@@ -79,7 +80,8 @@ gulp.task('cssProd', function () {
         "./node_modules/angular-bootstrap3-datepicker/dist/ng-bs3-datepicker.css",
         "./node_modules/font-awesome/css/font-awesome.min.css",
         "./node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css",
-        "./src/style/sidebar.css"
+        "./src/style/sidebar.css",
+        "./node_modules/angular-block-ui/dist/angular-block-ui.min.css"
       ]),
       gulp.src('./src/**/*.scss').pipe(concat('sass.scss')).pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     ])
@@ -114,7 +116,8 @@ gulp.task('copyDevDepJS', function(){
     "./node_modules/sugarloaf-cli/dist/sugarloaf.js",
     "./node_modules/angular-bootstrap3-datepicker/dist/ng-bs3-datepicker.min.js",
     "./node_modules/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js",
-    "./node_modules/angular-ui-mask/dist/mask.min.js"
+    "./node_modules/angular-ui-mask/dist/mask.min.js",
+    "./node_modules/angular-block-ui/dist/angular-block-ui.min.js"
   ])
     .pipe(gulp.dest('./../resources/dist/js'));
 });
@@ -127,7 +130,8 @@ gulp.task('copyDevDepCSS', function(){
       "./node_modules/angular-bootstrap3-datepicker/dist/ng-bs3-datepicker.css",
       "./node_modules/font-awesome/css/font-awesome.min.css",
       "./node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css",
-      "./src/style/sidebar.css"
+      "./src/style/sidebar.css",
+      "./node_modules/angular-block-ui/dist/angular-block-ui.min.css"
     ])
     .pipe(gulp.dest('./../resources/dist/css'));
 });

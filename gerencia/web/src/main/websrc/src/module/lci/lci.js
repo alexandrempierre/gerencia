@@ -3,6 +3,7 @@
  */
 
 angular.module('LCI.Angular',['ngRoute']);
+angular.module('LCI.Loading',['blockUI']);
 angular.module('LCI.Mensagem', []);
 angular.module('LCI.Menu', []);
 angular.module('LCI.UsuarioLogado', []);
@@ -23,5 +24,6 @@ angular.module('LCI',[
   'LCI.Menu',
   'LCI.UsuarioLogado',
   'LCI.Util',
-  'LCI.Login'
+  'LCI.Login',
+  'LCI.Loading'
 ]);
