@@ -4,8 +4,7 @@
 
 (function(app){
   app.service('userAPI', function($http){
-    CrudAbstractService.call(this,$http);
-    this.servicePath = 'user';
+    LCIAbstractService.call(this,$http,'user');
 
     //Troca a senha, basta salvar!
     this.changePassword = this.save;

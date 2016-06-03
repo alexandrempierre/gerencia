@@ -5,8 +5,7 @@
 (function(app){
   app.service('alunoAPI', function($q, $http){
     var self = this;
-    CrudAbstractService.call(this,$http);
-    this.servicePath = 'student';
+    LCIAbstractService.call(this,$http,'student');
 
     self.validateUniqueDRE = function _uniqueDRE(dre){
       return self.list({dre: dre}).then(function _uniqueDREcb(dataTO){

@@ -4,7 +4,6 @@
 
 (function(app){
   app.service('teacherAPI', function($http){
-    CrudAbstractService.call(this,$http);
-    this.servicePath = 'teacher';
+    LCIAbstractService.call(this,$http,'teacher');
   });
 })(angular.module('gerencia'));
