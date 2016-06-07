@@ -42,8 +42,8 @@ app.config(function(lciCrudRouteProvider, lciCrudPageInfo){
       controller: 'professorDetalheCtrl',
       templateUrl: '/assets/view/template/view/professor/detalhe.html'
     },{
-      controller: 'professorInserirCtrl',
-      templateUrl: '/assets/view/template/view/professor/inserir.html'
+      controller: 'employeeInsertCtrl',
+      templateUrl: '/assets/view/template/view/employee/insert.html'
     });
 
 });
