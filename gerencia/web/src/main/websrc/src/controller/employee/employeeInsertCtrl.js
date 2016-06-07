@@ -9,7 +9,7 @@
     // Para validar o login
     $scope.uniqueLogin = validateAPI.uniqueLogin;
 
-    $scope.teacher = {
+    $scope.employee = {
       user:{
         limitHDSpace: defaultValues.limitHDSpace
       },

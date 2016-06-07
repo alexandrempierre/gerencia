@@ -39,8 +39,8 @@ app.config(function(lciCrudRouteProvider, lciCrudPageInfo){
       controller: 'employeeFilterCtrl',
       templateUrl: '/assets/view/template/view/employee/filter.html'
     }, {
-      controller: 'professorDetalheCtrl',
-      templateUrl: '/assets/view/template/view/professor/detalhe.html'
+      controller: 'employeeDetailCtrl.js',
+      templateUrl: '/assets/view/template/view/employee/datail.html'
     },{
       controller: 'employeeInsertCtrl',
       templateUrl: '/assets/view/template/view/employee/insert.html'
