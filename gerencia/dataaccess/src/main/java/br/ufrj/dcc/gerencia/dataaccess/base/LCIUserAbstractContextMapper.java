@@ -29,8 +29,8 @@ public abstract class LCIUserAbstractContextMapper<M extends LCIModel> extends L
   @Override
   public M doMapFromContext(DirContextOperations ctx) {
     M register = super.doMapFromContext(ctx);
-    //register.setCreatedAt(new Long(ctx.getStringAttribute("dataCriacao")));
-    //register.setUpdatedAt(new Long(ctx.getStringAttribute("dataRenovacao")));
+    register.setCreatedAt(new Long(ctx.getStringAttribute("dataCriacao")));
+    register.setUpdatedAt(new Long(ctx.getStringAttribute("dataRenovacao")));
     return register;
   }
 }
