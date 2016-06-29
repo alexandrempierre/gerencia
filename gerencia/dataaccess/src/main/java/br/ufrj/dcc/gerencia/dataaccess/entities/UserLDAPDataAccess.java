@@ -5,7 +5,6 @@ import br.ufrj.dcc.gerencia.dataaccess.mapper.UserLdapMapper;
 import br.ufrj.dcc.gerencia.domain.base.LciLdapSpecification;
 import br.ufrj.dcc.gerencia.domain.entities.User;
 import org.springframework.ldap.support.LdapNameBuilder;
-import static org.springframework.ldap.query.LdapQueryBuilder.query;
 import org.springframework.stereotype.Component;
 
 /**

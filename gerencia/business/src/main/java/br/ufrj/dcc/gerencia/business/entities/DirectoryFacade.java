@@ -29,15 +29,15 @@ public class DirectoryFacade {
   }
 
   public void createDirectory(String path) throws IOException {
-    createDirectory(Paths.get(path));
+    //createDirectory(Paths.get(path));
   }
 
   void createStudentDirectory(String uid) throws IOException {
-    createDirectory(String.format("%s/%s", studentBasePath, uid));
+    //createDirectory(String.format("%s/%s", studentBasePath, uid));
   }
 
   void createTeacherDirectory(String uid) throws IOException {
-    createDirectory(String.format("%s/%s", teacherBasePath, uid));
+    //createDirectory(String.format("%s/%s", teacherBasePath, uid));
   }
 
 }

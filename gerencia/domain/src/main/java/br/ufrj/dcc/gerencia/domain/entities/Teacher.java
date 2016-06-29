@@ -12,7 +12,7 @@ public class Teacher extends LCIModel {
   private ServerData serverData;
   private SambaObj samba;
   private ShadowObj shadow;
-
+  private String department;
   private boolean operator;
 
   public Teacher() {
@@ -21,6 +21,7 @@ public class Teacher extends LCIModel {
     serverData = new ServerData();
     samba = new SambaObj();
     shadow = new ShadowObj();
+    department = "DCC";
   }
 
   public Teacher(User user, Person person, ServerData serverData, SambaObj samba, ShadowObj shadow, boolean operator) {
@@ -30,6 +31,10 @@ public class Teacher extends LCIModel {
     this.samba = samba;
     this.shadow = shadow;
     this.operator = operator;
+  }
+
+  public String getDepartment() {
+    return department;
   }
 
   public User getUser() {

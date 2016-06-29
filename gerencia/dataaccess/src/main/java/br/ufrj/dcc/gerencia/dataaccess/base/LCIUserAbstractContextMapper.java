@@ -33,4 +33,11 @@ public abstract class LCIUserAbstractContextMapper<M extends LCIModel> extends L
     register.setUpdatedAt(new Long(ctx.getStringAttribute("dataRenovacao")));
     return register;
   }
+
+  public void setAttributeValue(String nameField, DirContextOperations ctx, String value){
+    if(value != null){
+      ctx.setAttributeValue(nameField, value);
+    }
+  }
+
 }

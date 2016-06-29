@@ -41,7 +41,7 @@ public class TeacherFacade extends CrudFacade<Teacher,TeacherSpecification,Teach
         throw new RuntimeException(e);
       }
     }
-    return getRepository().save(register);
+    return super.save(register);
   }
 
   private void populateRegister(Teacher register){
